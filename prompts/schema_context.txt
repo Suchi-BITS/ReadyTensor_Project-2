@@ -1,0 +1,1194 @@
+[
+  {
+    "name": "BilledCost",
+    "source_name": "BilledCost",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 581,
+    "example_values": [
+      "0.033876058",
+      "0.0",
+      "0.000296113"
+    ],
+    "stats": {
+      "min": 0.0,
+      "max": 548.9428245
+    },
+    "description": "Charge basis for invoicing, inclusive of negotiated discounts, excluding amortized upfront charges; denominated in BillingCurrency."
+  },
+  {
+    "name": "BillingAccountId",
+    "source_name": "BillingAccountId",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "/providers/Microsoft.Billing/billingAccounts/47932900"
+    ],
+    "description": "Identifier for the payer or billing account used to aggregate invoices."
+  },
+  {
+    "name": "BillingAccountName",
+    "source_name": "BillingAccountName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Transport for NSW"
+    ],
+    "description": "Human-readable display name for the billing account."
+  },
+  {
+    "name": "BillingAccountType",
+    "source_name": "BillingAccountType",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Billing Account"
+    ],
+    "description": "Classification of the billing account (e.g., payer, linked)."
+  },
+  {
+    "name": "BillingCurrency",
+    "source_name": "BillingCurrency",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "AUD"
+    ],
+    "description": "Currency in which this billed charge is denominated."
+  },
+  {
+    "name": "BillingPeriodEnd",
+    "source_name": "BillingPeriodEnd",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "2025-02-01T00:00:00Z"
+    ],
+    "description": "UTC timestamp representing the end of the billing period."
+  },
+  {
+    "name": "BillingPeriodStart",
+    "source_name": "BillingPeriodStart",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "2025-01-01T00:00:00Z"
+    ],
+    "description": "UTC timestamp representing the start of the billing period."
+  },
+  {
+    "name": "ChargeCategory",
+    "source_name": "ChargeCategory",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Usage"
+    ],
+    "description": "High-level category of the charge (e.g., Purchase, Usage, Refund, Tax)."
+  },
+  {
+    "name": "ChargeClass",
+    "source_name": "ChargeClass",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": [],
+    "description": "Indicates whether the row is a regular charge or an adjustment."
+  },
+  {
+    "name": "ChargeDescription",
+    "source_name": "ChargeDescription",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 175,
+    "example_values": [
+      "Premium SSD Managed Disks - P10 LRS - AU East",
+      "Rtn Preference: MGN - Standard Data Transfer In - AU East",
+      "Microsoft Defender for Storage - Standard Transactions"
+    ],
+    "description": "Contextual description of the charge or usage item."
+  },
+  {
+    "name": "ChargeFrequency",
+    "source_name": "ChargeFrequency",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Usage-Based"
+    ],
+    "description": "Frequency of the charge (e.g., OneTime, Recurring)."
+  },
+  {
+    "name": "ChargePeriodEnd",
+    "source_name": "ChargePeriodEnd",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 3,
+    "example_values": [
+      "2025-01-10T00:00:00Z",
+      "2025-01-09T00:00:00Z",
+      "2025-01-08T00:00:00Z"
+    ],
+    "description": "End timestamp of the period covered by this charge."
+  },
+  {
+    "name": "ChargePeriodStart",
+    "source_name": "ChargePeriodStart",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 3,
+    "example_values": [
+      "2025-01-09T00:00:00Z",
+      "2025-01-08T00:00:00Z",
+      "2025-01-07T00:00:00Z"
+    ],
+    "description": "Start timestamp of the period covered by this charge."
+  },
+  {
+    "name": "commitmentdiscountcategory",
+    "source_name": "CommitmentDiscountCategory",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "commitmentdiscountid",
+    "source_name": "CommitmentDiscountId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "commitmentdiscountname",
+    "source_name": "CommitmentDiscountName",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "commitmentdiscountstatus",
+    "source_name": "CommitmentDiscountStatus",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "commitmentdiscounttype",
+    "source_name": "CommitmentDiscountType",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "ConsumedQuantity",
+    "source_name": "ConsumedQuantity",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 457,
+    "example_values": [
+      "0.001344",
+      "0.000144",
+      "116.0"
+    ],
+    "stats": {
+      "min": 3.05289e-16,
+      "max": 1098878.0
+    },
+    "description": "Quantity of the billed usage in provider-defined units."
+  },
+  {
+    "name": "ConsumedUnit",
+    "source_name": "ConsumedUnit",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 9,
+    "example_values": [
+      "Units/Month",
+      "GB",
+      "Units"
+    ],
+    "description": "Measurement unit for ConsumedQuantity."
+  },
+  {
+    "name": "ContractedCost",
+    "source_name": "ContractedCost",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 582,
+    "example_values": [
+      "0.033876058",
+      "0.0",
+      "0.000296113"
+    ],
+    "stats": {
+      "min": 0.0,
+      "max": 548.9428245
+    },
+    "description": "Cost based on contracted pricing terms."
+  },
+  {
+    "name": "contractedunitprice",
+    "source_name": "ContractedUnitPrice",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 123,
+    "example_values": [
+      "25.2054",
+      "0.0",
+      "0.025527"
+    ],
+    "stats": {
+      "min": 0.0,
+      "max": 172.80975
+    }
+  },
+  {
+    "name": "EffectiveCost",
+    "source_name": "EffectiveCost",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 581,
+    "example_values": [
+      "0.033876058",
+      "0.0",
+      "0.000296113"
+    ],
+    "stats": {
+      "min": 0.0,
+      "max": 548.9428245
+    },
+    "description": "Post-discount cost including allocations and amortized prepaid purchases."
+  },
+  {
+    "name": "invoiceissuername",
+    "source_name": "InvoiceIssuerName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Microsoft"
+    ]
+  },
+  {
+    "name": "ListCost",
+    "source_name": "ListCost",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 581,
+    "example_values": [
+      "0.039648",
+      "0.0",
+      "0.00034684"
+    ],
+    "stats": {
+      "min": 0.0,
+      "max": 643.4431795
+    },
+    "description": "Undiscounted list price cost for this usage line item."
+  },
+  {
+    "name": "listunitprice",
+    "source_name": "ListUnitPrice",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 122,
+    "example_values": [
+      "29.5",
+      "0.0",
+      "0.0299"
+    ],
+    "stats": {
+      "min": 0.0,
+      "max": 202.29
+    }
+  },
+  {
+    "name": "pricingcategory",
+    "source_name": "PricingCategory",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 2,
+    "example_values": [
+      "Standard",
+      "Dynamic"
+    ]
+  },
+  {
+    "name": "PricingQuantity",
+    "source_name": "PricingQuantity",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 473,
+    "example_values": [
+      "0.001344",
+      "0.000144",
+      "0.0116"
+    ],
+    "stats": {
+      "min": 3.05289e-16,
+      "max": 5650.0
+    },
+    "description": "Quantity of usage billed for pricing calculations."
+  },
+  {
+    "name": "PricingUnit",
+    "source_name": "PricingUnit",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 9,
+    "example_values": [
+      "Units/Month",
+      "GB",
+      "Units"
+    ],
+    "description": "Unit applied to pricing calculations."
+  },
+  {
+    "name": "providername",
+    "source_name": "ProviderName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Microsoft"
+    ]
+  },
+  {
+    "name": "publishername",
+    "source_name": "PublisherName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Microsoft"
+    ]
+  },
+  {
+    "name": "RegionId",
+    "source_name": "RegionId",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 7,
+    "example_values": [
+      "australiaeast",
+      "global",
+      "australiasoutheast"
+    ],
+    "description": "Provider\u2019s identifier for the geographic region associated with the usage."
+  },
+  {
+    "name": "RegionName",
+    "source_name": "RegionName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 7,
+    "example_values": [
+      "Australia East",
+      "Global",
+      "Australia Southeast"
+    ],
+    "description": "Human-readable name of the geographic region."
+  },
+  {
+    "name": "ResourceId",
+    "source_name": "ResourceId",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 707,
+    "example_values": [
+      "/subscriptions/a1e8e6ff-9083-421a-9dd8-ab8ed04c70c8/resourcegroups/greatersydney-dna-aiml-rg-dev/providers/microsoft.machinelearningservices/workspaces/greatersydney-dna-aiml-mlw-dev",
+      "/subscriptions/a1e8e6ff-9083-421a-9dd8-ab8ed04c70c8/resourcegroups/sydneymetro-digital-dataquality-rg-nonprod/providers/microsoft.storage/storageaccounts/sydmetrodigital0ataccdev",
+      "/subscriptions/a1e8e6ff-9083-421a-9dd8-ab8ed04c70c8/resourcegroups/edas-shared-nonprod-management/providers/microsoft.storage/storageaccounts/edasdataarchive"
+    ],
+    "description": "Unique resource identifier for the billed usage."
+  },
+  {
+    "name": "ResourceName",
+    "source_name": "ResourceName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 707,
+    "example_values": [
+      "greatersydney-dna-aiml-mlw-dev",
+      "sydmetrodigital0ataccdev",
+      "edasdataarchive"
+    ],
+    "description": "Human-readable name for the billed resource, if tagged or provided."
+  },
+  {
+    "name": "ResourceType",
+    "source_name": "ResourceType",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 49,
+    "example_values": [
+      "Azure Machine Learning workspace",
+      "Storage account",
+      "Azure Database for PostgreSQL - Flexible Server"
+    ],
+    "description": "Type or SKU of the billed resource."
+  },
+  {
+    "name": "ServiceCategory",
+    "source_name": "ServiceCategory",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 12,
+    "example_values": [
+      "AI and Machine Learning",
+      "Storage",
+      "Databases"
+    ],
+    "description": "High-level category grouping the provider's service offerings."
+  },
+  {
+    "name": "ServiceName",
+    "source_name": "ServiceName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 33,
+    "example_values": [
+      "Azure Machine Learning",
+      "Storage Accounts",
+      "Azure DB for PostgreSQL"
+    ],
+    "description": "Provider's specific service name generating the charge."
+  },
+  {
+    "name": "skuid",
+    "source_name": "SkuId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 175,
+    "example_values": [
+      "1073739.0",
+      "1010515.0",
+      "611182811.0"
+    ],
+    "stats": {
+      "min": 1002048.0,
+      "max": 616683515.0
+    }
+  },
+  {
+    "name": "skupriceid",
+    "source_name": "SkuPriceId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 175,
+    "example_values": [
+      "1073739.0",
+      "1010515.0",
+      "611182811.0"
+    ],
+    "stats": {
+      "min": 1002048.0,
+      "max": 616683515.0
+    }
+  },
+  {
+    "name": "SubAccountId",
+    "source_name": "SubAccountId",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 10,
+    "example_values": [
+      "/subscriptions/a1e8e6ff-9083-421a-9dd8-ab8ed04c70c8",
+      "/subscriptions/14d16038-fb95-45d2-a247-e952908bee3c",
+      "/subscriptions/f50a4e10-a756-4b9d-bcd7-bc6b847f1457"
+    ],
+    "description": "Identifier for the sub account or linked child account."
+  },
+  {
+    "name": "SubAccountName",
+    "source_name": "SubAccountName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 10,
+    "example_values": [
+      "tfnsw-edas-analytics-nonprod",
+      "tfnsw-gs-apps-prod",
+      "tfnsw-ana-ipanalytics-prod"
+    ],
+    "description": "Provider-assigned name for the sub account."
+  },
+  {
+    "name": "SubAccountType",
+    "source_name": "SubAccountType",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Subscription"
+    ],
+    "description": "Type or classification of the sub account."
+  },
+  {
+    "name": "Tags",
+    "source_name": "Tags",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996585,
+    "distinct": 444,
+    "example_values": [
+      "{\"Environment\": \"Dev\",\"ccoe:org:sec-data-confidentiallity\": \"None\",\"ccoe:org:account-owner-email\": \"Anthony.Burke@transport.nsw.gov.au\",\"Division\": \"Greater Sydney\",\"ccoe:toolkit:cmdb-match\": \"Default\",\"ccoe:org:app-criticality\": \"\",\"ccoe:org:support-level-3\": \"\",\"ccoe:org:support-level-1\": \"\",\"ccoe:org:support-level-2\": \"\",\"ccoe:org:account-owner\": \"Anto Burke\",\"ccoe:org:support-hours\": \"None\",\"ccoe:org:object-class\": \"Azure Subscription\",\"ccoe:default:app-ci\": \"tfnsw-edas-analytics-nonprod\",\"ccoe:org:sec-contact\": \"Anthony.Burke@transport.nsw.gov.au\",\"Project Name\": \"Greater Sydney DNA\",\"ccoe:org:responsible\": \"\",\"ccoe:org:t2o-status\": \"Deployed\",\"ccoe:org:op-contact\": \"\",\"ccoe:org:department\": \"\",\"ccoe:org:cost-code\": \"0000182111\",\"ccoe:org:app-name\": \"tfnsw-edas-analytics-nonprod\",\"ccoe:org:priority\": \"PRIORITY_5\",\"ccoe:org:agency\": \"Transport for NSW\",\"ccoe:org:impact\": \"3-Moderate/Limited\",\"User Access Review\": \"adam.reitsma@transport.nsw.gov.au\",\"ccoe:org:env\": \"Production\",\"Business Contact\": \"adam.reitsma@transport.nsw.gov.au\",\"Project Owner\": \"adam.reitsma@transport.nsw.gov.au\",\"Cost Review\": \"adam.reitsma@transport.nsw.gov.au\",\"Cost Reviewer Support\": \"eleonora.molina@transport.nsw.gov.au\",\"ccoe:toolkit:disable-default-patching\": \"true\",\"ccoe:toolkit:holiday-shutdown\": \"false\",\"Project\": \"GreaterSydney-DNA-AIML\",\"Team\": \"Data & Analytics (DNA)\",\"ComputeType\": \"Compute Instance\"}",
+      "{\"ccoe:org:sec-data-confidentiallity\": \"None\",\"ccoe:org:account-owner-email\": \"\",\"Division\": \"Sydney Metro\",\"ccoe:toolkit:cmdb-match\": \"App\",\"ccoe:org:app-criticality\": \"None\",\"ccoe:org:support-level-3\": \"\",\"ccoe:org:support-level-1\": \"\",\"ccoe:org:support-level-2\": \"\",\"ccoe:org:account-owner\": \"Craig Taprell\",\"ccoe:org:support-hours\": \"None\",\"ccoe:org:object-class\": \"Business Application\",\"ccoe:default:app-ci\": \"default\",\"ccoe:org:sec-contact\": \"Anthony.Burke@transport.nsw.gov.au\",\"Project Name\": \"Dare\",\"ccoe:org:responsible\": \"\",\"ccoe:org:t2o-status\": \"Deployed\",\"ccoe:org:op-contact\": \"\",\"ccoe:org:department\": \"\",\"ccoe:org:cost-code\": \"6000631018\",\"ccoe:org:app-name\": \"Metro MDE/DARE\",\"ccoe:org:priority\": \"None\",\"ccoe:org:agency\": \"\",\"ccoe:org:impact\": \"3-Moderate/Limited\",\"ccoe:org:env\": \"nonprod\",\"Business Contact\": \"Richa.lalit@transport.nsw.gov.au\",\"Project Owner\": \"ben.judd@transport.nsw.gov.au\",\"Environment \": \"Nonprod\",\"ccoe:toolkit:disable-default-patching\": \"true\",\"ccoe:toolkit:holiday-shutdown\": \"false\"}",
+      "{\"Environment\": \"Prod\",\"ccoe:org:sec-data-confidentiallity\": \"None\",\"ccoe:org:account-owner-email\": \"Anthony.Burke@transport.nsw.gov.au\",\"Division\": \"Corporate Services\",\"ccoe:toolkit:cmdb-match\": \"Default\",\"ccoe:org:app-criticality\": \"\",\"ccoe:org:support-level-3\": \"\",\"ccoe:org:support-level-1\": \"\",\"ccoe:org:support-level-2\": \"\",\"ccoe:org:account-owner\": \"Anto Burke\",\"ccoe:org:support-hours\": \"None\",\"ccoe:org:object-class\": \"Azure Subscription\",\"ccoe:default:app-ci\": \"tfnsw-edas-analytics-nonprod\",\"ccoe:org:sec-contact\": \"Anthony.Burke@transport.nsw.gov.au\",\"Project Name\": \"EDAS Admin\",\"ccoe:org:responsible\": \"\",\"ccoe:org:t2o-status\": \"Deployed\",\"ccoe:org:op-contact\": \"\",\"ccoe:org:department\": \"\",\"ccoe:org:cost-code\": \"0000182111\",\"ccoe:org:app-name\": \"tfnsw-edas-analytics-nonprod\",\"ccoe:org:priority\": \"PRIORITY_5\",\"ccoe:org:agency\": \"Transport for NSW\",\"ccoe:org:impact\": \"3-Moderate/Limited\",\"User Access Review\": \"russell.best@transport.nsw.gov.au\",\"ccoe:org:env\": \"Production\",\"Business Contact\": \"russell.best@transport.nsw.gov.au\",\"Project Owner\": \"EDAS\",\"Cost Review\": \"russell.best@transport.nsw.gov.au\",\"ccoe:toolkit:disable-default-patching\": \"true\",\"ccoe:toolkit:holiday-shutdown\": \"false\",\"Agency\": \"TfNSW\"}"
+    ],
+    "description": "JSON set of key-value pairs representing provider and user-defined tags."
+  },
+  {
+    "name": "x_accountid",
+    "source_name": "x_AccountId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 2,
+    "example_values": [
+      "195826.0",
+      "200587.0"
+    ],
+    "stats": {
+      "min": 195826.0,
+      "max": 200587.0
+    }
+  },
+  {
+    "name": "x_accountname",
+    "source_name": "x_AccountName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 2,
+    "example_values": [
+      "svc-azure-subauto@TransportCloud.onmicrosoft.com",
+      "svc_anycloud_subauto@transport.nsw.gov.au"
+    ]
+  },
+  {
+    "name": "x_accountownerid",
+    "source_name": "x_AccountOwnerId",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 2,
+    "example_values": [
+      "svc-azure-subauto@transportcloud.onmicrosoft.com",
+      "svc_anycloud_subauto@transport.nsw.gov.au"
+    ]
+  },
+  {
+    "name": "x_billedcostinusd",
+    "source_name": "x_BilledCostInUsd",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_billedunitprice",
+    "source_name": "x_BilledUnitPrice",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 123,
+    "example_values": [
+      "25.2054",
+      "0.0",
+      "0.025527"
+    ],
+    "stats": {
+      "min": 0.0,
+      "max": 172.80975
+    }
+  },
+  {
+    "name": "x_billingaccountid",
+    "source_name": "x_BillingAccountId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "47932900.0"
+    ],
+    "stats": {
+      "min": 47932900.0,
+      "max": 47932900.0
+    }
+  },
+  {
+    "name": "x_billingaccountname",
+    "source_name": "x_BillingAccountName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Transport for NSW"
+    ]
+  },
+  {
+    "name": "x_billingexchangerate",
+    "source_name": "x_BillingExchangeRate",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "1.0"
+    ],
+    "stats": {
+      "min": 1.0,
+      "max": 1.0
+    }
+  },
+  {
+    "name": "x_billingexchangeratedate",
+    "source_name": "x_BillingExchangeRateDate",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "2025-01-01T00:00:00Z"
+    ]
+  },
+  {
+    "name": "x_billingprofileid",
+    "source_name": "x_BillingProfileId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "47932900.0"
+    ],
+    "stats": {
+      "min": 47932900.0,
+      "max": 47932900.0
+    }
+  },
+  {
+    "name": "x_billingprofilename",
+    "source_name": "x_BillingProfileName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Transport for NSW"
+    ]
+  },
+  {
+    "name": "x_contractedcostinusd",
+    "source_name": "x_ContractedCostInUsd",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_costallocationrulename",
+    "source_name": "x_CostAllocationRuleName",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_costcenter",
+    "source_name": "x_CostCenter",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.997234,
+    "distinct": 1,
+    "example_values": [
+      "P.0019726"
+    ]
+  },
+  {
+    "name": "x_customerid",
+    "source_name": "x_CustomerId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_customername",
+    "source_name": "x_CustomerName",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_effectivecostinusd",
+    "source_name": "x_EffectiveCostInUsd",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_effectiveunitprice",
+    "source_name": "x_EffectiveUnitPrice",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 123,
+    "example_values": [
+      "25.2054",
+      "0.0",
+      "0.025527"
+    ],
+    "stats": {
+      "min": 0.0,
+      "max": 172.80975
+    }
+  },
+  {
+    "name": "x_invoiceid",
+    "source_name": "x_InvoiceId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_invoiceissuerid",
+    "source_name": "x_InvoiceIssuerId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_invoicesectionid",
+    "source_name": "x_InvoiceSectionId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 2,
+    "example_values": [
+      "141885.0",
+      "141884.0"
+    ],
+    "stats": {
+      "min": 141884.0,
+      "max": 141885.0
+    }
+  },
+  {
+    "name": "x_invoicesectionname",
+    "source_name": "x_InvoiceSectionName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 2,
+    "example_values": [
+      "Datacom",
+      "Transport Cluster Services"
+    ]
+  },
+  {
+    "name": "x_listcostinusd",
+    "source_name": "x_ListCostInUsd",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_partnercreditapplied",
+    "source_name": "x_PartnerCreditApplied",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_partnercreditrate",
+    "source_name": "x_PartnerCreditRate",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_pricingblocksize",
+    "source_name": "x_PricingBlockSize",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 7,
+    "example_values": [
+      "1.0",
+      "10000.0",
+      "50000.0"
+    ],
+    "stats": {
+      "min": 1.0,
+      "max": 1000000.0
+    }
+  },
+  {
+    "name": "x_pricingcurrency",
+    "source_name": "x_PricingCurrency",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "AUD"
+    ]
+  },
+  {
+    "name": "x_pricingsubcategory",
+    "source_name": "x_PricingSubcategory",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 2,
+    "example_values": [
+      "Standard",
+      "Spot"
+    ]
+  },
+  {
+    "name": "x_pricingunitdescription",
+    "source_name": "x_PricingUnitDescription",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 15,
+    "example_values": [
+      "1/Month",
+      "1 GB",
+      "10K"
+    ]
+  },
+  {
+    "name": "x_publishercategory",
+    "source_name": "x_PublisherCategory",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Cloud Provider"
+    ]
+  },
+  {
+    "name": "x_publisherid",
+    "source_name": "x_PublisherId",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "Microsoft"
+    ]
+  },
+  {
+    "name": "x_resellerid",
+    "source_name": "x_ResellerId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_resellername",
+    "source_name": "x_ResellerName",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_resourcegroupname",
+    "source_name": "x_ResourceGroupName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996574,
+    "distinct": 279,
+    "example_values": [
+      "greatersydney-dna-aiml-rg-dev",
+      "SydneyMetro-Digital-DataQuality-rg-nonprod",
+      "EDAS-Shared-NonProd-Management"
+    ]
+  },
+  {
+    "name": "x_resourcetype",
+    "source_name": "x_ResourceType",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 55,
+    "example_values": [
+      "Microsoft.MachineLearningServices/workspaces",
+      "Microsoft.Storage/storageAccounts",
+      "Microsoft.DBforPostgreSQL/flexibleservers"
+    ]
+  },
+  {
+    "name": "x_serviceperiodend",
+    "source_name": "x_ServicePeriodEnd",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_serviceperiodstart",
+    "source_name": "x_ServicePeriodStart",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_skudescription",
+    "source_name": "x_SkuDescription",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 175,
+    "example_values": [
+      "Premium SSD Managed Disks - P10 LRS - AU East",
+      "Rtn Preference: MGN - Standard Data Transfer In - AU East",
+      "Microsoft Defender for Storage - Standard Transactions"
+    ]
+  },
+  {
+    "name": "x_skudetails",
+    "source_name": "x_SkuDetails",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.998921,
+    "distinct": 158,
+    "example_values": [
+      "{\"AccountName\":\"bai24499671101746143625a\",\"PoolName\":\"greatersydney-dna-aiml-s_9d4ebd17-9b75-40d6-9493-543b888f2163\",\"NodeType\":\"Dedicated\",\"PoolAllocationMode\":\"BatchService\",\"UsageType\":\"disks\",\"ClusterType\":\"DSI\",\"AmlWorkspaceId\":\"4b2140f2-ea1d-4d20-9bfa-aa377f34f8b3\",\"AMLResourceType\":\"Provisioner.Batch\",\"SourceEventId\":\"5aae262d-3e45-2c03-c3a7-ce3fcb13337c\",\"SourceResourceProvider\":\"Batch\",\"HostSubscriptionId\":\"638e6bf4-26ad-478e-9cec-b47a06e84c00\",\"EmittingService\":\"Machine Learning Service - Non DSVM\",\"Processor_Version\":\"BillingProcessorV2\"}",
+      "{\"Cloud\":\"Azure\",\"StorageService\":\"Blob\"}",
+      "{\"Cloud\":\"Azure\",\"StorageService\":\"Files\"}"
+    ]
+  },
+  {
+    "name": "x_skuiscrediteligible",
+    "source_name": "x_SkuIsCreditEligible",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "True"
+    ]
+  },
+  {
+    "name": "x_skumetercategory",
+    "source_name": "x_SkuMeterCategory",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 32,
+    "example_values": [
+      "Storage",
+      "Bandwidth",
+      "Microsoft Defender for Cloud"
+    ]
+  },
+  {
+    "name": "x_skumeterid",
+    "source_name": "x_SkuMeterId",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 175,
+    "example_values": [
+      "94e88f5b-4418-4016-b601-badfedc45d20",
+      "42bb05e1-6f42-4de1-a6ba-7ffb976cb560",
+      "8a752c6d-6098-4f15-8828-3716ba46d524"
+    ]
+  },
+  {
+    "name": "x_skumetername",
+    "source_name": "x_SkuMeterName",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 140,
+    "example_values": [
+      "P10 LRS Disk",
+      "Standard Data Transfer In",
+      "Standard Transactions"
+    ]
+  },
+  {
+    "name": "x_skumetersubcategory",
+    "source_name": "x_SkuMeterSubcategory",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.997031,
+    "distinct": 58,
+    "example_values": [
+      "Premium SSD Managed Disks",
+      "Rtn Preference: MGN",
+      "Storage"
+    ]
+  },
+  {
+    "name": "x_skuofferid",
+    "source_name": "x_SkuOfferId",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 1,
+    "example_values": [
+      "MS-AZR-0017P"
+    ]
+  },
+  {
+    "name": "x_skuorderid",
+    "source_name": "x_SkuOrderId",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_skuordername",
+    "source_name": "x_SkuOrderName",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_skupartnumber",
+    "source_name": "x_SkuPartNumber",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.996567,
+    "distinct": 175,
+    "example_values": [
+      "AAD-18120",
+      "Q5H-00019",
+      "AAA-97331"
+    ]
+  },
+  {
+    "name": "x_skuregion",
+    "source_name": "x_SkuRegion",
+    "type": "STRING",
+    "nullable": true,
+    "null_pct": 0.99845,
+    "distinct": 8,
+    "example_values": [
+      "AU East",
+      "Oceania",
+      "AU Southeast"
+    ]
+  },
+  {
+    "name": "x_skuservicefamily",
+    "source_name": "x_SkuServiceFamily",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_skuterm",
+    "source_name": "x_SkuTerm",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  },
+  {
+    "name": "x_skutier",
+    "source_name": "x_SkuTier",
+    "type": "NUMERIC",
+    "nullable": true,
+    "null_pct": 1.0,
+    "distinct": 0,
+    "example_values": []
+  }
+]

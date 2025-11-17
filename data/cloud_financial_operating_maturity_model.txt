@@ -1,0 +1,62 @@
+Cloud Financial Operations Maturity Model
+
+The FinOps Maturity Model defines how organizations evolve their cloud financial management practices over time. It spans capabilities, culture, tooling, finance-engineering collaboration, and automation.
+
+Three-Level Maturity Model
+
+Level 1: Crawl
+Organizations gain basic visibility into cloud spending, implement tagging standards, and begin simple reporting. Responsibility is siloed and mainly reactive.
+
+Level 2: Walk
+Organizations automate spend allocation, adopt budgeting workflows, and implement optimization practices such as rightsizing, reserved capacity planning, and anomaly detection. Teams begin sharing ownership of cloud efficiency.
+
+Level 3: Run
+Advanced FinOps culture emerges. Teams use predictive forecasting, full automation for policy enforcement, integrated dashboards, and mature purchasing strategies. Continuous monitoring, engineering accountability, and cost-per-unit economics are standardized.
+
+Capability Domains
+
+Visibility
+
+Optimization
+
+Governance
+
+Forecasting
+
+Chargeback/Showback
+
+Automation
+
+Cultural Behavior
+
+Path to Maturity
+
+Organizations progress through:
+
+Standardizing tagging
+
+Implementing real-time dashboards
+
+Deploying anomaly detection
+
+Rolling out optimization playbooks
+
+Adopting predictive forecasting
+
+Integrating cost insights into CI/CD workflows
+
+Automating cloud governance policies
+
+Outcome of Mature FinOps
+
+Mature organizations achieve:
+
+Lower cloud unit costs
+
+Predictable budgets
+
+Improved engineering efficiency
+
+Higher business value per cloud dollar
+
+Reduced financial waste

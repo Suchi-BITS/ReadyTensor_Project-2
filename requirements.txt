@@ -1,0 +1,45 @@
+# Core framework
+streamlit==1.35.0
+flashrank
+# LangChain ecosystem
+langchain
+langchain-openai
+langchain-core
+langchain-anthropic
+langchain_google_genai
+langchain-groq
+langchain-chroma
+langchain-community
+langchain-experimental
+langchain-tavily
+langgraph
+langgraph-supervisor
+langsmith
+vecx-langchain
+qdrant-client
+vl-convert-python==1.4.0
+rich==13.7.1
+# Embeddings and Vector DB
+langchain-huggingface
+sentence-transformers
+chromadb
+#pysqlite3-binary
+# LLMs
+openai
+anthropic
+mem0ai
+snowflake-connector-python
+# PostgreSQL driver
+psycopg2-binary
+sqlglot
+# Other utilities
+pydantic
+pandas
+PyYAML
+bcrypt
+python-dotenv
+uuid
+typing-extensions
+
+# Optional: silence SSL errors with Neon/Chroma if needed
+# certifi

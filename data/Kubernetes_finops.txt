@@ -1,0 +1,35 @@
+Kubernetes FinOps Practices
+
+Kubernetes environments introduce unique cost challenges due to dynamic workloads, autoscaling, and shared cluster resources. Kubernetes FinOps focuses on cost visibility, workload efficiency, and resource governance across clusters.
+
+Cost Visibility
+
+Visibility requires mapping cluster resources to applications, namespaces, and teams. Tools like Kubecost, OpenCost, and Prometheus metrics provide granular insights into CPU, memory, storage, and network usage.
+
+Resource Requests and Limits
+
+Engineering teams often set high CPU and memory requests, leading to overprovisioning. FinOps teams help define right-sized requests based on historical usage and performance benchmarks.
+
+Node Optimization
+
+Node-level optimization includes selecting appropriate instance types, using spot instances, balancing node pools, and optimizing cluster autoscaling policies.
+
+Workload Scheduling
+
+Improper placement of workloads leads to resource fragmentation and unnecessary node scaling. Techniques include:
+
+Bin-packing optimization
+
+Pod affinity and anti-affinity policies
+
+Vertical Pod Autoscaler
+
+Horizontal Pod Autoscaler tuning
+
+Storage and Networking Costs
+
+Persistent Volumes, ingress traffic, and load balancers often generate hidden costs. Storage lifecycle rules and ingress compression can significantly reduce expenditure.
+
+FinOps with GitOps
+
+GitOps workflows connect cost control with deployment pipelines. Cost policies can be checked during pull requests, preventing cost-inefficient workloads from being deployed.
