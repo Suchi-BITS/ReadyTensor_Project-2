@@ -1,0 +1,74 @@
+FinOps Operating Model
+
+The FinOps operating model defines how engineering, finance, and product teams collaborate to manage cloud cost efficiency. It provides a framework of roles, responsibilities, processes, and cultural principles.
+
+Key Principles
+
+FinOps is built on principles such as:
+
+Teams must collaborate
+
+Decisions are driven by business value
+
+Every team takes ownership of cloud usage
+
+Cost transparency is essential
+
+FinOps is a continuous lifecycle
+
+Three Phases of FinOps
+
+Inform
+Establish visibility, allocate costs, and generate dashboards to understand consumption and spending patterns.
+
+Optimize
+Identify idle resources, rightsizing opportunities, discount commitments, reserved capacity planning, and architectural improvements.
+
+Operate
+Implement governance processes, track KPIs, and ensure ongoing accountability through operational reviews.
+
+Roles in FinOps
+
+FinOps Practitioner
+
+Cloud Analyst
+
+Engineering Leads
+
+Finance Business Partner
+
+Product Manager
+
+Procurement/Negotiation Specialist
+
+Cost Optimization Techniques
+
+FinOps teams adopt techniques such as:
+
+Rightsizing and autoscaling
+
+Commitment-based discounts
+
+Spot instances
+
+Storage lifecycle policies
+
+Architecture modernization
+
+FinOps KPIs
+
+Common KPIs include:
+
+Cost per customer
+
+Cost per workload
+
+Cloud unit economics
+
+Reserved instance coverage
+
+Savings plan utilization
+
+Cloud efficiency score
+
+The operating model is successful only when teams work together and align cost decisions with business outcomes.

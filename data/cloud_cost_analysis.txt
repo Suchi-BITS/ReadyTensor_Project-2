@@ -1,0 +1,33 @@
+Cloud Cost Analysis
+
+Cloud cost analysis is the practice of examining cloud spend across compute, storage, networking, and managed services to understand cost drivers, inefficiencies, and optimization opportunities. It forms the foundation of any FinOps program and enables teams to allocate, forecast, and control cloud expenditures.
+
+Understanding Cost Drivers
+
+Cloud bills are influenced by resources such as virtual machines, containers, object storage, databases, content delivery networks, and data transfer. Additional drivers include autoscaling configurations, instance families, reserved capacity commitments, and regional pricing differences. Identifying the top contributing accounts and services is the first step toward cost governance.
+
+Cost Allocation
+
+Enterprises typically allocate cloud spend using several methods:
+
+Tag-based allocation
+
+Account or project-based allocation
+
+Business unit allocation
+
+SaaS vs. PaaS categorization
+
+Accurate allocation supports chargeback, showback, budgeting, and resource ownership accountability.
+
+Rightsizing
+
+An essential component of cost analysis is rightsizing, which involves analyzing CPU, memory, storage IOPS, network patterns, and utilization trends. Rightsizing recommendations include switching to smaller instance sizes, migrating to burstable instances, and removing underutilized resources.
+
+Idle Resource Detection
+
+Cloud environments frequently accumulate orphaned disks, unattached IPs, idle Kubernetes nodes, or inactive databases. Identifying and eliminating these idle resources can significantly reduce monthly cloud bills.
+
+Cost Visualization and Reporting
+
+Cost analysis tools such as AWS Cost Explorer, Azure Cost Management, and GCP Billing dashboards help visualize spend trends. Organizations also build custom dashboards using tools like Grafana, Looker, or Power BI to track service-level costs, anomalies, usage patterns, and efficiency scores.

@@ -1,0 +1,649 @@
+[Supervisor] Running workflow for query: show monthly trend
+Error running supervisor: init_state() got an unexpected keyword argument 'session_id'
+[Supervisor] Running workflow for query: show monthly trend
+Error running supervisor: 'original_query'
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+❌ Error running supervisor: 'original_query'
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+❌ Error running supervisor: 'original_query'
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+❌ Error running supervisor: 'original_query'
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+❌ Error running supervisor: Pregel.invoke() missing 1 required positional argument: 'input'
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+❌ Error running supervisor: 'original_query'
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+❌ Error running supervisor: 'original_query'
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+❌ Error running supervisor: 'StructuredTool' object is not callable
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+[Classifier] intent=finops_query, subagent=data_fetcher
+❌ Error in get_finops_tip: Missing GROQ_API_KEY in environment variables.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+[Classifier] intent=finops_query, subagent=data_fetcher
+❌ Error in get_finops_tip: Missing GROQ_API_KEY in environment variables.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: what is total cost
+[Supervisor] Executing for query: what is total cost
+[Classifier] intent=unrelated, subagent=none
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+[Classifier] intent=unrelated, subagent=none
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+[Classifier] intent=unrelated, subagent=none
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+[Classifier] intent=finops_query, subagent=insight_agent
+❌ Error in get_finops_tip: Missing GROQ_API_KEY in environment variables.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+[Classifier] intent=finops_query, subagent=insight_agent
+❌ Error in get_finops_tip: Missing GROQ_API_KEY in environment variables.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+[Classifier] intent=finops_query, subagent=insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+❌ Error in get_finops_tip: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+[Classifier] intent=finops_query, subagent=insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+[Classifier] intent=unrelated, subagent=none
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+[Classifier] intent=finops_query, subagent=insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+[Classifier] intent=unrelated, subagent=none
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+[Classifier] intent=finops_query, subagent=data_fetcher
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+[Classifier] intent=finops_query, subagent=insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+[Classifier] intent=finops_query, subagent=data_fetcher
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+❌ Error running supervisor: 'str' object has no attribute 'invoke'
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+Chart saved to results\trend_chart.png
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total cost
+[DataFetcher] Retrieving few-shot examples...
+[DataFetcher] Extracting entities and columns...
+Error in data_fetcher_node: "Failed to load schema context from prompt hub: ❌ Prompt file for 'schema-context' not found in D:\\A-Agent\\prompts"
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+Chart saved to results\trend_chart.png
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total cost
+[DataFetcher] Retrieving few-shot examples...
+[DataFetcher] Extracting entities and columns...
+Error in data_fetcher_node: "Failed to load schema context from prompt hub: ❌ Prompt file for 'schema-context' not found in D:\\A-Agent\\prompts"
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+Chart saved to results\trend_chart.png
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total cost
+[DataFetcher] Loading CSV into database...
+[DataFetcher] Extracting entities and columns...
+Entity extraction failed: "Failed to load schema context from prompt hub: ❌ Prompt file for 'schema-context' not found in D:\\A-Agent\\prompts"
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+Chart saved to results\trend_chart.png
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: show monthly trend
+[Supervisor] Executing for query: show monthly trend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+Chart saved to results\trend_chart.png
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: What is the total cost?
+[Supervisor] Executing for query: What is the total cost?
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: What is the total cost?
+[DataFetcher] Loading CSV into database...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL query...
+SQL generation failed: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[DataFetcher] Using fallback SQL: SELECT SUM(EffectiveCost) as TotalCost FROM finops_data
+[DataFetcher] Executing SQL query...
+[DataFetcher] Query executed successfully. Results saved to results\query_results.csv
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total cost
+[DataFetcher] Loading CSV into database...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL query...
+SQL generation failed: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[DataFetcher] Using fallback SQL: SELECT SUM(EffectiveCost) as TotalCost FROM finops_data
+[DataFetcher] Executing SQL query...
+[DataFetcher] Query executed successfully. Results saved to results\query_results.csv
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost group by servicename
+[Supervisor] Executing for query: total cost group by servicename
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total cost group by servicename
+[DataFetcher] Loading CSV into database...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL query...
+SQL generation failed: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[DataFetcher] Using fallback SQL: SELECT SUM(EffectiveCost) as TotalCost FROM finops_data
+[DataFetcher] Executing SQL query...
+[DataFetcher] Query executed successfully. Results saved to results\query_results.csv
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total billedcost grouped by availability zone
+[Supervisor] Executing for query: total billedcost grouped by availability zone
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total billedcost grouped by availability zone
+[DataFetcher] Loading CSV into database...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL query...
+SQL generation failed: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[DataFetcher] Using fallback SQL: SELECT SUM(EffectiveCost) as TotalCost FROM finops_data
+[DataFetcher] Executing SQL query...
+[DataFetcher] Query executed successfully. Results saved to results\query_results.csv
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total billedcost grouped by availability zone
+[Supervisor] Executing for query: total billedcost grouped by availability zone
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total billedcost grouped by availability zone
+[DataFetcher] Loading CSV into database...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL query...
+SQL generation failed: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[DataFetcher] Using fallback SQL: SELECT SUM(EffectiveCost) as TotalCost FROM finops_data
+[DataFetcher] Executing SQL query...
+[DataFetcher] Query executed successfully. Results saved to results\query_results.csv
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total billedcost grouped by availability zone
+[Supervisor] Executing for query: total billedcost grouped by availability zone
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total billedcost grouped by availability zone
+[DataFetcher] Loading CSV into database...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL query...
+SQL generation failed: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[DataFetcher] Using fallback SQL: SELECT SUM(EffectiveCost) as TotalCost FROM finops_data
+[DataFetcher] Executing SQL query...
+[DataFetcher] Query executed successfully. Results saved to results\query_results.csv
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total billedcost grouped by availability zone
+[Supervisor] Executing for query: total billedcost grouped by availability zone
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total billedcost grouped by availability zone
+[DataFetcher] Loading CSV into database...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL query...
+SQL generation failed: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+[DataFetcher] Using fallback SQL: SELECT SUM(EffectiveCost) as TotalCost FROM finops_data
+[DataFetcher] Executing SQL query...
+[DataFetcher] Query executed successfully. Results saved to results\query_results.csv
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total billedcost grouped by availability zone
+[Supervisor] Executing for query: total billedcost grouped by availability zone
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total billedcost grouped by availability zone
+[DataFetcher] Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL with Groq...
+❌ Error in data_fetcher_node: Error code: 400 - {'error': {'message': 'The model `llama-3.1-70b-versatile` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total billedcost grouped by availability zone
+[Supervisor] Executing for query: total billedcost grouped by availability zone
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total billedcost grouped by availability zone
+[DataFetcher] Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT AvailabilityZone, SUM(BilledCost) AS TotalBilledCost FROM finops_data GROUP BY AvailabilityZone ORDER BY TotalBilledCost DESC
+[DataFetcher] Final SQL: SELECT AvailabilityZone, SUM(BilledCost) AS TotalBilledCost FROM finops_data GROUP BY AvailabilityZone ORDER BY TotalBilledCost DESC
+[DataFetcher] Executing SQL...
+[DataFetcher] ✅ Query executed successfully
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: top 5 services
+[Supervisor] Executing for query: top 5 services
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: top 5 services
+[DataFetcher] Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: atronloatloatloatloatloatDataloatloatloatloatDataloatloatDataloatloatDataloatloatDataloatloatDataDataloatloatDataloatloatDataDataloatloatDataDataloatloatDataDataloatloatDataDataloatloatDataDataatronloatloatDataloatloatDataloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatloatloatloatloatDataloatloatloatloatloatDataloatloatloatloatloatloatloatloatloatloatloatDataloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloat
+[DataFetcher] Final SQL: atronloatloatloatloatloatDataloatloatloatloatDataloatloatDataloatloatDataloatloatDataloatloatDataDataloatloatDataloatloatDataDataloatloatDataDataloatloatDataDataloatloatDataDataloatloatDataDataatronloatloatDataloatloatDataloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatloatloatloatloatDataloatloatloatloatloatDataloatloatloatloatloatloatloatloatloatloatloatDataloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloat
+[DataFetcher] Executing SQL...
+❌ Error in data_fetcher_node: Execution failed on sql 'atronloatloatloatloatloatDataloatloatloatloatDataloatloatDataloatloatDataloatloatDataloatloatDataDataloatloatDataloatloatDataDataloatloatDataDataloatloatDataDataloatloatDataDataloatloatDataDataatronloatloatDataloatloatDataloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatloatloatloatloatDataloatloatloatloatloatDataloatloatloatloatloatloatloatloatloatloatloatDataloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloat': near "atronloatloatloatloatloatDataloatloatloatloatDataloatloatDataloatloatDataloatloatDataloatloatDataDataloatloatDataloatloatDataDataloatloatDataDataloatloatDataDataloatloatDataDataloatloatDataDataatronloatloatDataloatloatDataloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatloatloatloatloatDataloatloatloatloatloatDataloatloatloatloatloatloatloatloatloatloatloatDataloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloatDataDataatronloatloat": syntax error
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: top 5 services
+[Supervisor] Executing for query: top 5 services
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: top 5 services
+[DataFetcher] Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL for query: 'top 5 services'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT ServiceName, SUM(BilledCost) AS TotalCost FROM finops_data GROUP BY ServiceName ORDER BY TotalCost DESC LIMIT 5
+[DataFetcher] Final SQL: SELECT ServiceName, SUM(BilledCost) AS TotalCost FROM finops_data GROUP BY ServiceName ORDER BY TotalCost DESC LIMIT 5
+[DataFetcher] Executing SQL...
+[DataFetcher] ✅ Query executed successfully
+[DataFetcher] Database connection closed
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: highest effective cost
+[Supervisor] Executing for query: highest effective cost
+✅ Supervisor graph compiled successfully
+[Classifier] intent=small_talk, subagent=none
+[Router] Routing - intent: small_talk, subagent: none
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: highest effective cost 
+[Supervisor] Executing for query: highest effective cost 
+✅ Supervisor graph compiled successfully
+[Classifier] intent=small_talk, subagent=none
+[Router] Routing - intent: small_talk, subagent: none
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: cost trend
+[Supervisor] Executing for query: cost trend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+Chart saved to results\trend_chart.png
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: total billedcost 
+[Supervisor] Executing for query: total billedcost 
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total billedcost 
+[DataFetcher] Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL for query: 'total billedcost '
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT SUM(BilledCost) AS TotalBilledCost FROM finops_data
+[DataFetcher] Final SQL: SELECT SUM(BilledCost) AS TotalBilledCost FROM finops_data
+[DataFetcher] Executing SQL...
+[DataFetcher] ✅ Query executed successfully
+[DataFetcher] Database connection closed
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: chargeperiodstart and end dates
+[Supervisor] Executing for query: chargeperiodstart and end dates
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: chargeperiodstart and end dates
+[DataFetcher] Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Generating SQL for query: 'chargeperiodstart and end dates'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT ChargePeriodStart, ChargePeriodEnd, SUM(BilledCost) AS TotalBilledCost, SUM(EffectiveCost) AS TotalEffectiveCost 
+FROM finops_data 
+GROUP BY ChargePeriodStart, ChargePeriodEnd 
+ORDER BY ChargePeriodStart, ChargePeriodEnd;
+[DataFetcher] Final SQL: SELECT ChargePeriodStart, ChargePeriodEnd, SUM(BilledCost) AS TotalBilledCost, SUM(EffectiveCost) AS TotalEffectiveCost 
+FROM finops_data 
+GROUP BY ChargePeriodStart, ChargePeriodEnd 
+ORDER BY ChargePeriodStart, ChargePeriodEnd;
+[DataFetcher] Executing SQL...
+[DataFetcher] ✅ Query executed successfully
+[DataFetcher] Database connection closed
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: whats the chargeperiodstart and end date in this dataset
+[Supervisor] Executing for query: whats the chargeperiodstart and end date in this dataset
+✅ Supervisor graph compiled successfully
+[Classifier] intent=small_talk, subagent=none
+[Router] Routing - intent: small_talk, subagent: none
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: date range in this datset
+[Supervisor] Executing for query: date range in this datset
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: date range in this datset
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Entity extraction failed: Failed to extract structured query details from LLM response
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'date range in this datset'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT 
+    BillingPeriodStart, 
+    BillingPeriodEnd, 
+    SUM(BilledCost) AS TotalBilledCost, 
+    SUM(EffectiveCost) AS TotalEffectiveCost
+FROM 
+    finops_data
+GROUP BY 
+    BillingPeriodStart, 
+    BillingPeriodEnd
+ORDER BY 
+    BillingPeriodStart;
+[DataFetcher] Final SQL: SELECT 
+    BillingPeriodStart, 
+    BillingPeriodEnd, 
+    SUM(BilledCost) AS TotalBilledCost, 
+    SUM(EffectiveCost) AS TotalEffectiveCost
+FROM 
+    finops_data
+GROUP BY 
+    BillingPeriodStart, 
+    BillingPeriodEnd
+ORDER BY 
+    BillingPeriodStart;
+[DataFetcher] Executing SQL...
+[DataFetcher] ✅ Query executed successfully
+[DataFetcher] Database connection closed
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: top 3 services
+[Supervisor] Executing for query: top 3 services
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: top 3 services
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Entity extraction failed: Failed to extract structured query details from LLM response
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'top 3 services'
+[DataFetcher] Generating SQL with Groq...
+❌ Error in data_fetcher_node: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01jnzkbzeff2pb4wpetrj7qm0r` service tier `on_demand` on tokens per day (TPD): Limit 100000, Used 99593, Requested 648. Please try again in 3m28.224s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}
+[DataFetcher] Database connection closed
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: highest spend in which days?
+[Supervisor] Executing for query: highest spend in which days?
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: highest spend in which days?
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Entity extraction failed: Failed to extract structured query details from LLM response
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'highest spend in which days?'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT BillingPeriodStart, SUM(BilledCost) AS TotalSpend 
+FROM finops_data 
+GROUP BY BillingPeriodStart 
+ORDER BY TotalSpend DESC;
+[DataFetcher] Final SQL: SELECT BillingPeriodStart, SUM(BilledCost) AS TotalSpend 
+FROM finops_data 
+GROUP BY BillingPeriodStart 
+ORDER BY TotalSpend DESC;
+[DataFetcher] Executing SQL...
+[DataFetcher] ✅ Query executed successfully
+[DataFetcher] Database connection closed
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: derive insight of this
+[Supervisor] Executing for query: derive insight of this
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+Chart saved to results\trend_chart.png
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: which services have incured higher spend
+[Supervisor] Executing for query: which services have incured higher spend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: which services have incured higher spend
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Entity extraction failed: Failed to extract structured query details from LLM response
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'which services have incured higher spend'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT ServiceName, SUM(EffectiveCost) AS TotalSpend FROM finops_data GROUP BY ServiceName ORDER BY TotalSpend DESC
+[DataFetcher] Final SQL: SELECT ServiceName, SUM(EffectiveCost) AS TotalSpend FROM finops_data GROUP BY ServiceName ORDER BY TotalSpend DESC
+[DataFetcher] Executing SQL...
+[DataFetcher] ✅ Query executed successfully
+[DataFetcher] Database connection closed
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: generate a bar chart showing top 3 services by spend
+[Supervisor] Executing for query: generate a bar chart showing top 3 services by spend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+Enhanced chart saved to results\trend_chart_modern.png
+AI summary generation failed: ❌ Prompt file for 'viz_summary_agent' not found in D:\A-Agent\prompts
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: draw bar chart for top 3 services by spend
+[Supervisor] Executing for query: draw bar chart for top 3 services by spend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: draw bar chart for top 3 service anmes by spend
+[Supervisor] Executing for query: draw bar chart for top 3 service anmes by spend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: draw bar chart for top 3 service names by spend
+[Supervisor] Executing for query: draw bar chart for top 3 service names by spend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: draw a bar chart for top 3 service by spend
+[Supervisor] Executing for query: draw a bar chart for top 3 service by spend
+✅ Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=insight_agent
+[Router] Routing - intent: finops_query, subagent: insight_agent
+Loaded CSV with 1000 rows and columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+✅ get_finops_tip executed successfully.
+✅ Supervisor executed successfully.
+[Supervisor] Running workflow for query: spend group by servicename
+[Supervisor] Executing for query: spend group by servicename
+Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: spend group by servicename
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Entity extraction failed: Failed to extract structured query details from LLM response
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'spend group by servicename'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT ServiceName, SUM(BilledCost) AS TotalSpend FROM finops_data GROUP BY ServiceName ORDER BY TotalSpend DESC
+[DataFetcher] Final SQL: SELECT ServiceName, SUM(BilledCost) AS TotalSpend FROM finops_data GROUP BY ServiceName ORDER BY TotalSpend DESC
+[DataFetcher] Executing SQL...
+[DataFetcher] Query executed successfully
+[DataFetcher] Database connection closed
+get_finops_tip executed successfully.
+Supervisor executed successfully.
+[Supervisor] Running workflow for query: total effective cost
+[Supervisor] Executing for query: total effective cost
+Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total effective cost
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Entity extraction failed: Failed to extract structured query details from LLM response
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'total effective cost'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT SUM(EFFECTIVECOST) AS TOTAL_EFFECTIVE_COST FROM finops_data
+[DataFetcher] Final SQL: SELECT SUM(EFFECTIVECOST) AS TOTAL_EFFECTIVE_COST FROM finops_data
+[DataFetcher] Executing SQL...
+[DataFetcher] Query executed successfully
+[DataFetcher] Database connection closed
+get_finops_tip executed successfully.
+Supervisor executed successfully.
+[Supervisor] Running workflow for query: top 3 service names by cost
+[Supervisor] Executing for query: top 3 service names by cost
+Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: top 3 service names by cost
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Extracted entities: ['ServiceName', 'BilledCost']
+[DataFetcher] Extracted columns: ['ServiceName', 'BilledCost']
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'top 3 service names by cost'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT SERVICENAME, SUM(BILLEDCOST) AS TOTAL_COST FROM finops_data GROUP BY SERVICENAME ORDER BY TOTAL_COST DESC LIMIT 3
+[DataFetcher] Final SQL: SELECT SERVICENAME, SUM(BILLEDCOST) AS TOTAL_COST FROM finops_data GROUP BY SERVICENAME ORDER BY TOTAL_COST DESC LIMIT 3
+[DataFetcher] Executing SQL...
+[DataFetcher] Query executed successfully
+[DataFetcher] Database connection closed
+get_knowledge_summary executed successfully.
+Supervisor executed successfully.
+[Supervisor] Running workflow for query: generate a visualisation for this
+[Supervisor] Executing for query: generate a visualisation for this
+Supervisor graph compiled successfully
+[Classifier] intent=unrelated, subagent=none
+[Router] Routing - intent: unrelated, subagent: none
+Supervisor executed successfully.

@@ -1,0 +1,9 @@
+{
+  "python.defaultInterpreterPath": "D:\\A-Agent\\venv\\Scripts\\python.exe",
+  "python.analysis.extraPaths": [
+    "D:\\A-Agent\\venv\\Lib\\site-packages"
+  ],
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingImports": "none"
+  }
+}

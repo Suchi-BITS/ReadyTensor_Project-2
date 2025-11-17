@@ -1,0 +1,62 @@
+Cloud Cost Governance
+
+Cloud cost governance involves establishing processes, controls, and policies to ensure that cloud usage aligns with organizational budgets, compliance requirements, and financial goals.
+
+Governance Framework
+
+A robust governance model includes:
+
+Policies for provisioning and deprovisioning
+
+Tagging and resource ownership rules
+
+Budget guardrails
+
+Cost monitoring and alerting
+
+Approval workflows for expensive resources
+
+Tagging and Resource Metadata
+
+Tagging is central to governance. Essential tags may include:
+
+Owner
+
+Environment
+
+Cost Center
+
+Application
+
+Compliance Tier
+
+Automated Policies
+
+Tools like AWS Config, Azure Policy, and GCP Organization Policies help enforce governance rules such as:
+
+Preventing creation of untagged resources
+
+Blocking expensive instance types
+
+Enforcing encryption standards
+
+Restricting public access
+
+Policy-as-Code
+
+Infrastructure-as-Code platforms (Terraform, Pulumi, CloudFormation) enable cost governance using Policy-as-Code.
+This ensures resources follow governance standards from the moment they are created.
+
+Budget Enforcement
+
+Organizations enforce budgets through:
+
+Hard limits
+
+Soft alerts
+
+Quotas
+
+Spend-based auto-remediation
+
+Governance ensures cloud costs remain predictable, secure, and aligned with business priorities.
