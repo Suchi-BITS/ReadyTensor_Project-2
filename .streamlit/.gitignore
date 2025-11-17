@@ -1,0 +1,51 @@
+# Virtual Environments
+venv/
+.venv/
+
+# Environment Variables
+.env
+secrets.toml
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+dist/
+wheels/
+*.egg-info/
+.eggs/
+
+# Logs
+*.log
+logs/
+logger_output.txt
+
+# Results and Generated Files
+results/
+*.png
+*.csv
+
+# ChromaDB
+chroma_db/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Streamlit
+.streamlit/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Other
+MANIFEST
