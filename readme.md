@@ -8,6 +8,8 @@ This repository contains a production-grade FinOps Agentic AI system built using
 - RAG over FinOps domain documents  
 - Streamlit Frontend  
 
+***Instruction: User has to upload the shared datafile present sample_data.csv in the streamlit UI an ask FinOps related queries. This file is also present in the data/folder in this git repo.
+
 The system handles FinOps queries end-to-end:  
 natural language → intent routing → SQL → insights → visualization → RAG → final summary.
 
@@ -23,7 +25,6 @@ natural language → intent routing → SQL → insights → visualization → R
 - Trend and anomaly insight generation  
 - Automated cost visualizations  
 - Domain-grounded RAG summarization  
-- Memory-aware responses  
 - Modular prompts  
 - Streamlit UI integration  
 
@@ -272,6 +273,7 @@ MODEL_NAME="llama-3.3-70b-versatile"
 # 9. Installation
 
 ```
+git clone https://github.com/Suchi-BITS/ReadyTensor_Project-2.git
 python -m venv venv
 venv\Scripts\activate
 pip install --upgrade pip

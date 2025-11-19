@@ -1,9 +1,7 @@
-# agents/insight_agent.py
-
 import os
 import ast
 import builtins
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, List
 import pandas as pd
 from datetime import datetime
 
@@ -17,18 +15,12 @@ from utils.logger_setup import setup_execution_logger
 logger = setup_execution_logger()
 
 
-# ---------------------------
-# Simple local REPL wrapper
-# ---------------------------
 class LocalPythonREPL:
     """
-    Minimal sandboxed execution environment that exposes a run(code: str) -> str method.
-    The executed code should set a variable named `result` which will be returned.
-    The return value is the repr() of the Python object result so callers can ast.literal_eval it.
+    Minimal sandboxed execution environment with memory awareness
     """
 
     def __init__(self):
-        # Prebuild a safe globals mapping with pandas available
         safe_builtins = {
             "len": len,
             "min": min,
@@ -39,7 +31,6 @@ class LocalPythonREPL:
             "enumerate": enumerate,
         }
 
-        # Provide minimal builtins and pandas in globals
         self.globals = {
             "__builtins__": safe_builtins,
             "pd": pd,
@@ -47,19 +38,12 @@ class LocalPythonREPL:
         }
 
     def run(self, code: str, timeout_seconds: Optional[int] = None) -> str:
-        """
-        Execute code string in a limited environment.
-        Expect the code to set a variable named `result`.
-        Returns repr(result). Errors are returned as a string prefixed with 'ERROR:'.
-        """
         if not isinstance(code, str):
             raise TypeError("code must be a string")
 
-        # Local namespace for this run
         local_ns: Dict[str, Any] = {}
 
         try:
-            # Execute the code. We do not provide eval or direct access to builtins beyond safe set.
             exec(code, self.globals, local_ns)
 
             if "result" not in local_ns:
@@ -67,7 +51,6 @@ class LocalPythonREPL:
 
             result_obj = local_ns["result"]
 
-            # If result contains pandas DataFrame objects, convert them to python primitives
             def _normalize(obj):
                 if isinstance(obj, pd.DataFrame):
                     return obj.to_dict(orient="records")
@@ -80,7 +63,6 @@ class LocalPythonREPL:
                 return obj
 
             normalized = _normalize(result_obj)
-            # Use repr so the caller can ast.literal_eval it safely
             return repr(normalized)
 
         except Exception as exc:
@@ -88,22 +70,16 @@ class LocalPythonREPL:
             return f"ERROR: {exc}"
 
 
-# Expose an instance which tests can patch
 python_repl = LocalPythonREPL()
 
-
-# ---------------------------
-# Utilities
-# ---------------------------
 
 def _validate_csv_path(csv_path: Any) -> str:
     if not isinstance(csv_path, str):
         raise TypeError("csv_path must be a string")
     sanitized = csv_path.strip()
-    # Basic guardrails
     if sanitized == "":
         raise ValueError("csv_path cannot be empty")
-    forbidden = ["..", "$(", "`", "|", ";", "&", "\\\\"]  # backslash escaped for string
+    forbidden = ["..", "$(", "`", "|", ";", "&", "\\\\"]
     for f in forbidden:
         if f in sanitized:
             raise ValueError("csv_path contains unsafe sequence")
@@ -111,10 +87,6 @@ def _validate_csv_path(csv_path: Any) -> str:
 
 
 def _safe_parse_repl_output(raw: str) -> Dict[str, Any]:
-    """
-    Safely parse the REPL output which is expected to be repr of a python structure.
-    Returns a dictionary or raises ValueError.
-    """
     if not isinstance(raw, str):
         raise ValueError("REPL output must be a string")
     if raw.startswith("ERROR:"):
@@ -128,19 +100,24 @@ def _safe_parse_repl_output(raw: str) -> Dict[str, Any]:
         raise ValueError(f"Failed to parse REPL output: {exc}")
 
 
-# ---------------------------
-# Main tool
-# ---------------------------
-
 @tool
-def generate_insights(csv_path: str) -> str:
+def generate_insights(
+    csv_path: str,
+    memory_context: Optional[str] = None,
+    remembered_entities: Optional[Dict[str, Any]] = None,
+    previous_insights: Optional[List[str]] = None
+) -> str:
     """
-    Analyze CSV data and produce combined Python analysis and an AI insight.
-    This function validates input, runs a local python analysis (in a sandbox),
-    and optionally calls a Groq LLM for enrichment.
-
-    The local REPL code must produce a variable named `result` which is a dict
-    with at least a `summary` key and an optional `trend` key.
+    Analyze CSV data with memory awareness to provide contextual insights
+    
+    Args:
+        csv_path: Path to CSV file
+        memory_context: Previous conversation context
+        remembered_entities: Previously extracted entities
+        previous_insights: List of insights from previous turns
+    
+    Returns:
+        Combined Python analysis and AI insight with memory context
     """
 
     try:
@@ -156,8 +133,7 @@ def generate_insights(csv_path: str) -> str:
             logger.error(msg)
             return msg
 
-        # Build analysis code that will run inside the REPL
-        # The code will create a dict named `result`
+        # Build analysis code
         repl_code = f"""
 import pandas as pd
 
@@ -187,7 +163,7 @@ result = {{
 }}
 """
 
-        logger.info("Running local python analysis")
+        logger.info("Running local python analysis with memory context")
         raw_output = python_repl.run(repl_code)
         logger.debug("Raw REPL output: %s", raw_output)
 
@@ -197,46 +173,67 @@ result = {{
             logger.error("REPL parse failed: %s", e)
             return f"Failed to parse python REPL output: {e}\nRaw output:\n{raw_output}"
 
-        # Load prompt from hub
+        # Load prompt
         try:
             prompt_text = load_prompt_from_hub("insight_agent")
             logger.info("Loaded prompt from hub")
         except Exception as e:
             logger.warning("Could not load prompt from hub: %s. Using fallback.", e)
             prompt_text = (
-                "You are a FinOps Insight Agent. Given dataset summary and monthly trend produce "
-                "a concise business focused response: one line overview, two key findings, "
-                "one actionable recommendation. Plain text only."
+                "You are a FinOps Insight Agent with conversation memory. "
+                "Provide contextual insights based on current and previous analysis."
             )
 
-        # If no Groq key, return Python analysis only
         if not os.getenv("GROQ_API_KEY"):
             logger.warning("GROQ_API_KEY not found. Returning Python analysis only.")
             python_part = f"Python Analysis:\nSummary: {analysis.get('summary')}\nTrend: {analysis.get('trend')}"
             return python_part
 
-        # Build context for LLM
+        # Build context with memory
         context_lines = [
             f"Rows: {analysis['summary'].get('rows')}",
             f"Columns: {', '.join(analysis['summary'].get('columns', [])[:20])}",
         ]
+        
         if analysis.get("trend"):
             context_lines.append("Monthly trend (first 10 rows):")
             for row in analysis["trend"][:10]:
                 context_lines.append(str(row))
         else:
             context_lines.append("No monthly trend available from the data.")
+        
+        # Add memory context
+        if memory_context:
+            context_lines.append("\nPrevious Conversation Context:")
+            context_lines.append(memory_context[:500])
+        
+        # Add remembered entities
+        if remembered_entities:
+            context_lines.append("\nRemembered Context:")
+            if remembered_entities.get("last_query_type"):
+                context_lines.append(f"Previous query type: {remembered_entities['last_query_type']}")
+            if remembered_entities.get("last_filters"):
+                context_lines.append(f"Previous filters: {remembered_entities['last_filters']}")
+        
+        # Add previous insights
+        if previous_insights:
+            context_lines.append("\nPrevious Insights:")
+            for insight in previous_insights[-3:]:
+                context_lines.append(f"- {insight[:100]}")
 
         context = "\n".join(context_lines)
 
-        # Call Groq LLM
+        # Call Groq LLM with memory-enriched context
         try:
             llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.3)
+            
+            system_prompt = f"{prompt_text}\n\nIMPORTANT: Reference previous context and insights when relevant to provide coherent, contextual analysis."
+            
             messages = [
-                SystemMessage(content=prompt_text),
+                SystemMessage(content=system_prompt),
                 HumanMessage(content=context),
             ]
-            logger.info("Invoking Groq LLM for insights")
+            logger.info("Invoking Groq LLM for insights with memory context")
             response = llm.invoke(messages)
             ai_insight = getattr(response, "content", str(response)).strip()
             logger.info("Groq LLM returned insights")
@@ -247,13 +244,10 @@ result = {{
         python_part = f"Python Analysis:\nSummary: {analysis.get('summary')}\n"
         python_part += f"Trend (sample): {analysis.get('trend')[:5] if analysis.get('trend') else 'None'}\n"
 
-        final_output = f"{python_part}\nAI Insight:\n{ai_insight}"
+        final_output = f"{python_part}\nAI Insight (with memory context):\n{ai_insight}"
         return final_output
 
     except Exception as exc:
         logger.exception("Unexpected error in generate_insights")
         return f"Unexpected error in generate_insights: {exc}"
 
-
-if __name__ == "__main__":
-    print("Insight Agent loaded successfully")

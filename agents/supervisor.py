@@ -762,3 +762,134 @@ def run_supervisor(state: dict, csv_path: str):
             "chart_path": None,
             "error": True
         }
+
+def data_fetcher_node_with_memory(state: AgentState) -> AgentState:
+    """
+    Enhanced data fetcher that uses conversation memory
+    """
+    conn = None
+    try:
+        from utils.validators import validate_state, ValidationError, SecurityError
+        
+        validate_state(state, required_fields=['original_query', 'csv_path'])
+        
+        query = state["original_query"]
+        csv_path = state["csv_path"]
+        memory_context = state.get("memory_context", "")
+        remembered_entities = state.get("remembered_entities", {})
+        
+        logger.info(f"DataFetcher with memory - Turn: {state.get('turn_number', 1)}")
+        logger.info(f"Memory context length: {len(memory_context)}")
+        
+        # Check if query references previous context
+        reference_phrases = ["that", "it", "those", "them", "previous", "earlier", "last time"]
+        has_reference = any(phrase in query.lower() for phrase in reference_phrases)
+        
+        if has_reference and memory_context:
+            logger.info("Query contains reference to previous context")
+            # Enhance query with context for SQL generation
+            enhanced_query = f"{query}\n\nContext from previous conversation: {memory_context[:200]}"
+        else:
+            enhanced_query = query
+        
+        # Continue with regular data fetcher logic using enhanced_query
+        # ... (rest of your data_fetcher_node code)
+        
+        # Store query metadata in state for next turn
+        state["last_query_metadata"] = {
+            "query": query,
+            "had_reference": has_reference,
+            "timestamp": __import__('datetime').datetime.now().isoformat()
+        }
+        
+        return state
+        
+    except Exception as e:
+        logger.error(f"Error in data_fetcher_node_with_memory: {e}")
+        return {
+            **state,
+            "response": f"Error: {str(e)}",
+            "error": True
+        }
+    finally:
+        if conn is not None:
+            try:
+                conn.close()
+            except:
+                pass
+
+
+def insights_node_with_memory(state: AgentState) -> AgentState:
+    """
+    Enhanced insights that build on previous analysis
+    """
+    try:
+        from utils.validators import validate_state
+        
+        validate_state(state, required_fields=['csv_path'])
+        
+        # Extract previous insights from conversation history
+        previous_insights = []
+        if state.get("conversation_history"):
+            for entry in state["conversation_history"]:
+                if entry["role"] == "assistant" and "insight" in entry.get("content", "").lower():
+                    previous_insights.append(entry["content"])
+        
+        insights = generate_insights(
+            csv_path=state["csv_path"],
+            memory_context=state.get("memory_context"),
+            remembered_entities=state.get("remembered_entities"),
+            previous_insights=previous_insights
+        )
+        
+        result = {
+            **state,
+            "insight_details": insights.details if hasattr(insights, 'details') else None,
+            "response": insights.summary if hasattr(insights, 'summary') else str(insights),
+            "dataframe_path": insights.dataframe_path if hasattr(insights, 'dataframe_path') else None,
+            "error": False
+        }
+        return result
+        
+    except Exception as e:
+        logger.error(f"Error in insights_node_with_memory: {e}")
+        return {
+            **state,
+            "response": "Unable to generate insights",
+            "error": True
+        }
+
+
+def knowledge_node_with_memory(state: AgentState) -> AgentState:
+    """
+    Enhanced knowledge node with full memory integration
+    """
+    try:
+        from utils.validators import validate_state
+        
+        validate_state(state, required_fields=['original_query'])
+        
+        current_response = state.get("response", "")
+
+        summary = get_knowledge_summary.invoke({
+            "query": state["original_query"],
+            "memory_context": state.get("memory_context", ""),
+            "remembered_entities": state.get("remembered_entities"),
+            "conversation_history": state.get("conversation_history")
+        })
+        
+        if summary and isinstance(summary, str):
+            response_text = f"{current_response}\n\n{summary}"
+        else:
+            response_text = current_response
+
+        return {
+            **state,
+            "tip": None,
+            "response": response_text,
+            "error": False
+        }
+
+    except Exception as e:
+        logger.error(f"Error in knowledge_node_with_memory: {e}")
+        return {**state}

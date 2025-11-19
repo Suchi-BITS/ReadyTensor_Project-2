@@ -1,10 +1,6 @@
-# agents/data_fetcher.py
 import os
 import pandas as pd
-
-# -------------------------------------------------------------------
-# Local CSV Data Fetcher
-# -------------------------------------------------------------------
+from typing import Dict, Any, List, Optional
 
 class DataFetchResult:
     def __init__(self, dataframe_path=None, message=None, rows=0, columns=None):
@@ -14,24 +10,50 @@ class DataFetchResult:
         self.columns = columns or []
 
 
-def fetch_data(csv_path: str) -> DataFetchResult:
+def fetch_data(
+    csv_path: str,
+    memory_context: Optional[str] = None,
+    remembered_entities: Optional[Dict[str, Any]] = None
+) -> DataFetchResult:
     """
-    Reads the uploaded CSV file, validates it, and returns metadata.
+    Reads the uploaded CSV file with memory awareness
+    
+    Args:
+        csv_path: Path to CSV file
+        memory_context: Previous conversation context
+        remembered_entities: Previously mentioned entities (filters, columns, etc.)
+    
+    Returns:
+        DataFetchResult with metadata
     """
     if not os.path.exists(csv_path):
-        return DataFetchResult(message=f" File not found: {csv_path}")
+        return DataFetchResult(message=f"File not found: {csv_path}")
 
     try:
         df = pd.read_csv(csv_path)
         rows, cols = df.shape
         columns = list(df.columns)
+        
+        # Apply remembered filters if available
+        if remembered_entities and remembered_entities.get("last_filters"):
+            filters = remembered_entities["last_filters"]
+            message_parts = [f"Loaded {rows} rows and {len(columns)} columns"]
+            
+            # Check if previously mentioned columns exist
+            if filters.get("columns"):
+                available_cols = [c for c in filters["columns"] if c in columns]
+                if available_cols:
+                    message_parts.append(f"Found previously mentioned columns: {', '.join(available_cols)}")
+            
+            message = " | ".join(message_parts)
+        else:
+            message = f"Loaded {rows} rows and {len(columns)} columns from {os.path.basename(csv_path)}"
 
-        # Save a cleaned copy for downstream use
+        # Save cleaned copy
         output_path = os.path.join("results", "data_cleaned.csv")
         os.makedirs("results", exist_ok=True)
         df.to_csv(output_path, index=False)
 
-        message = f"Loaded {rows} rows and {len(columns)} columns from {os.path.basename(csv_path)}"
         print(message)
 
         return DataFetchResult(
@@ -42,16 +64,4 @@ def fetch_data(csv_path: str) -> DataFetchResult:
         )
 
     except Exception as e:
-        return DataFetchResult(message=f" Failed to load CSV: {e}")
-
-
-# -------------------------------------------------------------------
-# Test script
-# -------------------------------------------------------------------
-if __name__ == "__main__":
-    sample_csv = os.path.join("data", "sample_data.csv")
-    result = fetch_data(sample_csv)
-    print(f"\nMessage: {result.message}")
-    print(f"Rows: {result.rows}")
-    print(f"Columns: {result.columns}")
-    print(f"Data saved at: {result.dataframe_path}")
+        return DataFetchResult(message=f"Failed to load CSV: {e}")
