@@ -647,3 +647,231 @@ Supervisor graph compiled successfully
 [Classifier] intent=unrelated, subagent=none
 [Router] Routing - intent: unrelated, subagent: none
 Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total cost
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000029B5D383790>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'total cost'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT SUM(BILLEDCOST) AS TOTAL_COST FROM finops_data
+[DataFetcher] Final SQL: SELECT SUM(BILLEDCOST) AS TOTAL_COST FROM finops_data
+[DataFetcher] Executing SQL...
+[DataFetcher] Query executed successfully
+[DataFetcher] Database connection closed
+get_knowledge_summary executed successfully.
+Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total cost
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000025090125420>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'total cost'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT SUM(BilledCost) AS TotalCost FROM finops_data
+[DataFetcher] Final SQL: SELECT SUM(BilledCost) AS TotalCost FROM finops_data
+[DataFetcher] Executing SQL...
+[DataFetcher] Query executed successfully
+[DataFetcher] Database connection closed
+get_knowledge_summary executed successfully.
+Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost
+[Supervisor] Executing for query: total cost
+Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total cost
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023CA6F6FE20>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'total cost'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT SUM(BilledCost) AS TotalCost FROM finops_data
+[DataFetcher] Final SQL: SELECT SUM(BilledCost) AS TotalCost FROM finops_data
+[DataFetcher] Executing SQL...
+[DataFetcher] Query executed successfully
+[DataFetcher] Database connection closed
+get_knowledge_summary executed successfully.
+Supervisor executed successfully.
+[Supervisor] Running workflow for query: total cost group by servicenames
+[Supervisor] Executing for query: total cost group by servicenames
+Supervisor graph compiled successfully
+[Classifier] intent=finops_query, subagent=data_fetcher
+[Router] Routing - intent: finops_query, subagent: data_fetcher
+[DataFetcher] Processing query: total cost group by servicenames
+[DataFetcher] Step 1: Extracting entities and columns...
+[DataFetcher] Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000023CA6F6E2C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+[DataFetcher] Step 2: Loading CSV into SQLite memory DB...
+[DataFetcher] Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+[DataFetcher] Step 3: Generating SQL with Groq...
+[DataFetcher] Generating SQL for query: 'total cost group by servicenames'
+[DataFetcher] Generating SQL with Groq...
+[DataFetcher] Raw SQL from Groq: SELECT ServiceName, SUM(BilledCost) AS TotalCost FROM finops_data GROUP BY ServiceName ORDER BY TotalCost DESC
+[DataFetcher] Final SQL: SELECT ServiceName, SUM(BilledCost) AS TotalCost FROM finops_data GROUP BY ServiceName ORDER BY TotalCost DESC
+[DataFetcher] Executing SQL...
+[DataFetcher] Query executed successfully
+[DataFetcher] Database connection closed
+get_knowledge_summary executed successfully.
+Supervisor executed successfully.
+Starting query processing with validation
+Environment validation passed
+Query validation passed: total cost...
+CSV validation passed: D:\A-Agent\data\sample_data.csv
+Validated query: total cost...
+Validated CSV path: D:\A-Agent\data\sample_data.csv
+Running workflow for query: total cost
+State initialized with keys: ['original_query', 'session_id', 'memory_context', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response']
+Supervisor Executing for query: total cost
+Supervisor graph compiled successfully
+Classifier intent=finops_query, subagent=data_fetcher
+Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+DataFetcher Processing query: total cost
+DataFetcher Step 1: Extracting entities
+Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000164E2DA8A00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+DataFetcher Step 2: Loading CSV into SQLite
+DataFrame validation passed for CSV loading: 1000 rows, 2.69MB
+Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+DataFetcher Step 3: Generating SQL
+Raw SQL from Groq: SELECT SUM(BilledCost) AS TotalCost FROM finops_data
+SQL query validation passed
+Validated SQL: SELECT SUM(BilledCost) AS TotalCost FROM finops_data
+DataFetcher Step 4: Executing SQL
+DataFrame validation passed for SQL execution: 1 rows, 0.00MB
+DataFetcher Query executed successfully
+Database connection closed
+get_knowledge_summary executed successfully.
+Supervisor executed successfully
+Query processing completed successfully
+Starting query processing with validation
+Environment validation passed
+Query validation passed: data range in the dataset...
+CSV validation passed: D:\A-Agent\data\sample_data.csv
+Validated query: data range in the dataset...
+Validated CSV path: D:\A-Agent\data\sample_data.csv
+Running workflow for query: data range in the dataset
+State initialized with keys: ['original_query', 'session_id', 'memory_context', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response']
+Supervisor Executing for query: data range in the dataset
+Supervisor graph compiled successfully
+Classifier intent=finops_query, subagent=data_fetcher
+Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+DataFetcher Processing query: data range in the dataset
+DataFetcher Step 1: Extracting entities
+Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000164E32918D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+DataFetcher Step 2: Loading CSV into SQLite
+DataFrame validation passed for CSV loading: 1000 rows, 2.69MB
+Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+DataFetcher Step 3: Generating SQL
+Raw SQL from Groq: SELECT 
+    BillingPeriodStart, 
+    BillingPeriodEnd, 
+    SUM(BilledCost) AS TotalBilledCost, 
+    SUM(ContractedCost) AS TotalContractedCost, 
+    SUM(EffectiveCost) AS TotalEffectiveCost
+FROM 
+    finops_data
+GROUP BY 
+    BillingPeriodStart, 
+    BillingPeriodEnd
+ORDER BY 
+    BillingPeriodStart;
+SQL query validation passed
+Validated SQL: SELECT 
+    BillingPeriodStart, 
+    BillingPeriodEnd, 
+    SUM(BilledCost) AS TotalBilledCost, 
+    SUM(ContractedCost) AS TotalContractedCost, 
+    SUM(EffectiveCost) AS TotalEffectiveCost
+FROM 
+    finops_data
+GROUP BY 
+    BillingPeriodStart, 
+    BillingPeriodEnd
+ORDER BY 
+    BillingPeriodStart;
+DataFetcher Step 4: Executing SQL
+DataFrame validation passed for SQL execution: 1 rows, 0.00MB
+DataFetcher Query executed successfully
+Database connection closed
+get_knowledge_summary executed successfully.
+Supervisor executed successfully
+Query processing completed successfully
+2025-11-19 01:15:13 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:15:13 | INFO | finops_trace | Loaded prompt from hub
+2025-11-19 01:15:13 | INFO | finops_trace | Invoking Groq LLM for insights
+2025-11-19 01:15:13 | INFO | finops_trace | Groq LLM returned insights
+2025-11-19 01:15:14 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:15:14 | INFO | finops_trace | Loaded prompt from hub
+2025-11-19 01:15:14 | WARNING | finops_trace | GROQ_API_KEY not found. Returning Python analysis only.
+2025-11-19 01:16:40 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:16:40 | INFO | finops_trace | Loaded prompt from hub
+2025-11-19 01:16:40 | INFO | finops_trace | Invoking Groq LLM for insights
+2025-11-19 01:16:40 | INFO | finops_trace | Groq LLM returned insights
+2025-11-19 01:16:40 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:16:40 | INFO | finops_trace | Loaded prompt from hub
+2025-11-19 01:16:40 | WARNING | finops_trace | GROQ_API_KEY not found. Returning Python analysis only.
+2025-11-19 01:19:03 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:19:03 | INFO | finops_trace | Loaded prompt from hub
+2025-11-19 01:19:03 | INFO | finops_trace | Invoking Groq LLM for insights
+2025-11-19 01:19:03 | INFO | finops_trace | Groq LLM returned insights
+2025-11-19 01:19:03 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:19:03 | INFO | finops_trace | Loaded prompt from hub
+2025-11-19 01:19:03 | WARNING | finops_trace | GROQ_API_KEY not found. Returning Python analysis only.
+2025-11-19 01:22:15 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:22:15 | ERROR | finops_trace | REPL parse failed: Failed to parse REPL output: invalid syntax. Perhaps you forgot a comma? (<unknown>, line 1)
+2025-11-19 01:22:15 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:22:15 | INFO | finops_trace | Loaded prompt from hub
+2025-11-19 01:22:15 | INFO | finops_trace | Invoking Groq LLM for insights
+2025-11-19 01:22:15 | INFO | finops_trace | Groq LLM returned insights
+2025-11-19 01:26:28 | ERROR | finops_trace | CSV file not found at: bad.csv
+2025-11-19 01:26:28 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:26:28 | ERROR | finops_trace | REPL parse failed: Failed to parse REPL output: invalid syntax. Perhaps you forgot a comma? (<unknown>, line 1)
+2025-11-19 01:26:28 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:26:28 | INFO | finops_trace | Loaded prompt from hub
+2025-11-19 01:26:28 | WARNING | finops_trace | GROQ_API_KEY not found. Returning Python analysis only.
+2025-11-19 01:26:28 | INFO | finops_trace | Running local python analysis
+2025-11-19 01:26:28 | INFO | finops_trace | Loaded prompt from hub
+2025-11-19 01:26:28 | INFO | finops_trace | Invoking Groq LLM for insights
+2025-11-19 01:26:28 | INFO | finops_trace | Groq LLM returned insights
+2025-11-19 01:27:27 | INFO | finops_trace | Starting query processing with validation
+2025-11-19 01:27:27 | INFO | finops_trace | Environment validation passed
+2025-11-19 01:27:27 | INFO | finops_trace | Query validation passed: total cost group by servicename...
+2025-11-19 01:27:27 | INFO | finops_trace | CSV validation passed: D:\A-Agent\data\sample_data.csv
+2025-11-19 01:27:27 | INFO | finops_trace | Validated query: total cost group by servicename...
+2025-11-19 01:27:27 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\sample_data.csv
+2025-11-19 01:27:27 | INFO | finops_trace | Running workflow for query: total cost group by servicename
+2025-11-19 01:27:27 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'memory_context', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response']
+2025-11-19 01:27:27 | INFO | finops_trace | Supervisor Executing for query: total cost group by servicename
+2025-11-19 01:27:27 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-19 01:27:27 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-19 01:27:27 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-19 01:27:27 | INFO | finops_trace | DataFetcher Processing query: total cost group by servicename
+2025-11-19 01:27:27 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-19 01:27:29 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000240D267FFD0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-19 01:27:29 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-19 01:27:29 | INFO | finops_trace | DataFrame validation passed for CSV loading: 1000 rows, 2.69MB
+2025-11-19 01:27:29 | INFO | finops_trace | Loaded 1000 rows with columns: ['AvailabilityZone', 'BilledCost', 'BillingAccountId', 'BillingAccountName', 'BillingCurrency', 'BillingPeriodEnd', 'BillingPeriodStart', 'ChargeCategory', 'ChargeClass', 'ChargeDescription', 'ChargeFrequency', 'ChargePeriodEnd', 'ChargePeriodStart', 'CommitmentDiscountCategory', 'CommitmentDiscountId', 'CommitmentDiscountName', 'CommitmentDiscountStatus', 'CommitmentDiscountType', 'ConsumedQuantity', 'ConsumedUnit', 'ContractedCost', 'ContractedUnitPrice', 'EffectiveCost', 'InvoiceIssuerName', 'ListCost', 'ListUnitPrice', 'PricingCategory', 'PricingQuantity', 'PricingUnit', 'ProviderName', 'PublisherName', 'RegionId', 'RegionName', 'ResourceId', 'ResourceName', 'ResourceType', 'ServiceCategory', 'ServiceName', 'SkuId', 'SkuPriceId', 'SubAccountId', 'SubAccountName', 'Tags', 'x_CostCategories', 'x_Discounts', 'x_Operation', 'x_ServiceCode', 'x_UsageType']
+2025-11-19 01:27:29 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-19 01:27:30 | INFO | finops_trace | Raw SQL from Groq: SELECT ServiceName, SUM(BilledCost) AS TotalCost FROM finops_data GROUP BY ServiceName ORDER BY TotalCost DESC;
+2025-11-19 01:27:30 | INFO | finops_trace | SQL query validation passed
+2025-11-19 01:27:30 | INFO | finops_trace | Validated SQL: SELECT ServiceName, SUM(BilledCost) AS TotalCost FROM finops_data GROUP BY ServiceName ORDER BY TotalCost DESC;
+2025-11-19 01:27:30 | INFO | finops_trace | DataFetcher Step 4: Executing SQL
+2025-11-19 01:27:30 | INFO | finops_trace | DataFrame validation passed for SQL execution: 37 rows, 0.00MB
+2025-11-19 01:27:30 | INFO | finops_trace | DataFetcher Query executed successfully
+2025-11-19 01:27:30 | INFO | finops_trace | Database connection closed
+2025-11-19 01:27:32 | INFO | finops_trace | get_knowledge_summary executed successfully.
+2025-11-19 01:27:32 | INFO | finops_trace | Supervisor executed successfully
+2025-11-19 01:27:32 | INFO | finops_trace | Query processing completed successfully
