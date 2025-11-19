@@ -8,6 +8,11 @@ This repository contains a production-grade FinOps Agentic AI system built using
 - RAG over FinOps domain documents  
 - Streamlit Frontend  
 
+**Instructions: 
+1. Use the datase present in data/sample_dataset.csv to upload in the UI.
+2. Ask FinOps related query those can be answered using the dataset and Knowledge queries.
+
+   
 The system handles FinOps queries end-to-end:  
 natural language → intent routing → SQL → insights → visualization → RAG → final summary.
 
