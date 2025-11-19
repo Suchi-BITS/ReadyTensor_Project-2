@@ -27,7 +27,7 @@ with st.sidebar:
     # Option to specify CSV file path directly in code
     default_csv_path = st.text_input(
         "CSV File Path",
-        value="data/sample_data.csv",
+        value="data/data.csv",
         help="Enter the path to your FinOps CSV file"
     )
     
