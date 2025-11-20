@@ -10,7 +10,7 @@ Module 3 extends the ReadyTensor Project Module 2 by transforming a basic FinOps
 |---------|----------|----------|
 | **Architecture** | Single-turn queries | Multi-turn conversations with memory |
 | **Analytics** | Basic aggregations | Forecasting, anomaly detection, correlations |
-| **Visualizations** | Simple charts | 9 chart types with auto-detection |
+| **Visualizations** | Simple charts | More chart types with auto-detection |
 | **Memory** | None | Session-based + SQLite persistence |
 | **Security** | Basic | SQL injection prevention, input validation, path traversal protection |
 | **Error Handling** | Minimal | Comprehensive try-catch, fallbacks, logging |
