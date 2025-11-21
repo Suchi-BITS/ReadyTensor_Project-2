@@ -19,7 +19,11 @@ from utils.validators import (
     ValidationError,
     SecurityError
 )
+from utils.tracing import setup_langsmith_tracing
+#from langchain.callbacks.tracers import LangChainTracer
 
+# Initialize tracing when module loads
+#setup_langsmith_tracing()
 # Load secrets from .streamlit/secrets.toml
 secrets_path = os.path.join(os.path.dirname(__file__), "..", ".streamlit", "secrets.toml")
 if os.path.exists(secrets_path):

@@ -1,253 +1,312 @@
-import os
-import ast
-import builtins
-from typing import Any, Dict, Optional, List
-import pandas as pd
-from datetime import datetime
-
-from langchain_core.tools import tool
-from langchain_groq import ChatGroq
-from langchain_core.messages import SystemMessage, HumanMessage
-
-from utils.prompt_loader import load_prompt_from_hub
-from utils.logger_setup import setup_execution_logger
-
-logger = setup_execution_logger()
-
-
-class LocalPythonREPL:
-    """
-    Minimal sandboxed execution environment with memory awareness
-    """
-
-    def __init__(self):
-        safe_builtins = {
-            "len": len,
-            "min": min,
-            "max": max,
-            "sum": sum,
-            "sorted": sorted,
-            "range": range,
-            "enumerate": enumerate,
-        }
-
-        self.globals = {
-            "__builtins__": safe_builtins,
-            "pd": pd,
-            "datetime": datetime,
-        }
-
-    def run(self, code: str, timeout_seconds: Optional[int] = None) -> str:
-        if not isinstance(code, str):
-            raise TypeError("code must be a string")
-
-        local_ns: Dict[str, Any] = {}
-
-        try:
-            exec(code, self.globals, local_ns)
-
-            if "result" not in local_ns:
-                return "ERROR: No result variable produced by REPL code"
-
-            result_obj = local_ns["result"]
-
-            def _normalize(obj):
-                if isinstance(obj, pd.DataFrame):
-                    return obj.to_dict(orient="records")
-                if isinstance(obj, pd.Series):
-                    return obj.to_list()
-                if isinstance(obj, dict):
-                    return {k: _normalize(v) for k, v in obj.items()}
-                if isinstance(obj, list):
-                    return [_normalize(v) for v in obj]
-                return obj
-
-            normalized = _normalize(result_obj)
-            return repr(normalized)
-
-        except Exception as exc:
-            logger.exception("Error executing REPL code")
-            return f"ERROR: {exc}"
-
-
-python_repl = LocalPythonREPL()
-
-
-def _validate_csv_path(csv_path: Any) -> str:
-    if not isinstance(csv_path, str):
-        raise TypeError("csv_path must be a string")
-    sanitized = csv_path.strip()
-    if sanitized == "":
-        raise ValueError("csv_path cannot be empty")
-    forbidden = ["..", "$(", "`", "|", ";", "&", "\\\\"]
-    for f in forbidden:
-        if f in sanitized:
-            raise ValueError("csv_path contains unsafe sequence")
-    return sanitized
-
-
-def _safe_parse_repl_output(raw: str) -> Dict[str, Any]:
-    if not isinstance(raw, str):
-        raise ValueError("REPL output must be a string")
-    if raw.startswith("ERROR:"):
-        raise ValueError(raw)
-    try:
-        parsed = ast.literal_eval(raw)
-        if not isinstance(parsed, dict):
-            raise ValueError("Parsed REPL output is not a dict")
-        return parsed
-    except Exception as exc:
-        raise ValueError(f"Failed to parse REPL output: {exc}")
-
-
-@tool
-def generate_insights(
-    csv_path: str,
-    memory_context: Optional[str] = None,
-    remembered_entities: Optional[Dict[str, Any]] = None,
-    previous_insights: Optional[List[str]] = None
-) -> str:
-    """
-    Analyze CSV data with memory awareness to provide contextual insights
-    
-    Args:
-        csv_path: Path to CSV file
-        memory_context: Previous conversation context
-        remembered_entities: Previously extracted entities
-        previous_insights: List of insights from previous turns
-    
-    Returns:
-        Combined Python analysis and AI insight with memory context
-    """
-
-    try:
-        # Validate input
-        try:
-            csv_path = _validate_csv_path(csv_path)
-        except Exception as e:
-            logger.error("Invalid csv_path provided: %s", e)
-            return f"Invalid csv_path: {e}"
-
-        if not os.path.exists(csv_path):
-            msg = f"CSV file not found at: {csv_path}"
-            logger.error(msg)
-            return msg
-
-        # Build analysis code
-        repl_code = f"""
-import pandas as pd
-
-df = pd.read_csv(r'''{csv_path}''')
-
-date_cols = [c for c in df.columns if 'date' in c.lower()]
-cost_cols = [c for c in df.columns if 'cost' in c.lower() or 'amount' in c.lower()]
-
-summary = {{
-    "rows": int(len(df)),
-    "columns": list(df.columns)
-}}
-
-trend = None
-if date_cols and cost_cols:
-    try:
-        df[date_cols[0]] = pd.to_datetime(df[date_cols[0]], errors='coerce')
-        trend_df = df.groupby(df[date_cols[0]].dt.to_period('M'))[cost_cols[0]].sum().reset_index()
-        trend_df[date_cols[0]] = trend_df[date_cols[0]].astype(str)
-        trend = trend_df
-    except Exception:
-        trend = None
-
-result = {{
-    "summary": summary,
-    "trend": trend.to_dict(orient="records") if trend is not None else None
-}}
 """
+Insight Agent (patched): date parsing warnings fixed.
 
-        logger.info("Running local python analysis with memory context")
-        raw_output = python_repl.run(repl_code)
-        logger.debug("Raw REPL output: %s", raw_output)
+Changes made:
+- _find_date_column now attempts to detect a strict datetime format by sampling column values
+  using a list of common formats. If a format is detected with high confidence (>70%), it
+  is recorded and used for strict parsing later.
+- If no strict format is detected, we do NOT attempt a generic `pd.to_datetime` call that
+  falls back to dateutil (which caused the warnings). Instead we treat `date_col` as None
+  and skip time-series parsing.
+- The time-series parsing in _basic_python_analysis uses the detected strict format (if any).
+- Added small helper and a module-level cache DETECTED_DATE_FORMATS to hold detected formats.
+- Kept behavior deterministic and avoided global warnings filtering.
 
+This preserves insight generation while preventing the pandas "Could not infer format" warnings
+and the deprecation warning for `infer_datetime_format`.
+"""
+import os
+import re
+import math
+import tempfile
+import json
+from typing import Optional, Dict, Any
+from datetime import datetime
+import pandas as pd
+import numpy as np
+from openai import OpenAI
+from utils.logger_setup import setup_execution_logger
+from dotenv import load_dotenv
+load_dotenv()
+logger = setup_execution_logger()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+openai_client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
+
+RESULTS_DIR = os.getenv("FINOPS_RESULTS_DIR", "results")
+DEFAULT_COST_COL = "EffectiveCost"
+FALLBACK_DATE_COLS = ["ChargePeriodStart", "BillingPeriodStart", "ChargePeriodEnd", "BillingPeriodEnd"]
+
+# Cache for detected date formats: { column_name: format_string }
+DETECTED_DATE_FORMATS: Dict[str, str] = {}
+
+COMMON_DATE_FORMATS = [
+    "%Y-%m-%d %H:%M:%S",
+    "%Y-%m-%d",
+    "%Y/%m/%d",
+    "%m/%d/%Y",
+    "%d/%m/%Y",
+    "%d-%b-%Y",
+    "%Y-%m",
+    "%b %Y",
+    "%Y%m%d",
+    "%d %b %Y %H:%M:%S",
+]
+
+
+def ensure_results_dir():
+    if not os.path.exists(RESULTS_DIR):
+        os.makedirs(RESULTS_DIR, exist_ok=True)
+
+
+def _load_dataframe(csv_path: Optional[str] = None, df: Optional[pd.DataFrame] = None) -> pd.DataFrame:
+    if df is not None:
+        return df.copy()
+    if not csv_path or not os.path.exists(csv_path):
+        raise FileNotFoundError(f"CSV result not found: {csv_path}")
+    return pd.read_csv(csv_path)
+
+
+def _find_cost_column(df: pd.DataFrame, user_query: Optional[str] = None) -> str:
+    # explicit mention overrides
+    q = (user_query or "").lower()
+    if "billed" in q or "billedcost" in q:
+        for c in df.columns:
+            if c.lower() == "billedcost":
+                return c
+    # default mapping requested: EffectiveCost
+    for c in df.columns:
+        if c.lower() == "effectivecost":
+            return c
+    # fallback candidates
+    candidates = [c for c in df.columns if "cost" in c.lower() or "amount" in c.lower()]
+    return candidates[0] if candidates else df.columns[-1]
+
+
+def _detect_date_format_for_column(series: pd.Series) -> Optional[str]:
+    """
+    Try a set of common formats on a sample of non-null values. Return the best format
+    string if one yields > 70% parseable values, otherwise return None.
+    """
+    sample = series.dropna().astype(str).head(200)
+    if sample.empty:
+        return None
+
+    for fmt in COMMON_DATE_FORMATS:
         try:
-            analysis = _safe_parse_repl_output(raw_output)
-        except Exception as e:
-            logger.error("REPL parse failed: %s", e)
-            return f"Failed to parse python REPL output: {e}\nRaw output:\n{raw_output}"
+            parsed = pd.to_datetime(sample, format=fmt, errors="coerce")
+            pct_valid = parsed.notna().mean()
+            if pct_valid >= 0.7:
+                return fmt
+        except Exception:
+            # if format raises unexpectedly, skip it
+            continue
+    return None
 
-        # Load prompt
+
+def _find_date_column(df: pd.DataFrame) -> Optional[str]:
+    # First look for canonical date column names
+    for c in FALLBACK_DATE_COLS:
+        for col in df.columns:
+            if col.lower() == c.lower():
+                # try detect format for this column
+                fmt = _detect_date_format_for_column(df[col])
+                if fmt:
+                    DETECTED_DATE_FORMATS[col] = fmt
+                return col
+
+    # Fallback: try to detect any column that looks like a date using common formats
+    for col in df.columns:
         try:
-            prompt_text = load_prompt_from_hub("insight_agent")
-            logger.info("Loaded prompt from hub")
-        except Exception as e:
-            logger.warning("Could not load prompt from hub: %s. Using fallback.", e)
-            prompt_text = (
-                "You are a FinOps Insight Agent with conversation memory. "
-                "Provide contextual insights based on current and previous analysis."
-            )
+            fmt = _detect_date_format_for_column(df[col])
+            if fmt:
+                DETECTED_DATE_FORMATS[col] = fmt
+                return col
+        except Exception:
+            continue
+    return None
 
-        if not os.getenv("GROQ_API_KEY"):
-            logger.warning("GROQ_API_KEY not found. Returning Python analysis only.")
-            python_part = f"Python Analysis:\nSummary: {analysis.get('summary')}\nTrend: {analysis.get('trend')}"
-            return python_part
 
-        # Build context with memory
-        context_lines = [
-            f"Rows: {analysis['summary'].get('rows')}",
-            f"Columns: {', '.join(analysis['summary'].get('columns', [])[:20])}",
-        ]
-        
-        if analysis.get("trend"):
-            context_lines.append("Monthly trend (first 10 rows):")
-            for row in analysis["trend"][:10]:
-                context_lines.append(str(row))
-        else:
-            context_lines.append("No monthly trend available from the data.")
-        
-        # Add memory context
-        if memory_context:
-            context_lines.append("\nPrevious Conversation Context:")
-            context_lines.append(memory_context[:500])
-        
-        # Add remembered entities
-        if remembered_entities:
-            context_lines.append("\nRemembered Context:")
-            if remembered_entities.get("last_query_type"):
-                context_lines.append(f"Previous query type: {remembered_entities['last_query_type']}")
-            if remembered_entities.get("last_filters"):
-                context_lines.append(f"Previous filters: {remembered_entities['last_filters']}")
-        
-        # Add previous insights
-        if previous_insights:
-            context_lines.append("\nPrevious Insights:")
-            for insight in previous_insights[-3:]:
-                context_lines.append(f"- {insight[:100]}")
-
-        context = "\n".join(context_lines)
-
-        # Call Groq LLM with memory-enriched context
+def _basic_python_analysis(df: pd.DataFrame, cost_col: str, date_col: Optional[str]) -> Dict[str, Any]:
+    summary = {
+        "rows": int(len(df)),
+        "columns": list(df.columns),
+        "cost_column": cost_col,
+        "total_cost": float(df[cost_col].astype(float).sum()) if cost_col in df.columns else 0.0
+    }
+    # top 5 services
+    top_services = None
+    if "ServiceName" in df.columns:
         try:
-            llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.3)
-            
-            system_prompt = f"{prompt_text}\n\nIMPORTANT: Reference previous context and insights when relevant to provide coherent, contextual analysis."
-            
-            messages = [
-                SystemMessage(content=system_prompt),
-                HumanMessage(content=context),
-            ]
-            logger.info("Invoking Groq LLM for insights with memory context")
-            response = llm.invoke(messages)
-            ai_insight = getattr(response, "content", str(response)).strip()
-            logger.info("Groq LLM returned insights")
-        except Exception as e:
-            logger.exception("LLM invocation failed")
-            ai_insight = f"LLM insight generation failed: {e}"
+            top_services = df.groupby("ServiceName")[cost_col].sum().sort_values(ascending=False).head(5).reset_index().to_dict(orient="records")
+        except Exception:
+            top_services = None
 
-        python_part = f"Python Analysis:\nSummary: {analysis.get('summary')}\n"
-        python_part += f"Trend (sample): {analysis.get('trend')[:5] if analysis.get('trend') else 'None'}\n"
+    # time series summary if date_col exists AND we detected a strict format
+    ts_summary = None
+    if date_col and date_col in df.columns and date_col in DETECTED_DATE_FORMATS:
+        try:
+            fmt = DETECTED_DATE_FORMATS.get(date_col)
+            # strict parse using detected format (avoids pandas format inference warnings)
+            df_parsed = df.copy()
+            df_parsed[date_col] = pd.to_datetime(df_parsed[date_col], format=fmt, errors="coerce")
+            # drop rows that failed parsing
+            df_parsed = df_parsed.dropna(subset=[date_col])
+            if not df_parsed.empty:
+                monthly = df_parsed.groupby(df_parsed[date_col].dt.to_period("M"))[cost_col].sum().reset_index()
+                monthly[date_col] = monthly[date_col].astype(str)
+                ts_summary = monthly.head(12).to_dict(orient="records")
+        except Exception:
+            ts_summary = None
 
-        final_output = f"{python_part}\nAI Insight (with memory context):\n{ai_insight}"
-        return final_output
+    # anomaly detection (simple z-score)
+    anomalies = []
+    try:
+        vals = pd.to_numeric(df[cost_col], errors="coerce").fillna(0.0)
+        mean = vals.mean()
+        std = vals.std() if vals.std() > 0 else 0.0
+        if std > 0:
+            z = (vals - mean) / std
+            mask = z.abs() > 3.0
+            if mask.any():
+                # choose columns that commonly exist; tolerate missing columns gracefully
+                subset_cols = [c for c in ["ResourceId", "ServiceName", cost_col] if c in df.columns]
+                anomalies = df.loc[mask, subset_cols].head(10).to_dict(orient="records")
+    except Exception:
+        anomalies = []
 
-    except Exception as exc:
-        logger.exception("Unexpected error in generate_insights")
-        return f"Unexpected error in generate_insights: {exc}"
+    analysis = {
+        "summary": summary,
+        "top_services": top_services,
+        "time_series_sample": ts_summary,
+        "anomalies": anomalies
+    }
+    return analysis
 
+
+def _ask_llm_for_insight(analysis: Dict[str, Any], user_query: str, schema_context: Optional[Any] = None, model: str = "gpt-4o-mini") -> str:
+    """
+    Call gpt-4o-mini to convert the python analysis dict into a concise, actionable insight summary.
+    """
+    if openai_client is None:
+        # fallback: craft deterministic summary
+        s = analysis.get("summary", {})
+        total = s.get("total_cost", 0.0)
+        rows = s.get("rows", 0)
+        return f"Python analysis: {rows} rows, total cost ≈ {total:.2f}. (LLM not configured.)"
+
+    system_prompt = (
+        "You are a FinOps Insights assistant. Convert the analysis dictionary into a concise, "
+        "actionable summary of 3-6 sentences. Highlight top cost drivers, recent trends, and any anomalies. "
+        "If possible, suggest one short next action (e.g., investigate service X or check tags)."
+    )
+
+    # Keep the message compact but informative
+    user_payload = {
+        "user_query": user_query,
+        "analysis": analysis
+    }
+
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": "Here is the analysis (JSON):\n\n" + json.dumps(user_payload, default=str, indent=2)}
+    ]
+
+    try:
+        resp = openai_client.chat.completions.create(
+            model=model,
+            messages=messages,
+            temperature=0.2,
+            max_tokens=400
+        )
+        # extract content robustly
+        content = ""
+        if hasattr(resp, "choices"):
+            choice = resp.choices[0]
+            if hasattr(choice, "message"):
+                content = choice.message.content
+            else:
+                content = getattr(choice, "text", str(choice))
+        elif isinstance(resp, dict):
+            choice = resp["choices"][0]
+            content = choice.get("message", {}).get("content") or choice.get("text", "")
+        return content.strip() if content else "No insight generated by LLM."
+    except Exception as e:
+        logger.exception("LLM insight call failed")
+        # fallback deterministic summary
+        s = analysis.get("summary", {})
+        total = s.get("total_cost", 0.0)
+        rows = s.get("rows", 0)
+        return f"Python analysis: {rows} rows, total cost ≈ {total:.2f}. (LLM call failed: {e})"
+
+
+def generate_insights(
+    user_query: str,
+    csv_path: Optional[str] = None,
+    df: Optional[pd.DataFrame] = None,
+    schema_context: Optional[Any] = None,
+    save_dataframe: bool = True
+) -> Dict[str, Any]:
+    """
+    Primary entrypoint.
+    Returns dict with keys:
+      - summary: textual insight
+      - analysis: python analysis dict
+      - dataframe_path: path to saved result csv (optional)
+      - error: bool
+      - error_message: optional
+    """
+    try:
+        df_local = _load_dataframe(csv_path=csv_path, df=df)
+        if df_local.empty:
+            return {"summary": "No results to analyze.", "analysis": {}, "dataframe_path": None, "error": False}
+
+        cost_col = _find_cost_column(df_local, user_query)
+        date_col = _find_date_column(df_local)
+
+        # Ensure numeric cost
+        try:
+            df_local[cost_col] = pd.to_numeric(df_local[cost_col], errors="coerce").fillna(0.0)
+        except Exception:
+            df_local[cost_col] = pd.to_numeric(df_local[cost_col].astype(str).str.replace('[^0-9.-]', '', regex=True), errors="coerce").fillna(0.0)
+
+        analysis = _basic_python_analysis(df_local, cost_col, date_col)
+
+        # Optionally save dataframe snapshot
+        dataframe_path = None
+        if save_dataframe:
+            ensure_results_dir()
+            ts = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+            filename = f"insight_df_{ts}.csv"
+            dataframe_path = os.path.join(RESULTS_DIR, filename)
+            try:
+                df_local.to_csv(dataframe_path, index=False)
+            except Exception as e:
+                logger.warning("Failed to save insight dataframe: %s", e)
+                dataframe_path = None
+
+        # Ask LLM to produce final concise insight
+        llm_summary = _ask_llm_for_insight(analysis, user_query, schema_context=schema_context)
+
+        return {
+            "summary": llm_summary,
+            "analysis": analysis,
+            "dataframe_path": dataframe_path,
+            "error": False,
+            "error_message": None
+        }
+
+    except FileNotFoundError as fe:
+        logger.error("generate_insights file error: %s", fe)
+        return {"summary": f"CSV not found: {fe}", "analysis": {}, "dataframe_path": None, "error": True, "error_message": str(fe)}
+    except Exception as e:
+        logger.exception("generate_insights failed")
+        return {"summary": f"Insight generation failed: {e}", "analysis": {}, "dataframe_path": None, "error": True, "error_message": str(e)}
+
+if __name__ == "__main__":
+    # quick test - requires a CSV in results/sql_result_sample.csv
+    sample = os.getenv("FINOPS_SAMPLE_CSV", "results/sql_result_sample.csv")
+    if os.path.exists(sample):
+        out = generate_insights(user_query="Give insights about cost by ServiceName", csv_path=sample)
+        print(out["summary"])
+    else:
+        print("Place sample result at results/sql_result_sample.csv to test.")

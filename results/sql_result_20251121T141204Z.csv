@@ -1,0 +1,47 @@
+SERVICENAME,TotalCost
+API Management,2.016432
+App Configuration,0.0
+Application Gateway,30.52502242671525
+Azure AI Search,0.0
+Azure AI Services,0.001010997580645
+Azure Analysis Services,26.532
+Azure App Service,189.31463543325393
+Azure Arc,12.72455424
+Azure Automation,0.18940096
+Azure Bastion,26.39435958860287
+Azure Communication Services,0.00031959
+Azure Container Registry,7.029026251860163
+Azure DB for MySQL,9.744616161290322
+Azure DB for PostgreSQL,0.833470490322581
+Azure DNS,0.001919828385
+Azure Data Explorer,0.5137391966260609
+Azure Data Factory,75.50798074936701
+Azure Databricks,143.19669302105405
+Azure DevOps,32.62856296011071
+Azure ExpressRoute,288.66614999999905
+Azure Firewall,1.043139023878878
+Azure IoT Hub,5.13555
+Azure Kubernetes Service,1.1548656
+Azure Machine Learning,2.753024395187913
+Azure Managed Grafana,3.0468384
+Azure Marketplace,1.00908
+Azure Monitor,1161.2153539343271
+Azure NAT Gateway,7.838459494224862
+Azure Private Link,47.3502525041708
+Azure SQL Database,252.68244247154382
+Azure Site Recovery,77.71209854768776
+Azure Synapse Analytics,2.667513684619356
+Batch,2.297681253211813
+Cosmos DB,15.465103129476384
+Event Grid,0.09606351594000001
+Event Hubs,98.59406194558251
+Key Vault,1.4835395417400001
+Load Balancer,2.6288826440192423
+Logic Apps,50.67523851708086
+Microsoft Defender for Cloud,2.6796400244100003
+Network Watcher,0.39942242606945405
+Service Bus,28.43748
+Storage Accounts,292.8667719142197
+Virtual Machine Scale Sets,1.7186632857554163
+Virtual Machines,360.1721815977317
+Virtual Network,6.242297535992324

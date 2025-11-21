@@ -1064,3 +1064,786 @@ Query processing completed successfully
 2025-11-19 21:48:23 | WARNING | finops_trace | No route matched for intent=unrelated, subagent=none
 2025-11-19 21:48:23 | INFO | finops_trace | Supervisor executed successfully
 2025-11-19 21:48:23 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 11:44:14 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 11:44:14 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 11:44:14 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 11:44:14 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 11:44:14 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 11:44:14 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 11:44:14 | INFO | finops_trace | Memory context length: 33
+2025-11-20 11:44:14 | INFO | finops_trace | Turn number: 1
+2025-11-20 11:44:14 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 11:44:14 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 11:44:14 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 11:44:14 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 11:44:14 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 11:44:14 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 11:44:16 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002AA1A9F4130>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 11:44:16 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 11:44:17 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 11:44:17 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 11:44:17 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 11:44:19 | INFO | finops_trace | Raw SQL from Groq: SELECT SUM(BILLEDCOST) AS total_cost FROM finops_data
+2025-11-20 11:44:19 | INFO | finops_trace | SQL query validation passed
+2025-11-20 11:44:19 | INFO | finops_trace | Validated SQL: SELECT SUM(BILLEDCOST) AS total_cost FROM finops_data
+2025-11-20 11:44:19 | INFO | finops_trace | DataFetcher Step 4: Executing SQL
+2025-11-20 11:44:19 | INFO | finops_trace | DataFrame validation passed for SQL execution: 1 rows, 0.00MB
+2025-11-20 11:44:19 | INFO | finops_trace | DataFetcher Query executed successfully
+2025-11-20 11:44:19 | INFO | finops_trace | Database connection closed
+2025-11-20 11:44:21 | INFO | finops_trace | get_knowledge_summary executed with memory context
+2025-11-20 11:44:21 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 11:44:21 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 20:16:38 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 20:16:38 | INFO | finops_trace | Validated query: total billed cost...
+2025-11-20 20:16:38 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 20:16:38 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 20:16:38 | INFO | finops_trace | Running workflow for query: total billed cost
+2025-11-20 20:16:38 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 20:16:38 | INFO | finops_trace | Memory context length: 33
+2025-11-20 20:16:38 | INFO | finops_trace | Turn number: 1
+2025-11-20 20:16:39 | INFO | finops_trace | Supervisor Executing for query: total billed cost
+2025-11-20 20:16:39 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 20:16:39 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 20:16:39 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 20:16:39 | INFO | finops_trace | DataFetcher Processing query: total billed cost
+2025-11-20 20:16:39 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 20:16:41 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C87FC9AE30>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 20:16:41 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 20:16:41 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 20:16:41 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 20:16:41 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 20:16:43 | INFO | finops_trace | Raw SQL from Groq: SELECT SUM(BILLEDCOST) AS total_billed_cost FROM finops_data
+2025-11-20 20:16:43 | INFO | finops_trace | SQL query validation passed
+2025-11-20 20:16:43 | INFO | finops_trace | Validated SQL: SELECT SUM(BILLEDCOST) AS total_billed_cost FROM finops_data
+2025-11-20 20:16:43 | INFO | finops_trace | DataFetcher Step 4: Executing SQL
+2025-11-20 20:16:43 | INFO | finops_trace | DataFrame validation passed for SQL execution: 1 rows, 0.00MB
+2025-11-20 20:16:43 | INFO | finops_trace | DataFetcher Query executed successfully
+2025-11-20 20:16:43 | INFO | finops_trace | Database connection closed
+2025-11-20 20:16:44 | INFO | finops_trace | get_knowledge_summary executed with memory context
+2025-11-20 20:16:44 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 20:16:44 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 20:17:04 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 20:17:04 | INFO | finops_trace | Validated query: total effective cost...
+2025-11-20 20:17:04 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 20:17:04 | INFO | finops_trace | Conversation history: 2 entries
+2025-11-20 20:17:04 | INFO | finops_trace | Running workflow for query: total effective cost
+2025-11-20 20:17:04 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 20:17:04 | INFO | finops_trace | Memory context length: 558
+2025-11-20 20:17:04 | INFO | finops_trace | Turn number: 2
+2025-11-20 20:17:04 | INFO | finops_trace | Supervisor Executing for query: total effective cost
+2025-11-20 20:17:04 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 20:17:04 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 20:17:04 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 20:17:04 | INFO | finops_trace | DataFetcher Processing query: total effective cost
+2025-11-20 20:17:04 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 20:17:06 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001C87FCF28F0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 20:17:06 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 20:17:07 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 20:17:07 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 20:17:07 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 20:17:07 | INFO | finops_trace | Raw SQL from Groq: SELECT SUM(EFFECTIVECOST) AS TOTAL_EFFECTIVE_COST FROM finops_data
+2025-11-20 20:17:07 | INFO | finops_trace | SQL query validation passed
+2025-11-20 20:17:07 | INFO | finops_trace | Validated SQL: SELECT SUM(EFFECTIVECOST) AS TOTAL_EFFECTIVE_COST FROM finops_data
+2025-11-20 20:17:07 | INFO | finops_trace | DataFetcher Step 4: Executing SQL
+2025-11-20 20:17:07 | INFO | finops_trace | DataFrame validation passed for SQL execution: 1 rows, 0.00MB
+2025-11-20 20:17:07 | INFO | finops_trace | DataFetcher Query executed successfully
+2025-11-20 20:17:07 | INFO | finops_trace | Database connection closed
+2025-11-20 20:17:09 | INFO | finops_trace | get_knowledge_summary executed with memory context
+2025-11-20 20:17:09 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 20:17:09 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 20:45:28 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 20:45:28 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 20:45:28 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 20:45:28 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 20:45:28 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 20:45:28 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 20:45:28 | INFO | finops_trace | Memory context length: 33
+2025-11-20 20:45:28 | INFO | finops_trace | Turn number: 1
+2025-11-20 20:45:29 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 20:45:29 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 20:45:29 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 20:45:29 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 20:45:29 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 20:45:29 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 20:45:31 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000029D5214E830>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 20:45:31 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 20:45:31 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 20:45:31 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 20:45:31 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 20:45:32 | INFO | finops_trace | Raw SQL from Groq: SELECT SUM(BILLEDCOST) AS total_cost FROM finops_data
+2025-11-20 20:45:32 | INFO | finops_trace | SQL query validation passed
+2025-11-20 20:45:32 | INFO | finops_trace | Validated SQL: SELECT SUM(BILLEDCOST) AS total_cost FROM finops_data
+2025-11-20 20:45:32 | INFO | finops_trace | DataFetcher Step 4: Executing SQL
+2025-11-20 20:45:32 | INFO | finops_trace | DataFrame validation passed for SQL execution: 1 rows, 0.00MB
+2025-11-20 20:45:32 | INFO | finops_trace | DataFetcher Query executed successfully
+2025-11-20 20:45:32 | INFO | finops_trace | Database connection closed
+2025-11-20 20:45:33 | INFO | finops_trace | get_knowledge_summary executed with memory context
+2025-11-20 20:45:33 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 20:45:33 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 22:27:26 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 22:27:26 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 22:27:26 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 22:27:26 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 22:27:26 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 22:27:26 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 22:27:26 | INFO | finops_trace | Memory context length: 33
+2025-11-20 22:27:26 | INFO | finops_trace | Turn number: 1
+2025-11-20 22:27:26 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 22:27:26 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 22:27:26 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 22:27:26 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 22:27:26 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 22:27:26 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 22:27:29 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000018E8C745A20>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 22:27:29 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 22:27:29 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 22:27:29 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 22:27:29 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 22:27:30 | INFO | finops_trace | Raw SQL from Groq: SELECT SUM(BILLEDCOST) AS total_cost FROM finops_data
+2025-11-20 22:27:30 | INFO | finops_trace | SQL query validation passed
+2025-11-20 22:27:30 | INFO | finops_trace | Validated SQL: SELECT SUM(BILLEDCOST) AS total_cost FROM finops_data
+2025-11-20 22:27:30 | INFO | finops_trace | DataFetcher Step 4: Executing SQL
+2025-11-20 22:27:30 | INFO | finops_trace | DataFrame validation passed for SQL execution: 1 rows, 0.00MB
+2025-11-20 22:27:30 | INFO | finops_trace | DataFetcher Query executed successfully
+2025-11-20 22:27:30 | INFO | finops_trace | Database connection closed
+2025-11-20 22:27:32 | INFO | finops_trace | get_knowledge_summary executed with memory context
+2025-11-20 22:27:32 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 22:27:32 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 22:41:41 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 22:41:41 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 22:41:41 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 22:41:41 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 22:41:41 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 22:41:41 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 22:41:41 | INFO | finops_trace | Memory context length: 33
+2025-11-20 22:41:41 | INFO | finops_trace | Turn number: 1
+2025-11-20 22:41:42 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 22:41:42 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 22:41:42 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 22:41:42 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 22:41:42 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 22:41:42 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 22:41:44 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001CF25EA7880>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 22:41:44 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 22:41:45 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 22:41:45 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 22:41:45 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 22:41:45 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 22:41:45 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 22:41:45 | INFO | finops_trace | Database connection closed
+2025-11-20 22:41:46 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 22:41:46 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 22:41:46 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 22:45:34 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 22:45:34 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 22:45:34 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 22:45:34 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 22:45:34 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 22:45:34 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 22:45:34 | INFO | finops_trace | Memory context length: 33
+2025-11-20 22:45:34 | INFO | finops_trace | Turn number: 1
+2025-11-20 22:45:35 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 22:45:35 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 22:45:35 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 22:45:35 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 22:45:35 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 22:45:35 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 22:45:37 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000022197DCC400>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 22:45:37 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 22:45:38 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 22:45:38 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 22:45:38 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 22:45:38 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 22:45:38 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 22:45:38 | INFO | finops_trace | Database connection closed
+2025-11-20 22:45:38 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 22:45:38 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 22:45:38 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 23:02:17 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 23:02:17 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 23:02:17 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 23:02:17 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 23:02:17 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 23:02:17 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 23:02:17 | INFO | finops_trace | Memory context length: 33
+2025-11-20 23:02:17 | INFO | finops_trace | Turn number: 1
+2025-11-20 23:02:17 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 23:02:17 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 23:02:17 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 23:02:17 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 23:02:17 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 23:02:17 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 23:02:19 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000026DFFBE4190>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 23:02:19 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 23:02:19 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 23:02:19 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 23:02:19 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 23:02:20 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:02:20 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:02:20 | INFO | finops_trace | Database connection closed
+2025-11-20 23:02:20 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:02:20 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 23:02:20 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 23:35:40 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 23:35:40 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 23:35:40 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 23:35:40 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 23:35:40 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 23:35:40 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 23:35:40 | INFO | finops_trace | Memory context length: 33
+2025-11-20 23:35:40 | INFO | finops_trace | Turn number: 1
+2025-11-20 23:35:40 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 23:35:40 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 23:35:40 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 23:35:40 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 23:35:40 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 23:35:40 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 23:35:42 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000194CB013700>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 23:35:42 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 23:35:42 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 23:35:42 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 23:35:42 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 23:35:43 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:35:43 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:35:43 | INFO | finops_trace | Database connection closed
+2025-11-20 23:35:44 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:35:44 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 23:35:44 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 23:39:26 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 23:39:26 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 23:39:26 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 23:39:26 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 23:39:26 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 23:39:26 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 23:39:26 | INFO | finops_trace | Memory context length: 33
+2025-11-20 23:39:26 | INFO | finops_trace | Turn number: 1
+2025-11-20 23:39:26 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 23:39:26 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 23:39:27 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 23:39:27 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 23:39:27 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 23:39:27 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 23:39:29 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002DE51107E20>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 23:39:29 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 23:39:29 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 23:39:29 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 23:39:29 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 23:39:29 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:39:29 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:39:29 | INFO | finops_trace | Database connection closed
+2025-11-20 23:39:29 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:39:29 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 23:39:29 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 23:42:59 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 23:42:59 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 23:42:59 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 23:42:59 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 23:42:59 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 23:42:59 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 23:42:59 | INFO | finops_trace | Memory context length: 33
+2025-11-20 23:42:59 | INFO | finops_trace | Turn number: 1
+2025-11-20 23:42:59 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 23:42:59 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 23:42:59 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 23:42:59 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 23:42:59 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 23:42:59 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 23:43:02 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001A33F3B8B20>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 23:43:02 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 23:43:02 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 23:43:02 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 23:43:02 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 23:43:02 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:43:02 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:43:02 | INFO | finops_trace | Database connection closed
+2025-11-20 23:43:02 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:43:02 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 23:43:02 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 23:47:12 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 23:47:12 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 23:47:12 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 23:47:12 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 23:47:12 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 23:47:12 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 23:47:12 | INFO | finops_trace | Memory context length: 33
+2025-11-20 23:47:12 | INFO | finops_trace | Turn number: 1
+2025-11-20 23:47:12 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 23:47:12 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 23:47:12 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 23:47:12 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 23:47:12 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 23:47:12 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 23:47:14 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F1CF5FC850>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 23:47:14 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 23:47:15 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 23:47:15 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 23:47:15 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 23:47:15 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:47:15 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:47:15 | INFO | finops_trace | Database connection closed
+2025-11-20 23:47:15 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:47:15 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 23:47:15 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 23:55:24 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 23:55:24 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 23:55:24 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 23:55:24 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 23:55:24 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 23:55:24 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 23:55:24 | INFO | finops_trace | Memory context length: 33
+2025-11-20 23:55:24 | INFO | finops_trace | Turn number: 1
+2025-11-20 23:55:24 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 23:55:24 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 23:55:25 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 23:55:25 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 23:55:25 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 23:55:25 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 23:55:27 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001E61C728250>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 23:55:27 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 23:55:27 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 23:55:27 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 23:55:27 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 23:55:27 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:55:27 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:55:27 | INFO | finops_trace | Database connection closed
+2025-11-20 23:55:27 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:55:27 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 23:55:27 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-20 23:58:28 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-20 23:58:28 | INFO | finops_trace | Validated query: total cost...
+2025-11-20 23:58:28 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-20 23:58:28 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-20 23:58:28 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-20 23:58:28 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-20 23:58:28 | INFO | finops_trace | Memory context length: 33
+2025-11-20 23:58:28 | INFO | finops_trace | Turn number: 1
+2025-11-20 23:58:28 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-20 23:58:28 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-20 23:58:28 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-20 23:58:28 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-20 23:58:28 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-20 23:58:28 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-20 23:58:30 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002C4164241C0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-20 23:58:30 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-20 23:58:30 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-20 23:58:30 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-20 23:58:30 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-20 23:58:31 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:58:31 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:58:31 | INFO | finops_trace | Database connection closed
+2025-11-20 23:58:31 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-20 23:58:31 | INFO | finops_trace | Supervisor executed successfully
+2025-11-20 23:58:31 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 00:08:25 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 00:08:25 | INFO | finops_trace | Validated query: total cost...
+2025-11-21 00:08:25 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 00:08:25 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 00:08:25 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-21 00:08:25 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 00:08:25 | INFO | finops_trace | Memory context length: 33
+2025-11-21 00:08:25 | INFO | finops_trace | Turn number: 1
+2025-11-21 00:08:25 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-21 00:08:25 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 00:08:25 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-21 00:08:25 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-21 00:08:25 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-21 00:08:25 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-21 00:08:27 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002910DB58250>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-21 00:08:27 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-21 00:08:27 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-21 00:08:27 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-21 00:08:27 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-21 00:08:28 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 00:08:28 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 00:08:28 | INFO | finops_trace | Database connection closed
+2025-11-21 00:08:28 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 00:08:28 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 00:08:28 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 10:42:47 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 10:42:47 | INFO | finops_trace | Validated query: total cost...
+2025-11-21 10:42:47 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 10:42:47 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 10:42:47 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-21 10:42:47 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 10:42:47 | INFO | finops_trace | Memory context length: 33
+2025-11-21 10:42:47 | INFO | finops_trace | Turn number: 1
+2025-11-21 10:42:47 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-21 10:42:47 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 10:42:47 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-21 10:42:47 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-21 10:42:47 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-21 10:42:47 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-21 10:42:50 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000015859FD7580>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-21 10:42:50 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-21 10:42:50 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-21 10:42:50 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-21 10:42:50 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-21 10:42:51 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 10:42:51 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 10:42:51 | INFO | finops_trace | Database connection closed
+2025-11-21 10:42:51 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 10:42:51 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 10:42:51 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 13:17:13 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 13:17:13 | INFO | finops_trace | Validated query: total cost...
+2025-11-21 13:17:13 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 13:17:13 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 13:17:13 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-21 13:17:13 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 13:17:13 | INFO | finops_trace | Memory context length: 33
+2025-11-21 13:17:13 | INFO | finops_trace | Turn number: 1
+2025-11-21 13:17:13 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-21 13:17:13 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 13:17:13 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-21 13:17:13 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-21 13:17:13 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-21 13:17:13 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-21 13:17:15 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F175666B30>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-21 13:17:15 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-21 13:17:16 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-21 13:17:16 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-21 13:17:16 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-21 13:17:16 | ERROR | finops_trace | Unexpected error in data_fetcher_node: No module named 'deepseek'
+2025-11-21 13:17:16 | INFO | finops_trace | Database connection closed
+2025-11-21 13:17:20 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************_7oA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}}
+2025-11-21 13:17:20 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 13:17:20 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 13:20:26 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 13:20:26 | INFO | finops_trace | Validated query: total cost...
+2025-11-21 13:20:26 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 13:20:26 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 13:20:26 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-21 13:20:26 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 13:20:26 | INFO | finops_trace | Memory context length: 33
+2025-11-21 13:20:26 | INFO | finops_trace | Turn number: 1
+2025-11-21 13:20:26 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-21 13:20:26 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 13:20:27 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-21 13:20:27 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-21 13:20:27 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-21 13:20:27 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-21 13:20:29 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001BDF9138610>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-21 13:20:29 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-21 13:20:29 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-21 13:20:29 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-21 13:20:29 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-21 13:20:29 | ERROR | finops_trace | Unexpected error in data_fetcher_node: No module named 'deepseek'
+2025-11-21 13:20:29 | INFO | finops_trace | Database connection closed
+2025-11-21 13:20:31 | ERROR | finops_trace | get_knowledge_summary error: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2025-11-21 13:20:31 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 13:20:31 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 14:55:19 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 14:55:19 | INFO | finops_trace | Validated query: total cost...
+2025-11-21 14:55:19 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 14:55:19 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 14:55:19 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-21 14:55:19 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 14:55:19 | INFO | finops_trace | Memory context length: 33
+2025-11-21 14:55:19 | INFO | finops_trace | Turn number: 1
+2025-11-21 14:55:19 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-21 14:55:19 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 14:55:20 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-21 14:55:20 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-21 14:55:20 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-21 14:55:20 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-21 14:55:22 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002E0D4E6B820>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-21 14:55:22 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-21 14:55:22 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-21 14:55:22 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-21 14:55:22 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-21 14:55:23 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 14:55:23 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 14:55:23 | INFO | finops_trace | Database connection closed
+2025-11-21 14:55:23 | ERROR | finops_trace | get_knowledge_summary error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 14:55:23 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 14:55:23 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 14:59:42 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 14:59:42 | INFO | finops_trace | Validated query: total cost...
+2025-11-21 14:59:42 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 14:59:42 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 14:59:42 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-21 14:59:42 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 14:59:42 | INFO | finops_trace | Memory context length: 33
+2025-11-21 14:59:42 | INFO | finops_trace | Turn number: 1
+2025-11-21 14:59:42 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-21 14:59:42 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 14:59:43 | INFO | finops_trace | Classifier intent=finops_query, subagent=data_fetcher
+2025-11-21 14:59:43 | INFO | finops_trace | Router Routing - intent: finops_query, subagent: data_fetcher, error: False
+2025-11-21 14:59:43 | INFO | finops_trace | DataFetcher Processing query: total cost
+2025-11-21 14:59:43 | INFO | finops_trace | DataFetcher Step 1: Extracting entities
+2025-11-21 14:59:45 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000027207B4B370>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')). Continuing without it.
+2025-11-21 14:59:45 | INFO | finops_trace | DataFetcher Step 2: Loading CSV into SQLite
+2025-11-21 14:59:45 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-21 14:59:45 | INFO | finops_trace | Loaded 5000 rows with columns: ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-21 14:59:45 | INFO | finops_trace | DataFetcher Step 3: Generating SQL
+2025-11-21 14:59:45 | ERROR | finops_trace | Groq API error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 14:59:45 | ERROR | finops_trace | Validation error in data_fetcher_node: Failed to generate SQL query: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 14:59:45 | INFO | finops_trace | Database connection closed
+2025-11-21 14:59:45 | ERROR | finops_trace | get_knowledge_summary error: Error code: 401 - {'error': {'message': 'Invalid API Key', 'type': 'invalid_request_error', 'code': 'invalid_api_key'}}
+2025-11-21 14:59:45 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 14:59:45 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 16:48:14 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 16:48:14 | INFO | finops_trace | Validated query: total cost...
+2025-11-21 16:48:14 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 16:48:14 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 16:48:14 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-21 16:48:14 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 16:48:14 | INFO | finops_trace | Memory context length: 33
+2025-11-21 16:48:14 | INFO | finops_trace | Turn number: 1
+2025-11-21 16:48:14 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-21 16:48:14 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 16:48:17 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020CDFA4EDA0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-11-21 16:48:18 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-21 16:48:18 | INFO | finops_trace | Loaded dataframe with 5000 rows and columns ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-21 16:48:25 | ERROR | finops_trace | SQL generation failed: SQL generation failed: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************_7oA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-11-21 16:48:26 | ERROR | finops_trace | Error in get_knowledge_summary: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-proj-********************************************************************************************************************************************************_7oA. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'code': 'invalid_api_key', 'param': None}}
+2025-11-21 16:48:26 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 16:48:26 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 16:50:22 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 16:50:22 | INFO | finops_trace | Validated query: total cost...
+2025-11-21 16:50:22 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 16:50:22 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 16:50:22 | INFO | finops_trace | Running workflow for query: total cost
+2025-11-21 16:50:22 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 16:50:22 | INFO | finops_trace | Memory context length: 33
+2025-11-21 16:50:22 | INFO | finops_trace | Turn number: 1
+2025-11-21 16:50:22 | INFO | finops_trace | Supervisor Executing for query: total cost
+2025-11-21 16:50:22 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 16:50:24 | WARNING | finops_trace | Entity extraction error: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /api/v1/index/query_intent_examples/info (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x00000138835D10F0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+2025-11-21 16:50:25 | INFO | finops_trace | DataFrame validation passed for CSV loading: 5000 rows, 11.52MB
+2025-11-21 16:50:25 | INFO | finops_trace | Loaded dataframe with 5000 rows and columns ['BILLEDCOST', 'BILLINGACCOUNTID', 'BILLINGACCOUNTNAME', 'BILLINGACCOUNTTYPE', 'BILLINGCURRENCY', 'BILLINGPERIODEND', 'BILLINGPERIODSTART', 'CHARGECATEGORY', 'CHARGECLASS', 'CHARGEDESCRIPTION', 'CHARGEFREQUENCY', 'CHARGEPERIODEND', 'CHARGEPERIODSTART', 'COMMITMENTDISCOUNTCATEGORY', 'COMMITMENTDISCOUNTID', 'COMMITMENTDISCOUNTNAME', 'COMMITMENTDISCOUNTSTATUS', 'COMMITMENTDISCOUNTTYPE', 'CONSUMEDQUANTITY', 'CONSUMEDUNIT', 'CONTRACTEDCOST', 'CONTRACTEDUNITPRICE', 'EFFECTIVECOST', 'INVOICEISSUERNAME', 'LISTCOST', 'LISTUNITPRICE', 'PRICINGCATEGORY', 'PRICINGQUANTITY', 'PRICINGUNIT', 'PROVIDERNAME', 'PUBLISHERNAME', 'REGIONID', 'REGIONNAME', 'RESOURCEID', 'RESOURCENAME', 'RESOURCETYPE', 'SERVICECATEGORY', 'SERVICENAME', 'SKUID', 'SKUPRICEID', 'SUBACCOUNTID', 'SUBACCOUNTNAME', 'SUBACCOUNTTYPE', 'TAGS']
+2025-11-21 16:50:29 | INFO | finops_trace | Generated SQL: SELECT SUM(BILLEDCOST) AS total_cost FROM finops_data;
+2025-11-21 16:50:29 | INFO | finops_trace | DataFrame validation passed for SQL execution: 1 rows, 0.00MB
+2025-11-21 16:50:32 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 16:50:32 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 16:51:20 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 16:51:20 | INFO | finops_trace | Validated query: cost group by servicename.plot the graph...
+2025-11-21 16:51:20 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 16:51:20 | INFO | finops_trace | Conversation history: 2 entries
+2025-11-21 16:51:20 | INFO | finops_trace | Running workflow for query: cost group by servicename.plot the graph
+2025-11-21 16:51:20 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 16:51:20 | INFO | finops_trace | Memory context length: 551
+2025-11-21 16:51:20 | INFO | finops_trace | Turn number: 2
+2025-11-21 16:51:20 | INFO | finops_trace | Supervisor Executing for query: cost group by servicename.plot the graph
+2025-11-21 16:51:20 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 16:51:20 | ERROR | finops_trace | Error in insights_node: 'StructuredTool' object is not callable
+2025-11-21 16:51:27 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 16:51:27 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 17:33:05 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 17:33:05 | INFO | finops_trace | Validated query: plot a graph for total cost group by servicename...
+2025-11-21 17:33:05 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 17:33:05 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 17:33:05 | INFO | finops_trace | Running workflow for query: plot a graph for total cost group by servicename
+2025-11-21 17:33:05 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 17:33:05 | INFO | finops_trace | Memory context length: 33
+2025-11-21 17:33:05 | INFO | finops_trace | Turn number: 1
+2025-11-21 17:33:05 | INFO | finops_trace | Supervisor Executing for query: plot a graph for total cost group by servicename
+2025-11-21 17:33:05 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 17:33:05 | ERROR | finops_trace | Error in insights_node: 'StructuredTool' object is not callable
+2025-11-21 17:33:12 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 17:33:12 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 17:45:38 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 17:45:38 | INFO | finops_trace | Validated query: plot the graph of total cost group by servicename...
+2025-11-21 17:45:38 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 17:45:38 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 17:45:38 | INFO | finops_trace | Running workflow for query: plot the graph of total cost group by servicename
+2025-11-21 17:45:38 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 17:45:38 | INFO | finops_trace | Memory context length: 33
+2025-11-21 17:45:38 | INFO | finops_trace | Turn number: 1
+2025-11-21 17:45:38 | INFO | finops_trace | Supervisor Executing for query: plot the graph of total cost group by servicename
+2025-11-21 17:45:38 | INFO | finops_trace | Supervisor graph compiled successfully
+2025-11-21 17:45:38 | ERROR | finops_trace | Error in insights_node: 'StructuredTool' object is not callable
+2025-11-21 17:45:42 | INFO | finops_trace | Supervisor executed successfully
+2025-11-21 17:45:42 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 19:15:15 | WARNING | finops_trace | OPENAI_API_KEY not found in environment variables. LLM calls will fail if attempted.
+2025-11-21 19:15:16 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 19:15:16 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 19:15:16 | ERROR | finops_trace | generate_sql_and_execute failed
+Traceback (most recent call last):
+  File "D:\A-Agent\agents\agentic_tools\text2sql.py", line 363, in generate_sql_and_execute
+    raw_sql = call_gpt_generate_sql(user_query=user_query, schema=schema, table_name=table_name, model=model)
+  File "D:\A-Agent\agents\agentic_tools\text2sql.py", line 206, in call_gpt_generate_sql
+    raise RuntimeError("OpenAI client not configured. Set OPENAI_API_KEY in environment.")
+RuntimeError: OpenAI client not configured. Set OPENAI_API_KEY in environment.
+2025-11-21 19:17:09 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 19:17:09 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 19:17:13 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T134713Z.csv (10 rows)
+2025-11-21 19:19:12 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 19:19:12 | INFO | finops_trace | Validated query: plot chart for total cost group by service name...
+2025-11-21 19:19:12 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 19:19:12 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 19:19:12 | INFO | finops_trace | Running workflow for query: plot chart for total cost group by service name
+2025-11-21 19:19:12 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 19:19:12 | INFO | finops_trace | Memory context length: 33
+2025-11-21 19:19:12 | INFO | finops_trace | Turn number: 1
+2025-11-21 19:19:12 | INFO | finops_trace | Supervisor: processing query: plot chart for total cost group by service name
+2025-11-21 19:19:12 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 19:19:12 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 19:19:15 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T134915Z.csv (46 rows)
+2025-11-21 19:19:20 | INFO | finops_trace | Insights generated
+2025-11-21 19:19:37 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 19:40:22 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 19:40:22 | INFO | finops_trace | Validated query: total billedcost...
+2025-11-21 19:40:22 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 19:40:22 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 19:40:22 | INFO | finops_trace | Running workflow for query: total billedcost
+2025-11-21 19:40:22 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 19:40:22 | INFO | finops_trace | Memory context length: 33
+2025-11-21 19:40:22 | INFO | finops_trace | Turn number: 1
+2025-11-21 19:40:22 | INFO | finops_trace | Supervisor: processing query: total billedcost
+2025-11-21 19:40:22 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 19:40:22 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 19:40:25 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T141025Z.csv (1 rows)
+2025-11-21 19:40:28 | INFO | finops_trace | Insights generated
+2025-11-21 19:40:28 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 19:41:02 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 19:41:02 | INFO | finops_trace | Validated query: billedcost group by pricing category...
+2025-11-21 19:41:02 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 19:41:02 | INFO | finops_trace | Conversation history: 2 entries
+2025-11-21 19:41:02 | INFO | finops_trace | Running workflow for query: billedcost group by pricing category
+2025-11-21 19:41:02 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 19:41:02 | INFO | finops_trace | Memory context length: 438
+2025-11-21 19:41:02 | INFO | finops_trace | Turn number: 2
+2025-11-21 19:41:02 | INFO | finops_trace | Supervisor: processing query: billedcost group by pricing category
+2025-11-21 19:41:03 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 19:41:03 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 19:41:05 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T141105Z.csv (2 rows)
+2025-11-21 19:41:08 | INFO | finops_trace | Insights generated
+2025-11-21 19:41:08 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 19:42:00 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 19:42:00 | INFO | finops_trace | Validated query: groupby service name...
+2025-11-21 19:42:00 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 19:42:00 | INFO | finops_trace | Conversation history: 4 entries
+2025-11-21 19:42:00 | INFO | finops_trace | Running workflow for query: groupby service name
+2025-11-21 19:42:00 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 19:42:00 | INFO | finops_trace | Memory context length: 993
+2025-11-21 19:42:00 | INFO | finops_trace | Turn number: 3
+2025-11-21 19:42:00 | INFO | finops_trace | Supervisor: processing query: groupby service name
+2025-11-21 19:42:01 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 19:42:01 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 19:42:04 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T141204Z.csv (46 rows)
+2025-11-21 19:42:06 | INFO | finops_trace | Insights generated
+2025-11-21 19:42:06 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 20:00:21 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 20:00:21 | INFO | finops_trace | Validated query: billedcost group by pricing category...
+2025-11-21 20:00:21 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 20:00:21 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 20:00:21 | INFO | finops_trace | Running workflow for query: billedcost group by pricing category
+2025-11-21 20:00:21 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 20:00:21 | INFO | finops_trace | Memory context length: 33
+2025-11-21 20:00:21 | INFO | finops_trace | Turn number: 1
+2025-11-21 20:00:21 | INFO | finops_trace | Supervisor: processing query: billedcost group by pricing category
+2025-11-21 20:00:22 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 20:00:22 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 20:00:26 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T143026Z.csv (2 rows)
+2025-11-21 20:00:29 | INFO | finops_trace | Insights generated
+2025-11-21 20:00:29 | ERROR | finops_trace | Supervisor critical failure
+Traceback (most recent call last):
+  File "D:\A-Agent\agents\supervisor.py", line 110, in run_supervisor
+    "response": final_response,
+UnboundLocalError: local variable 'final_response' referenced before assignment
+2025-11-21 20:00:29 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 20:03:26 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 20:03:26 | INFO | finops_trace | Validated query: billedcost group by pricing category...
+2025-11-21 20:03:26 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 20:03:26 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 20:03:26 | INFO | finops_trace | Running workflow for query: billedcost group by pricing category
+2025-11-21 20:03:26 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 20:03:26 | INFO | finops_trace | Memory context length: 33
+2025-11-21 20:03:26 | INFO | finops_trace | Turn number: 1
+2025-11-21 20:03:26 | INFO | finops_trace | Supervisor: processing query: billedcost group by pricing category
+2025-11-21 20:03:27 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 20:03:27 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 20:03:30 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T143330Z.csv (2 rows)
+2025-11-21 20:03:33 | INFO | finops_trace | Insights generated
+2025-11-21 20:03:33 | ERROR | finops_trace | Supervisor critical failure
+Traceback (most recent call last):
+  File "D:\A-Agent\agents\supervisor.py", line 110, in run_supervisor
+    "response": final_response,
+UnboundLocalError: local variable 'final_response' referenced before assignment
+2025-11-21 20:03:33 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 20:07:50 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 20:07:50 | INFO | finops_trace | Validated query: billedcost group by pricing category...
+2025-11-21 20:07:50 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 20:07:50 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 20:07:50 | INFO | finops_trace | Running workflow for query: billedcost group by pricing category
+2025-11-21 20:07:50 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 20:07:50 | INFO | finops_trace | Memory context length: 33
+2025-11-21 20:07:50 | INFO | finops_trace | Turn number: 1
+2025-11-21 20:07:50 | INFO | finops_trace | Supervisor: processing query: billedcost group by pricing category
+2025-11-21 20:07:51 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 20:07:51 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 20:07:59 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T143759Z.csv (2 rows)
+2025-11-21 20:08:03 | INFO | finops_trace | Insights generated
+2025-11-21 20:08:03 | ERROR | finops_trace | Supervisor critical failure
+Traceback (most recent call last):
+  File "D:\A-Agent\agents\supervisor.py", line 110, in run_supervisor
+    "response": final_response,
+UnboundLocalError: local variable 'final_response' referenced before assignment
+2025-11-21 20:08:03 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 20:12:19 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 20:12:19 | INFO | finops_trace | Validated query: billedcost group by pricing category...
+2025-11-21 20:12:19 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 20:12:19 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 20:12:19 | INFO | finops_trace | Running workflow for query: billedcost group by pricing category
+2025-11-21 20:12:19 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 20:12:19 | INFO | finops_trace | Memory context length: 33
+2025-11-21 20:12:19 | INFO | finops_trace | Turn number: 1
+2025-11-21 20:12:19 | INFO | finops_trace | Supervisor: processing query: billedcost group by pricing category
+2025-11-21 20:12:19 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 20:12:19 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 20:12:22 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T144222Z.csv (2 rows)
+2025-11-21 20:12:25 | INFO | finops_trace | Insights generated
+2025-11-21 20:12:25 | ERROR | finops_trace | Supervisor critical failure
+Traceback (most recent call last):
+  File "D:\A-Agent\agents\supervisor.py", line 110, in run_supervisor
+    "response": final_response,
+UnboundLocalError: local variable 'final_response' referenced before assignment
+2025-11-21 20:12:25 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 20:15:00 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 20:15:00 | INFO | finops_trace | Validated query: billedcost group by pricing category...
+2025-11-21 20:15:00 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 20:15:00 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 20:15:00 | INFO | finops_trace | Running workflow for query: billedcost group by pricing category
+2025-11-21 20:15:00 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 20:15:00 | INFO | finops_trace | Memory context length: 33
+2025-11-21 20:15:00 | INFO | finops_trace | Turn number: 1
+2025-11-21 20:15:00 | INFO | finops_trace | Supervisor: processing query: billedcost group by pricing category
+2025-11-21 20:15:01 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 20:15:01 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 20:15:04 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T144504Z.csv (2 rows)
+2025-11-21 20:15:06 | INFO | finops_trace | Insights generated
+2025-11-21 20:15:06 | ERROR | finops_trace | Supervisor critical failure
+Traceback (most recent call last):
+  File "D:\A-Agent\agents\supervisor.py", line 110, in run_supervisor
+    "response": final_response,
+UnboundLocalError: local variable 'final_response' referenced before assignment
+2025-11-21 20:15:06 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 20:18:00 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 20:18:00 | INFO | finops_trace | Validated query: billedcost group by pricing category...
+2025-11-21 20:18:00 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 20:18:00 | INFO | finops_trace | Conversation history: 0 entries
+2025-11-21 20:18:00 | INFO | finops_trace | Running workflow for query: billedcost group by pricing category
+2025-11-21 20:18:00 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 20:18:00 | INFO | finops_trace | Memory context length: 33
+2025-11-21 20:18:00 | INFO | finops_trace | Turn number: 1
+2025-11-21 20:18:00 | INFO | finops_trace | Supervisor: processing query: billedcost group by pricing category
+2025-11-21 20:18:00 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 20:18:00 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 20:18:03 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T144803Z.csv (2 rows)
+2025-11-21 20:18:11 | INFO | finops_trace | Insights generated
+2025-11-21 20:18:11 | INFO | finops_trace | Query processing completed successfully with memory
+2025-11-21 20:19:51 | INFO | finops_trace | Starting query processing with validation and memory
+2025-11-21 20:19:51 | INFO | finops_trace | Validated query: show me billedcost group by pricing category...
+2025-11-21 20:19:51 | INFO | finops_trace | Validated CSV path: D:\A-Agent\data\data.csv
+2025-11-21 20:19:51 | INFO | finops_trace | Conversation history: 2 entries
+2025-11-21 20:19:51 | INFO | finops_trace | Running workflow for query: show me billedcost group by pricing category
+2025-11-21 20:19:51 | INFO | finops_trace | State initialized with keys: ['original_query', 'session_id', 'conversation_history', 'memory_context', 'remembered_entities', 'turn_number', 'intent', 'category', 'subagent', 'confidence', 'csv_path', 'dataframe_path', 'chart_path', 'insight_details', 'tip', 'response', 'extracted_entities', 'sql_query', 'sql_result', 'error', 'error_message']
+2025-11-21 20:19:51 | INFO | finops_trace | Memory context length: 135
+2025-11-21 20:19:51 | INFO | finops_trace | Turn number: 2
+2025-11-21 20:19:51 | INFO | finops_trace | Supervisor: processing query: show me billedcost group by pricing category
+2025-11-21 20:19:52 | INFO | finops_trace | Loaded CSV into SQLite table finops_data (5000 rows) at finops.db
+2025-11-21 20:19:52 | INFO | finops_trace | Loaded schema_context from prompt hub (JSON parsed).
+2025-11-21 20:19:53 | INFO | finops_trace | SQL executed — results saved to results\sql_result_20251121T144953Z.csv (2 rows)
+2025-11-21 20:19:55 | INFO | finops_trace | Insights generated
+2025-11-21 20:19:57 | INFO | finops_trace | Query processing completed successfully with memory

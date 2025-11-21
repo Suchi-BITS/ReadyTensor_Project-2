@@ -7,7 +7,7 @@ from deepeval.test_case import LLMTestCase, LLMTestCaseParams
 from deepeval.metrics import FaithfulnessMetric, AnswerRelevancyMetric, GEval
 from deepeval.evaluate import evaluate
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from agents.supervisor import finops_team_supervisor_node
+from agents.supervisor2 import finops_team_supervisor_node
 from schema.state import init_state
 from templates.custom_template import AnswerTemplate
 from utils.prompt_loader import get_active_prompt_set_and_log

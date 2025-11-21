@@ -6,10 +6,13 @@ PARENT = os.path.dirname(ROOT)  # D:\A-Agent
 
 if PARENT not in sys.path:
     sys.path.insert(0, PARENT)
+from dotenv import load_dotenv
+load_dotenv()
 import streamlit as st
 import os
 from integrations.main import process_query
 from datetime import datetime
+
 
 # Streamlit App Setup
 st.set_page_config(page_title="FinOps Agentic AI", layout="wide")
@@ -45,7 +48,7 @@ with st.sidebar:
     # CSV file path input
     default_csv_path = st.text_input(
         "CSV File Path",
-        value="data/sample_data.csv",
+        value="data/data.csv",
         help="Enter the path to your FinOps CSV file"
     )
     
@@ -229,42 +232,6 @@ if st.session_state.file_loaded:
                 role_emoji = "👤" if entry["role"] == "user" else "🤖"
                 st.caption(f"{role_emoji} **{entry['role'].title()}:** {entry['content'][:100]}...")
     
-    '''st.markdown("###  Suggested Questions")
-    
-    col1, col2, col3 = st.columns(3)
-    
-    suggested_queries = [
-        "Show monthly cost trend",
-        "What are the top spending services",
-        "Analyze cost anomalies"
-    ]
-    
-    # Contextual suggestions based on conversation
-    if st.session_state.conversation_history:
-        last_intent = None
-        for entry in reversed(st.session_state.conversation_history):
-            if entry.get("metadata", {}).get("intent"):
-                last_intent = entry["metadata"]["intent"]
-                break
-        
-        if last_intent == "finops_query":
-            suggested_queries = [
-                "Tell me more about that",
-                "Show me a visualization",
-                "What caused that trend"
-            ]
-    
-    with col1:
-        if st.button(suggested_queries[0]):
-            st.rerun()
-    
-    with col2:
-        if st.button(suggested_queries[1]):
-            st.rerun()
-    
-    with col3:
-        if st.button(suggested_queries[2]):
-            st.rerun()'''
 
 # Debug Panel
 with st.expander(" Debug Information"):
@@ -278,3 +245,5 @@ with st.expander(" Debug Information"):
 
 st.markdown("---")
 st.caption("Built with LangGraph + Groq + Streamlit | Memory-Enabled Conversational AI")
+
+
