@@ -3,7 +3,7 @@
 This repository contains a production-grade FinOps Agentic AI system built using:
 - LangChain  
 - LangGraph  
-- Groq LLMs  
+- OpenAI LLMs  
 - Python REPL Tool  
 - RAG over FinOps domain documents  
 - Streamlit Frontend  
