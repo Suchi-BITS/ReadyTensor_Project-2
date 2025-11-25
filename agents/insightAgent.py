@@ -1,20 +1,3 @@
-"""
-Insight Agent (patched): date parsing warnings fixed.
-
-Changes made:
-- _find_date_column now attempts to detect a strict datetime format by sampling column values
-  using a list of common formats. If a format is detected with high confidence (>70%), it
-  is recorded and used for strict parsing later.
-- If no strict format is detected, we do NOT attempt a generic `pd.to_datetime` call that
-  falls back to dateutil (which caused the warnings). Instead we treat `date_col` as None
-  and skip time-series parsing.
-- The time-series parsing in _basic_python_analysis uses the detected strict format (if any).
-- Added small helper and a module-level cache DETECTED_DATE_FORMATS to hold detected formats.
-- Kept behavior deterministic and avoided global warnings filtering.
-
-This preserves insight generation while preventing the pandas "Could not infer format" warnings
-and the deprecation warning for `infer_datetime_format`.
-"""
 import os
 import re
 import math

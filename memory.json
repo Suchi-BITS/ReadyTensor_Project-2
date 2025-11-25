@@ -1,0 +1,22 @@
+{
+  "context": "\nKnowledge call failed: 'StructuredTool' object is not callable",
+  "entities": {
+    "ServiceName": "for last month",
+    "timeframe": [
+      "last month"
+    ],
+    "cost_terms": [
+      "Show total EffectiveCost by ServiceName for last month"
+    ]
+  },
+  "preferences": {
+    "cost_column": "EffectiveCost"
+  },
+  "history": [
+    {
+      "ts": "2025-11-21T17:13:42.899992Z",
+      "query": "Show total EffectiveCost by ServiceName for last month"
+    }
+  ],
+  "last_query": "Show total EffectiveCost by ServiceName for last month"
+}
