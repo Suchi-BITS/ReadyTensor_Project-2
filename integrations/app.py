@@ -244,6 +244,6 @@ with st.expander(" Debug Information"):
     st.write(f"- Conversation turns: {len([m for m in st.session_state.messages if m['role'] == 'user'])}")
 
 st.markdown("---")
-st.caption("Built with LangGraph + Groq + Streamlit | Memory-Enabled Conversational AI")
+st.caption("Built with LangGraph + OpenAI + Streamlit | Memory-Enabled Conversational AI")
 
 
