@@ -510,6 +510,7 @@ What it tests
 ## 4. User Interfaces
 
 ### 4.1 Streamlit UI
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/19677171-95ca-4153-ab50-784d1fd747c3" />
 
 **Features:**
 - Chat-style interface
