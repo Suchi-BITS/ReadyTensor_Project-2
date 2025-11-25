@@ -19,6 +19,43 @@ Module 3 extends the ReadyTensor Project Module 2 by transforming a basic FinOps
 | **Testing** | Manual | Unit + Integration + System tests |
 
 ---
+**Setup & Installation Guide**
+
+Clone the Repository
+git clone https://github.com/Suchi-BITS/ReadyTensor_Project-2.git
+cd ReadyTensor_Project-2
+
+
+Checkout the pr-3 Branch
+git fetch origin
+git checkout pr-3
+
+
+Create & Activate Virtual Environment
+Mac / Linux
+python3 -m venv venv
+source venv/bin/activate
+
+
+Windows (PowerShell)
+python -m venv venv
+.\venv\Scripts\activate
+
+
+Install Dependencies
+pip install -r requirements.txt
+
+
+Create Your .env File
+cp .env.example .env
+
+
+Run the Application
+streamlit run integrations/app.py
+
+
+Running Tests
+pytest tests/test_agent.py
 
 ## 1. System Overview
 
@@ -388,159 +425,87 @@ logger.error(f"SQL execution failed: {e}")
 ---
 
 ## 3. Testing Strategy
+test_agent.py (End-to-end pipeline test)
+Objective
+Validate that the entire FinOps multi-agent pipeline executes correctly through:
+Supervisor → Text2SQL → Insight → Visualization → Knowledge → Memory → Response.
+What it tests
+- The Supervisor can run a query without crashing.
+- SQL is generated correctly by Text2SQL.
+- SQL executes and produces a DataFrame.
+- Insight agent returns meaningful analysis.
+-  agent adds recommendations.
+- Visualization agent creates a chart when applicable.
+- MemoryNode updates memory after every query.
 
-### 3.1 Unit Tests
+Test Data
+- Uses the default CSV (data/data.csv) or test DB.
+- Query examples include:
+- "show total cost by service name"
+- "plot cost trends"
 
-**Test Coverage:**
-```python
-# tests/unit/test_validators.py
-def test_validate_query_valid():
-    assert validate_query("Show costs") == "Show costs"
+Why it matters
+This test ensures the full FinOps agent experience works, exactly as a user experiences in the Streamlit UI.
 
-def test_validate_query_sql_injection():
-    with pytest.raises(SecurityError):
-        validate_query("DROP TABLE users; --")
+2. test_integration_insight_agent.py (Integration Test)
+Objective
+Test how the Insight Agent behaves in combination with the DataFetcher and the SQL execution pipeline.
+What it tests
+- A valid SQL query returns a DataFrame.
+- Insight agent runs analysis on the DataFrame.
+- Insight can detect anomalies using:
+- statistical patterns
+- cost spikes
+- monthly comparisons
 
-def test_validate_csv_path_traversal():
-    with pytest.raises(SecurityError):
-        validate_csv_path("../../etc/passwd")
+Test Data
+Uses a controlled test CSV or mock DataFrame.
 
-# tests/unit/test_state.py
-def test_init_state_with_memory():
-    history = [
-        {"role": "user", "content": "Hello", "timestamp": "2024-01-01"}
-    ]
-    state = init_state("New query", conversation_history=history)
-    assert state["turn_number"] == 1
-    assert "memory_context" in state
+Why it matters
+Insight Agent is one of the most critical parts of the FinOps system, responsible for:
+- anomaly detection
+- forecasting
+- summarization
+This integration test ensures it works with real data, not just mocked data.
 
-# tests/unit/test_insight_agent.py
-def test_forecast_linear():
-    df = pd.DataFrame({
-        'date': pd.date_range('2024-01-01', periods=10),
-        'cost': range(1000, 1100, 10)
-    })
-    result = forecast_linear(df, 'date', 'cost', periods=3)
-    assert 'predictions' in result
-    assert len(result['predictions']) == 3
-```
+3. test_processquery.py (Functional Test for Query Processing Logic)
+Objective
+Validate the process_query() pipeline logic (if you use process_query in your architecture), which handles:
+- intent detection
+- routing decisions
+- entity extraction
+- preparing state for Supervisor
+- validating schema context
+- returning structured outputs
 
-### 3.2 Integration Tests
+This is a “middle layer” test — not unit, not full E2E.
+What it tests
+- Correct intent classification for FinOps vs small-talk queries.
+- Entity extraction is called with correct arguments.
 
-```python
-# tests/integration/test_supervisor.py
-def test_full_query_pipeline():
-    state = init_state("Show total costs", session_id="test-123")
-    result = run_supervisor(state, "data/test_data.csv")
-    
-    assert result["response"] is not None
-    assert "error" not in result or result["error"] is False
+The returned structure contains:
+- entities
+- normalized query
+- validated fields
 
-def test_memory_persistence():
-    # First query
-    result1 = process_query("Show EC2 costs", csv_path, history=[])
-    
-    # Second query with context
-    history = [
-        {"role": "user", "content": "Show EC2 costs"},
-        {"role": "assistant", "content": result1["response"]}
-    ]
-    result2 = process_query("What about S3?", csv_path, history=history)
-    
-    assert "EC2" in result2["response"] or "previous" in result2["response"]
+Test Data
+- Mocked schema.json
+- Mocked user query examples
 
-# tests/integration/test_api.py
-def test_api_session_flow():
-    # Create session
-    response = client.post("/session/create")
-    session_id = response.json()["session_id"]
-    
-    # Upload CSV
-    files = {"file": open("test_data.csv", "rb")}
-    client.post(f"/session/{session_id}/upload-csv", files=files)
-    
-    # Query
-    response = client.post(
-        f"/session/{session_id}/query",
-        json={"query": "Show costs"}
-    )
-    assert response.status_code == 200
-    assert "response" in response.json()
-```
+Why it matters
+This ensures the decision-making logic of your agent is correct before handing things to LangGraph Supervisor.
 
-### 3.3 System Tests
-
-```python
-# tests/system/test_end_to_end.py
-def test_complete_conversation():
-    """Test full multi-turn conversation"""
-    session_id = create_session()
-    upload_csv(session_id, "sample_data.csv")
-    
-    # Turn 1
-    r1 = query(session_id, "Show monthly costs")
-    assert "cost" in r1["response"].lower()
-    
-    # Turn 2 (reference previous)
-    r2 = query(session_id, "Show me a chart of that")
-    assert r2["chart_path"] is not None
-    
-    # Turn 3 (follow-up)
-    r3 = query(session_id, "What about last month?")
-    assert "month" in r3["response"].lower()
-    
-    # Verify memory
-    history = get_history(session_id)
-    assert len(history["history"]) == 6  # 3 turns × 2 messages
-
-def test_security_rejection():
-    """Test security features block malicious input"""
-    session_id = create_session()
-    
-    # SQL injection attempt
-    with pytest.raises(HTTPException):
-        query(session_id, "'; DROP TABLE sessions; --")
-    
-    # Path traversal attempt
-    with pytest.raises(HTTPException):
-        upload_csv(session_id, "../../etc/passwd")
-```
-
-### 3.4 Performance Tests
-
-```python
-# tests/performance/test_load.py
-def test_concurrent_sessions():
-    """Test handling multiple concurrent sessions"""
-    import concurrent.futures
-    
-    def process_session():
-        session_id = create_session()
-        upload_csv(session_id, "test.csv")
-        return query(session_id, "Show costs")
-    
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        futures = [executor.submit(process_session) for _ in range(50)]
-        results = [f.result() for f in futures]
-    
-    assert len(results) == 50
-    assert all(r["response"] for r in results)
-
-def test_query_latency():
-    """Test response times are acceptable"""
-    import time
-    
-    session_id = create_session()
-    upload_csv(session_id, "test.csv")
-    
-    start = time.time()
-    result = query(session_id, "Show costs")
-    latency = time.time() - start
-    
-    assert latency < 5.0  # Should respond within 5 seconds
-```
-
----
+4. test_unit_insightagent.py (Unit Test for Insight Agent)
+Objective
+Test the internal logic of the Insight Agent in isolation.
+What it tests
+- Can compute basic statistics (mean, sum, max).
+- Handles empty DataFrames safely.
+- Detects anomalies based on:
+- outliers
+- unusual spikes
+- sudden decreasing patterns
+- Forecast logic (if implemented).
 
 ## 4. User Interfaces
 
@@ -796,7 +761,7 @@ cd finops-agent-module3
 **Environment Variables:**
 ```bash
 # .env
-GROQ_API_KEY=your_key_here
+OPENAI_API_KEY=your_key_here
 DATABASE_PATH=finops_memory.db
 UPLOAD_DIR=uploads
 RESULTS_DIR=results
