@@ -512,6 +512,11 @@ What it tests
 ### 4.1 Streamlit UI
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/19677171-95ca-4153-ab50-784d1fd747c3" />
 
+Deployed Streamlit app url: https://readytensorproject-2-buqxvtwuwt5ldmpgardpcf.streamlit.app/
+
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ca06e5c4-65a9-4e89-874e-5ed35a6e3057" />
+
 **Features:**
 - Chat-style interface
 - Memory statistics display
