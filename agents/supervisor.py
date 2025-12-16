@@ -137,27 +137,46 @@ class Graph:
         self.nodes.append(node)
 
     def run(self, state: Dict[str, Any]) -> Dict[str, Any]:
+        MAX_NODES = 10  # 🔒 safety guard to prevent runaway execution
+
         st = state.copy()
         st.setdefault("memory", load_memory())
         st.setdefault("error", False)
         st.setdefault("error_message", None)
-        for node in self.nodes:
+
+        for i, node in enumerate(self.nodes):
+            # -------------------------------
+            # Loop / execution limit guard
+            # -------------------------------
+            if i >= MAX_NODES:
+                st["error"] = True
+                st["error_message"] = "Execution aborted: node limit exceeded"
+                break
+
             if st.get("error"):
                 break
+
             try:
                 res = node.run(st)
                 if res:
                     st.update(res)
             except Exception as exc:
                 st["error"] = True
-                st["error_message"] = f"Node {node.name} crashed: {exc}\n" + traceback.format_exc()
+                st["error_message"] = (
+                    f"Node {node.name} crashed: {exc}\n"
+                    + traceback.format_exc()
+                )
                 break
-        # persist memory at end
+
+        # -------------------------------
+        # Persist memory safely
+        # -------------------------------
         try:
             if "memory" in st and isinstance(st["memory"], dict):
                 save_memory(st["memory"])
         except Exception:
             pass
+
         return st
 
 # ------------------------------ Node implementations --------------------------
