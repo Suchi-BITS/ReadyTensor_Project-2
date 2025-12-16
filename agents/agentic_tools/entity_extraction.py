@@ -158,11 +158,23 @@ Return ONLY valid JSON.
 
         print("[EntityExtraction] Calling OpenAI...")
 
-        response = llm.invoke([
+        from utils.resilience import retry_with_backoff
+        from openai import OpenAIError
+
+        def _invoke_llm():
+            return llm.invoke(
+        [
             SystemMessage(content="Extract FinOps entities & columns. Output ONLY valid JSON."),
             HumanMessage(content=full_prompt)
-        ])
+        ],
+        timeout=20  # timeout guard
+    )
 
+        response = retry_with_backoff(
+            fn=_invoke_llm,
+            exceptions=(OpenAIError, TimeoutError),
+            max_retries=3
+        )
         response_text = response.content.strip()
         print("[EntityExtraction] Raw LLM output:", response_text[:120], "...")
 
