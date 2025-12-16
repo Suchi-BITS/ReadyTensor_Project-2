@@ -246,16 +246,39 @@ Mapping rules (apply these priorities):
     ]
 
     logger.debug("Calling OpenAI gpt-4o-mini to generate SQL.")
-    try:
-        resp = openai_client.chat.completions.create(
+    import time
+    from openai import OpenAIError
+
+    MAX_RETRIES = 3
+    BASE_DELAY = 1.0  # seconds
+
+    last_error = None
+
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+          resp = openai_client.chat.completions.create(
             model=model,
             messages=messages,
             temperature=0.0,
-            max_tokens=512
+            max_tokens=512,
+            timeout=20  # ⏱ timeout guard
         )
-    except Exception as e:
-        logger.error(f"OpenAI call failed: {e}")
-        raise
+          break  # success → exit loop
+
+        except (OpenAIError, TimeoutError) as e:
+           last_error = e
+           logger.warning(
+            f"OpenAI SQL generation failed (attempt {attempt}/{MAX_RETRIES}): {e}"
+        )
+
+        if attempt == MAX_RETRIES:
+            logger.error("OpenAI SQL generation failed after retries")
+            raise
+
+        # exponential backoff
+        sleep_time = BASE_DELAY * (2 ** (attempt - 1))
+        time.sleep(sleep_time)
+
 
     # Extract textual response - attempt to handle different client return types
     try:
@@ -307,9 +330,11 @@ def execute_sql_and_save(sql: str, db_path: str = DB_PATH, table_name: str = TAB
     Execute validated SQL in sqlite DB and save results to results/ with timestamped CSV.
     Returns (DataFrame, csv_path)
     """
-    conn = sqlite3.connect(db_path)
+    conn = sqlite3.connect(db_path, timeout=10)
     try:
         df = pd.read_sql_query(sql, conn)
+        if len(df) > 1_000_000:
+            raise RuntimeError("Query result too large, aborting execution")
     except Exception as e:
         logger.error(f"SQL execution failed: {e}")
         raise RuntimeError(f"SQL execution failed: {e}")
