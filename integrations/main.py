@@ -2,6 +2,8 @@ import os
 import sys
 import toml
 from typing import List, Dict, Any, Optional
+import traceback
+
 
 # Add parent directory to path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -20,6 +22,9 @@ from utils.validators import (
     SecurityError
 )
 from utils.tracing import setup_langsmith_tracing
+import concurrent.futures
+from utils.resilience import retry_with_backoff
+
 #from langchain.callbacks.tracers import LangChainTracer
 
 # Initialize tracing when module loads
@@ -36,6 +41,8 @@ if os.path.exists(secrets_path):
         print(f"Warning: Could not load secrets file: {e}")
 
 logger = setup_execution_logger()
+MAX_TURNS = int(os.getenv("FINOPS_MAX_TURNS", 20))
+SUPERVISOR_TIMEOUT = int(os.getenv("FINOPS_SUPERVISOR_TIMEOUT", 60))
 
 def process_query(
     user_query: str,
@@ -112,8 +119,44 @@ def process_query(
         logger.info(f"Memory context length: {len(state.get('memory_context', ''))}")
         logger.info(f"Turn number: {state.get('turn_number', 0)}")
         
-        # Run supervisor with memory-enriched state
-        result = run_supervisor(state, csv_path)
+        # Turn limit guard
+        if state.get("turn_number", 0) > MAX_TURNS:
+            return {
+                "response": "Conversation limit reached. Please start a new session.",
+                "error": True
+            }
+
+        def _run_supervisor():
+            return run_supervisor(state, csv_path)
+
+        try:
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                future = executor.submit(
+                    lambda: retry_with_backoff(
+                        fn=_run_supervisor,
+                        exceptions=(RuntimeError, TimeoutError),
+                        max_retries=2,
+                        base_delay=1.0
+                    )
+                )
+                result = future.result(timeout=SUPERVISOR_TIMEOUT)
+
+        except concurrent.futures.TimeoutError:
+            logger.error("Supervisor execution timed out")
+            return {
+                "response": "Request timed out. Please try again.",
+                "error": True
+            }
+        except Exception as e:
+            logger.error(f"Supervisor execution error: {str(e)}", exc_info=True)
+            error_trace = traceback.format_exc()
+            logger.error(f"Full error traceback: {error_trace}")
+            return {
+                "response": f"System error: {str(e)}\n\nDetails: Check logs for full traceback.",
+                "error": True,
+                "error_details": str(e),
+                "error_traceback": error_trace
+            }
         
         # Validate and sanitize result
         final_result = sanitize_result(result)
@@ -151,15 +194,16 @@ def process_query(
         }
     
     except Exception as e:
-        logger.error(f"Unexpected error in process_query: {e}")
-        import traceback
+        logger.error(f"Unexpected error in process_query: {e}", exc_info=True)
         error_trace = traceback.format_exc()
         logger.error(f"Full traceback: {error_trace}")
         
         return {
-            "response": f"System Error: An unexpected error occurred. Please try again or contact support",
+            "response": f"System Error: {str(e)}. Please check logs for details.",
             "chart_path": None,
-            "error": True
+            "error": True,
+            "error_details": str(e),
+            "error_traceback": error_trace
         }
 
 
