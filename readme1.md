@@ -798,6 +798,82 @@ tail -f logs/finops_agent.log
 - Database size
 
 ---
+## Resilience, Monitoring & Deployment Robustness
+
+This project is designed for production-grade reliability and safe operation under failure conditions. The system incorporates multiple layers of resilience, monitoring, and testing to ensure stable performance, predictable execution, and a smooth user experience.
+
+### Resilience & Fault Tolerance
+
+To handle transient failures and prevent runaway execution, the system implements the following safeguards:
+
+#### Retry Logic with Exponential Backoff
+
+External dependencies such as LLM calls and supervisor execution are protected using bounded retry logic with exponential backoff. This allows the system to recover gracefully from temporary failures (e.g., network issues, rate limits) without overwhelming downstream services.
+
+- Retries are capped to prevent infinite loops
+- Backoff intervals increase exponentially on successive failures
+- Final failures are surfaced with meaningful error messages
+
+#### Timeout Handling
+
+All long-running operations are guarded by configurable timeouts, including:
+
+- LLM inference calls
+- Supervisor orchestration
+- Agent execution steps
+
+Timeouts ensure that stalled operations do not block the system indefinitely and that users receive timely feedback even in failure scenarios.
+
+#### Execution & Loop Limits
+
+To prevent runaway agent behavior, strict execution limits are enforced:
+
+- Maximum agent turns per request
+- Maximum number of graph nodes per execution
+
+If limits are exceeded, execution is aborted safely with a descriptive error message. This guarantees predictable resource usage and protects the system from infinite loops or unintended recursive behavior.
+
+### Graceful Degradation & Error Handling
+
+The system is built to degrade gracefully under partial failures:
+
+- If an LLM call fails, the system falls back to deterministic Python-based analysis
+- Errors are captured centrally and converted into user-friendly responses
+- Failures do not crash the application or corrupt state
+
+A unified error taxonomy and centralized error handler ensure consistent behavior across agents, APIs, and the UI.
+
+### Monitoring & Observability
+
+The platform includes structured logging and health validation to support monitoring and troubleshooting:
+
+- Execution logs capture retry attempts, timeout events, and failure paths
+- Health checks validate service readiness, environment configuration, and storage availability
+- CI artifacts and logs are preserved for post-run inspection
+
+These features simplify debugging and provide visibility into system behavior during both development and production runs.
+
+### Deployment Configuration & Robustness
+
+Deployment robustness is achieved through explicit configuration management and environment isolation:
+
+- Centralized configuration via environment variables and settings files
+- Dedicated production environment templates
+- Health check utilities for integration with load balancers and orchestration platforms
+- CI pipelines that validate correctness before merges to protected branches
+
+This approach ensures consistent behavior across local development, staging, and production environments.
+
+### Test Coverage & Continuous Validation
+
+The project includes comprehensive automated testing to validate both correctness and reliability:
+
+- Unit tests for individual components and utilities
+- Integration tests for multi-agent orchestration and data flow
+- Resilience tests covering retries, timeouts, and execution limits
+- End-to-end tests using semantic evaluation for LLM responses
+
+All tests are executed automatically via CI pipelines on protected branches, ensuring regressions are detected early and production deployments remain safe.
 
 ## 6. Project Structure
 
