@@ -1,17 +1,37 @@
 import sys
 import os
+import warnings
+
+# Suppress all torch warnings more comprehensively
+warnings.filterwarnings("ignore")
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress TensorFlow warnings if present
 
 ROOT = os.path.dirname(os.path.abspath(__file__))  # D:\A-Agent\integrations
 PARENT = os.path.dirname(ROOT)  # D:\A-Agent
 
 if PARENT not in sys.path:
     sys.path.insert(0, PARENT)
+
 from dotenv import load_dotenv
 load_dotenv()
+
 import streamlit as st
-import os
-from integrations.main import process_query
+import concurrent.futures
 from datetime import datetime
+import traceback
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# Import with error handling
+try:
+    from integrations.main import process_query
+except Exception as e:
+    logger.error(f"Failed to import process_query: {e}")
+    st.error(f"Import Error: {e}")
+    st.stop()
 
 
 # Streamlit App Setup
@@ -66,14 +86,14 @@ with st.sidebar:
                 "timestamp": datetime.now().isoformat()
             })
         else:
-            st.error(f" File not found: {default_csv_path}")
+            st.error(f"❌ File not found: {default_csv_path}")
             st.session_state.file_loaded = False
     
     st.markdown("---")
     
     # File status
     if st.session_state.file_loaded:
-        st.success(" Data Loaded")
+        st.success("Data Loaded")
         st.info(f"**File:** {os.path.basename(st.session_state.csv_path)}")
     else:
         st.warning(" No data loaded")
@@ -112,7 +132,8 @@ with st.sidebar:
         if st.button("Clear Memory", use_container_width=True):
             st.session_state.messages = []
             st.session_state.conversation_history = []
-            st.session_state.session_id = str(__import__('uuid').uuid4())
+            import uuid
+            st.session_state.session_id = str(uuid.uuid4())
             st.session_state.session_start_time = datetime.now()
             st.rerun()
     
@@ -169,56 +190,91 @@ if prompt := st.chat_input("Ask a question about your cloud spending..."):
         with st.spinner("Analyzing your request with conversation context..."):
             
             # Pass conversation history to process_query
-            result = process_query(
-                user_query=prompt,
-                csv_path=st.session_state.csv_path,
-                conversation_history=st.session_state.conversation_history,
-                session_id=st.session_state.session_id
-            )
+            result = None
+            try:
+                logger.info(f"Processing query: {prompt}")
+                
+                with concurrent.futures.ThreadPoolExecutor() as executor:
+                    future = executor.submit(
+                        process_query,
+                        prompt,
+                        st.session_state.csv_path,
+                        st.session_state.conversation_history,
+                        st.session_state.session_id
+                    )
+                    result = future.result(timeout=65)
+                
+                logger.info(f"Query processed successfully. Result: {result}")
+
+            except concurrent.futures.TimeoutError:
+                logger.error("Request timed out")
+                st.error(" Request timed out. Please try again with a simpler query.")
+                result = {
+                    "response": "The request took too long to process. Please try again.",
+                    "error": True
+                }
+
+            except Exception as e:
+                error_msg = str(e)
+                error_trace = traceback.format_exc()
+                logger.error(f"Error processing query: {error_msg}\n{error_trace}")
+                
+                # Show detailed error in expander
+                st.error(" An error occurred while processing your request.")
+                with st.expander(" Error Details"):
+                    st.code(error_trace)
+                    st.write("**Error Message:**", error_msg)
+                
+                result = {
+                    "response": f"I encountered an error while processing your request. Please check that:\n1. Your CSV file is properly formatted\n2. The query is clear and specific\n3. Required dependencies are installed\n\nError: {error_msg}",
+                    "error": True
+                }
             
             # Extract response
-            response_text = result.get("response", "")
-            chart_path = result.get("chart_path")
-            
-            # Display response
-            if response_text and str(response_text).strip():
-                st.markdown(response_text)
-            else:
-                st.warning(" No response was generated. Please try rephrasing your question.")
-                response_text = "No response generated."
-            
-            # Display chart if available
-            if chart_path and os.path.exists(chart_path):
-                st.image(chart_path, caption="Generated Visualization", use_column_width=True)
-            
-            # Add assistant response to chat display
-            st.session_state.messages.append({
-                "role": "assistant",
-                "content": response_text,
-                "chart_path": chart_path,
-                "timestamp": datetime.now().isoformat()
-            })
-            
-            # Update conversation history (stored separately for memory)
-            st.session_state.conversation_history.append({
-                "role": "user",
-                "content": prompt,
-                "timestamp": datetime.now().isoformat(),
-                "metadata": {
-                    "turn_number": len([m for m in st.session_state.messages if m["role"] == "user"])
-                }
-            })
-            
-            st.session_state.conversation_history.append({
-                "role": "assistant",
-                "content": response_text,
-                "timestamp": datetime.now().isoformat(),
-                "metadata": {
-                    "intent": result.get("intent"),
-                    "subagent": result.get("subagent"),
-                    "chart_generated": chart_path is not None
-                }
-            })
+            if result:
+                response_text = result.get("response", "")
+                chart_path = result.get("chart_path")
+                
+                # Display response
+                if response_text and str(response_text).strip():
+                    st.markdown(response_text)
+                else:
+                    st.warning(" No response was generated. Please try rephrasing your question.")
+                    response_text = "No response generated."
+                
+                # Display chart if available
+                if chart_path and os.path.exists(chart_path):
+                    st.image(chart_path, caption="Generated Visualization", use_column_width=True)
+                
+                # Add assistant response to chat display
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": response_text,
+                    "chart_path": chart_path,
+                    "timestamp": datetime.now().isoformat()
+                })
+                
+                # Update conversation history (stored separately for memory)
+                st.session_state.conversation_history.append({
+                    "role": "user",
+                    "content": prompt,
+                    "timestamp": datetime.now().isoformat(),
+                    "metadata": {
+                        "turn_number": len([m for m in st.session_state.messages if m["role"] == "user"])
+                    }
+                })
+                
+                st.session_state.conversation_history.append({
+                    "role": "assistant",
+                    "content": response_text,
+                    "timestamp": datetime.now().isoformat(),
+                    "metadata": {
+                        "intent": result.get("intent"),
+                        "subagent": result.get("subagent"),
+                        "chart_generated": chart_path is not None,
+                        "error": result.get("error", False)
+                    }
+                })
 
 # Footer with Quick Actions and Memory Context
 if st.session_state.file_loaded:
@@ -230,7 +286,8 @@ if st.session_state.file_loaded:
             recent_history = st.session_state.conversation_history[-6:]
             for entry in recent_history:
                 role_emoji = "👤" if entry["role"] == "user" else "🤖"
-                st.caption(f"{role_emoji} **{entry['role'].title()}:** {entry['content'][:100]}...")
+                content_preview = entry['content'][:100] + "..." if len(entry['content']) > 100 else entry['content']
+                st.caption(f"{role_emoji} **{entry['role'].title()}:** {content_preview}")
     
 
 # Debug Panel
@@ -242,8 +299,11 @@ with st.expander(" Debug Information"):
     st.write(f"- Conversation history entries: {len(st.session_state.conversation_history)}")
     st.write(f"- Session ID: {st.session_state.session_id}")
     st.write(f"- Conversation turns: {len([m for m in st.session_state.messages if m['role'] == 'user'])}")
+    
+    st.write("\n**System Information:**")
+    st.write(f"- Python version: {sys.version}")
+    st.write(f"- Working directory: {os.getcwd()}")
+    st.write(f"- sys.path includes parent: {PARENT in sys.path}")
 
 st.markdown("---")
 st.caption("Built with LangGraph + OpenAI + Streamlit | Memory-Enabled Conversational AI")
-
-
