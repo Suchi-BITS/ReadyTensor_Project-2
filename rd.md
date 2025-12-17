@@ -802,90 +802,34 @@ uvicorn api:app --reload --port 8000
 
 ```dockerfile
 # Dockerfile
-FROM python:3.10-slim
+FROM python:3.10-slim-buster
 
+# Set working directory
 WORKDIR /app
 
-COPY requirements.txt .
+# Copy application code
+COPY . /app
+
+# Install system dependencies
+RUN apt-get update -y && \
+    apt-get install -y \
+        awscli \
+        ffmpeg \
+        libsm6 \
+        libxext6 \
+        unzip && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+# Run application
+CMD ["python3", "app.py"]
 
-# Expose ports
-EXPOSE 8501 8000
 
-# Run both services
-CMD streamlit run integrations/app.py & \
-    uvicorn api:app --host 0.0.0.0 --port 8000
 ```
 
-```yaml
-# docker-compose.yml
-version: '3.8'
-
-services:
-  finops-agent:
-    build: .
-    ports:
-      - "8501:8501"  # Streamlit
-      - "8000:8000"  # API
-    environment:
-      - GROQ_API_KEY=${GROQ_API_KEY}
-    volumes:
-      - ./data:/app/data
-      - ./uploads:/app/uploads
-      - ./results:/app/results
-      - ./finops_memory.db:/app/finops_memory.db
-```
-
-```bash
-# Deploy
-docker-compose up -d
-
-# Access
-# Streamlit: http://localhost:8501
-# API: http://localhost:8000
-# Docs: http://localhost:8000/docs
-```
-
-### Production Deployment (AWS EC2)
-
-```mermaid
-graph LR
-    subgraph "Development"
-        Code[Code Commit] --> Tests[Run Tests]
-        Tests --> Coverage[Check Coverage]
-        Coverage --> Lint[Code Linting]
-    end
-    
-    subgraph "Build"
-        Lint --> Build[Docker Build]
-        Build --> Scan[Security Scan]
-        Scan --> Push[Push to ECR]
-    end
-    
-    subgraph "Staging"
-        Push --> DeployStg[Deploy to Staging]
-        DeployStg --> IntTests[Integration Tests]
-        IntTests --> E2E[E2E Tests]
-    end
-    
-    subgraph "Production"
-        E2E --> Approval{Manual<br/>Approval}
-        Approval -->|Approved| DeployProd[Deploy to Production]
-        DeployProd --> HealthCheck[Health Check]
-        HealthCheck --> Monitor[Monitor Metrics]
-    end
-    
-    Monitor -->|Issues| Rollback[Rollback]
-    Rollback --> DeployStg
-    
-    style Tests fill:#e1f5ff
-    style Build fill:#e1ffe1
-    style DeployStg fill:#fff4e1
-    style DeployProd fill:#ffe1e1
-    style Rollback fill:#ffcccc
-```
 
 #### Docker Setup in EC2
 
