@@ -134,9 +134,9 @@ graph TB
     end
     
     subgraph "Data & Memory"
-        PG[(PostgreSQL<br/>Multi-Tenant DB)]
+        
         SQLite[(SQLite<br/>Conversation Memory)]
-        S3[S3 Artifact Storage]
+        
     end
     
     UI --> Router
