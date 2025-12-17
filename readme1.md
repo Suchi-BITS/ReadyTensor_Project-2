@@ -1004,72 +1004,67 @@ finops-agent-module3/
 
 # System Architecture
 ┌─────────────────────────────────────────────────────────────┐
-│                    USER INTERFACES                          │
+│                     USER INTERFACES                          │
 ├─────────────────────────────────────────────────────────────┤
-│  Streamlit UI (Port 8501)  │  REST API (Port 8000)         │
-│  - Chat interface           │  - Session management         │
-│  - File uploads             │  - Query processing           │
-│  - Memory stats             │  - History retrieval          │
-│  - Visualizations           │  - OpenAPI documentation      │
-└─────────────┬───────────────┴──────────────┬────────────────┘
-              │                               │
-              └───────────┬───────────────────┘
-                          ▼
+│  Streamlit UI (Port 8501)     │    REST API (Port 8000)     │
+│  - Multi-tenant login          │    - Session management     │
+│  - Chat interface              │    - Query processing       │
+│  - File uploads                │    - History retrieval      │
+│  - Memory statistics           │    - Artifact access        │
+│  - Visualizations              │    - OpenAPI documentation  │
+└────────────────┬──────────────┴────────────┬────────────────┘
+                 │                            │
+                 └──────────┬─────────────────┘
+                            ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                  ORCHESTRATION LAYER                        │
+│                  ORCHESTRATION LAYER                         │
 ├─────────────────────────────────────────────────────────────┤
-│              LangGraph Supervisor (supervisor.py)           │
-│  - Intent classification                                    │
-│  - Agent routing (data_fetcher, insights, visualizer)       │
-│  - State management                                         │
-│  - Memory integration                                       │
-└─────────────┬───────────────────────────────────────────────┘
-              │
-              ▼
+│              LangGraph Supervisor (supervisor.py)            │
+│  - Intent classification                                     │
+│  - Agent routing (data_fetcher, insights, visualizer)        │
+│  - State management with tenant/user context                │
+│  - Memory integration                                        │
+│  - Retry logic with exponential backoff                      │
+│  - Timeout enforcement                                       │
+└────────────────┬────────────────────────────────────────────┘
+                 ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                    AGENT LAYER                              │
+│                      AGENT LAYER                             │
 ├─────────────────────────────────────────────────────────────┤
-│  Intent Router  │  Data Fetcher   │  Insight Agent         │
-│  - Classifies   │  - SQL gen      │  - Forecasting         │
-│    user intent  │  - Entity ext.  │  - Anomaly detection   │
-│                 │  - Query exec.  │  - Correlations        │
-├─────────────────┼─────────────────┼────────────────────────┤
-│  Visualizer     │  Knowledge      │  Small Talk            │
-│  - 9 chart types│  - RAG system   │  - Casual chat         │
-│  - Auto-detect  │  - FinOps docs  │  - Greetings           │
-└─────────────┬───┴─────────────────┴────────────────────────┘
-              │
-              ▼
+│  Intent Router    │  Data Fetcher    │   Insight Agent       │
+│  - Classifies     │  - SQL generation│   - Forecasting       │
+│  - Routes query   │  - Entity extract│   - Anomaly detection │
+│                   │  - Query exec    │   - Correlations      │
+├───────────────────┼──────────────────┼───────────────────────┤
+│  Visualizer       │  Knowledge Agent │   Small Talk Handler  │
+│  - 9 chart types  │  - RAG system    │   - Casual chat       │
+│  - Auto-detect    │  - FinOps docs   │   - Greetings         │
+└────────────────┬──┴──────────────────┴───────────────────────┘
+                 ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                   SECURITY & VALIDATION                     │
+│              SECURITY & VALIDATION LAYER                     │
 ├─────────────────────────────────────────────────────────────┤
-│  - Input sanitization (validators.py)                       │
-│  - SQL injection prevention                                 │
-│  - Path traversal blocking                                  │
-│  - Rate limiting                                            │
-│  - Error boundaries                                         │
-└─────────────┬───────────────────────────────────────────────┘
-              │
-              ▼
+│  - Input sanitization (validators.py)                        │
+│  - SQL injection prevention                                  │
+│  - Path traversal blocking                                   │
+│  - Rate limiting (per tenant/user)                           │
+│  - Error boundaries with graceful degradation                │
+│  - Authentication & authorization                            │
+└────────────────┬────────────────────────────────────────────┘
+                 ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                  MEMORY & PERSISTENCE                       │
+│           MEMORY & PERSISTENCE LAYER                         │
 ├─────────────────────────────────────────────────────────────┤
-│  SQLite Database (finops_memory.db)                         │
-│  ┌────────────────┬──────────────────────────────┐         │
-│  │ Sessions       │ Conversation History         │         │
-│  │ - session_id   │ - id                         │         │
-│  │ - created_at   │ - session_id                 │         │
-│  │ - csv_path     │ - role (user/assistant)      │         │
-│  │ - metadata     │ - content                    │         │
-│  │                │ - timestamp                  │         │
-│  │                │ - metadata                   │         │
-│  └────────────────┴──────────────────────────────┘         │
-└─────────────┬───────────────────────────────────────────────┘
-              │
-              ▼
+│  SQLite (Conversation Memory)  │  PostgreSQL (Multi-Tenant)  │
+│  - Short-term context          │  - Tenants & Users          │
+│  - Session history             │  - Sessions & Messages      │
+│                                │  - Artifacts & Datasets     │
+└────────────────┬───────────────┴─────────────────────────────┘
+                 ▼
 ┌─────────────────────────────────────────────────────────────┐
-│                   EXTERNAL SERVICES                         │
+│                   EXTERNAL SERVICES                          │
 ├─────────────────────────────────────────────────────────────┤
-│  - Groq LLM API (llama-3.3-70b-versatile)                  │
-│  - LangSmith (optional monitoring)                          │
+│  - Groq LLM API (llama-3.3-70b-versatile)                   │
+│  - LangSmith (monitoring & tracing)                          │
+│  - AWS S3 (artifact storage)                                 │
 └─────────────────────────────────────────────────────────────┘
