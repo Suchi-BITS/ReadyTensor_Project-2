@@ -1,3 +1,5 @@
+```md
+```mermaid
 graph TD
     Query --> Router
 
