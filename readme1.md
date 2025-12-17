@@ -719,33 +719,7 @@ CMD streamlit run integrations/app.py & \
 ```
 
 ```yaml
-# docker-compose.yml
-version: '3.8'
 
-services:
-  finops-agent:
-    build: .
-    ports:
-      - "8501:8501"  # Streamlit
-      - "8000:8000"  # API
-    environment:
-      - GROQ_API_KEY=${GROQ_API_KEY}
-    volumes:
-      - ./data:/app/data
-      - ./uploads:/app/uploads
-      - ./results:/app/results
-      - ./finops_memory.db:/app/finops_memory.db
-```
-
-```bash
-# Deploy
-docker-compose up -d
-
-# Access
-# Streamlit: http://localhost:8501
-# API: http://localhost:8000
-# Docs: http://localhost:8000/docs
-```
 
 ### 5.3 Production Deployment
 
@@ -798,6 +772,74 @@ tail -f logs/finops_agent.log
 - Database size
 
 ---
+# Deployment Setup Guide
+
+## Prerequisites
+
+### 1. Docker Build
+- [x] Docker build configuration verified
+
+### 2. GitHub Workflow
+- [x] GitHub Actions workflow configured
+
+### 3. IAM User in AWS
+- [x] AWS IAM user created with appropriate permissions
+
+## Docker Setup in EC2
+
+Execute the following commands on your EC2 instance:
+
+### Optional Updates
+```bash
+sudo apt-get update -y
+sudo apt-get upgrade
+```
+
+### Required Docker Installation
+```bash
+# Download Docker installation script
+curl -fsSL https://get.docker.com -o get-docker.sh
+
+# Install Docker
+sudo sh get-docker.sh
+
+# Add ubuntu user to docker group
+sudo usermod -aG docker ubuntu
+
+# Activate the changes to groups
+newgrp docker
+```
+
+## Configure EC2 as Self-Hosted Runner
+
+Follow GitHub's documentation to add your EC2 instance as a self-hosted runner for your repository.
+
+## Setup GitHub Secrets
+
+Navigate to your repository settings and add the following secrets:
+
+| Secret Name | Description | Example Value |
+|-------------|-------------|---------------|
+| `AWS_ACCESS_KEY_ID` | AWS Access Key ID | Your AWS access key |
+| `AWS_SECRET_ACCESS_KEY` | AWS Secret Access Key | Your AWS secret key |
+| `AWS_REGION` | AWS Region | `us-east-1` |
+| `AWS_ECR_LOGIN_URI` | AWS ECR Login URI | `566373416292.dkr.ecr.ap-south-1.amazonaws.com` |
+| `ECR_REPOSITORY_NAME` | ECR Repository Name | `finops-chat-app` |
+
+### How to Add GitHub Secrets
+
+1. Go to your repository on GitHub
+2. Click on **Settings**
+3. Select **Secrets and variables** → **Actions**
+4. Click **New repository secret**
+5. Add each secret with its corresponding value
+
+## Notes
+
+- Ensure your IAM user has permissions for ECR (Elastic Container Registry) operations
+- The EC2 instance should have appropriate security group rules to allow necessary traffic
+- Keep your AWS credentials secure and never commit them to your repository
+----
 ## Resilience, Monitoring & Deployment Robustness
 
 This project is designed for production-grade reliability and safe operation under failure conditions. The system incorporates multiple layers of resilience, monitoring, and testing to ensure stable performance, predictable execution, and a smooth user experience.
