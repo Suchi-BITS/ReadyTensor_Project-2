@@ -12,3 +12,4 @@ graph TD
     EntityExtraction --> Text2SQL
     Text2SQL --> ExecuteSQL
     ExecuteSQL --> Response
+    ```
