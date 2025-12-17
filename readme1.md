@@ -1001,4 +1001,69 @@ finops-agent-module3/
 **Testing**: Unit + Integration + System tests with 80%+ coverage
 **Visualizations**: 9 chart
 
+graph TB
+    subgraph "User Interfaces"
+        UI[Streamlit UI<br/>Port 8501]
+        API[REST API<br/>Port 8000]
+    end
+    
+    subgraph "Agentic FinOps System"
+        Router[Intent Router]
+        Supervisor[LangGraph Supervisor]
+        
+        subgraph "SQL Intent Pipeline"
+            Entity[Entity Extraction]
+            Text2SQL[Text-to-SQL Agent]
+            DataFetcher[Data Fetcher]
+        end
+        
+        subgraph "Insight Intent"
+            Insight[Insight Agent]
+        end
+        
+        subgraph "Knowledge Intent"
+            Knowledge[Knowledge Agent]
+        end
+        
+        subgraph "Small Talk"
+            SmallTalk[Small Talk Agent]
+        end
+        
+        Visualizer[Visualizer Agent]
+    end
+    
+    subgraph "Data & Memory"
+        PG[(PostgreSQL<br/>Multi-Tenant DB)]
+        SQLite[(SQLite<br/>Conversation Memory)]
+        S3[S3 Artifact Storage]
+    end
+    
+    UI --> Router
+    API --> Router
+    Router --> Supervisor
+    Supervisor -->|SQL Intent| Entity
+    Entity --> Text2SQL
+    Text2SQL --> DataFetcher
+    DataFetcher --> Insight
+    Supervisor -->|Insight Intent| Insight
+    Supervisor -->|Knowledge Intent| Knowledge
+    Supervisor -->|Small Talk| SmallTalk
+    Insight --> Visualizer
+    Supervisor --> Visualizer
+    
+    DataFetcher --> PG
+    Supervisor --> SQLite
+    Visualizer --> S3
+    
+    Supervisor --> UI
+    Supervisor --> API
+    
+    style UI fill:#e1f5ff
+    style API fill:#e1f5ff
+    style Supervisor fill:#fff4e1
+    style Router fill:#f0e1ff
+    style Insight fill:#e1ffe1
+    style Knowledge fill:#ffe1e1
+    style Visualizer fill:#ffe1f5
+
 
