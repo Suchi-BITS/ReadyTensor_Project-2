@@ -916,6 +916,32 @@ The project includes comprehensive automated testing to validate both correctnes
 - End-to-end tests using semantic evaluation for LLM responses
 
 All tests are executed automatically via CI pipelines on protected branches, ensuring regressions are detected early and production deployments remain safe.
+sequenceDiagram
+    participant Agent
+    participant LLM as LLM API
+    participant Fallback
+    
+    Agent->>LLM: Request (Attempt 1)
+    LLM--xAgent: Timeout/Error
+    
+    Note over Agent: Wait 2s (Exponential Backoff)
+    
+    Agent->>LLM: Request (Attempt 2)
+    LLM--xAgent: Rate Limit Error
+    
+    Note over Agent: Wait 4s (Exponential Backoff)
+    
+    Agent->>LLM: Request (Attempt 3)
+    LLM--xAgent: Connection Error
+    
+    Note over Agent: Max Retries Reached
+    
+    Agent->>Fallback: Use Rule-Based Logic
+    Fallback-->>Agent: Fallback Response
+    Agent-->>Agent: Log Error + Return Response
+
+
+
 
 ## 6. Project Structure
 
