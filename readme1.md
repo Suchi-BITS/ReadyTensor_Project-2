@@ -1000,3 +1000,76 @@ finops-agent-module3/
 **Dual Interfaces**: Streamlit UI + REST API
 **Testing**: Unit + Integration + System tests with 80%+ coverage
 **Visualizations**: 9 chart
+
+
+# System Architecture
+┌─────────────────────────────────────────────────────────────┐
+│                    USER INTERFACES                          │
+├─────────────────────────────────────────────────────────────┤
+│  Streamlit UI (Port 8501)  │  REST API (Port 8000)         │
+│  - Chat interface           │  - Session management         │
+│  - File uploads             │  - Query processing           │
+│  - Memory stats             │  - History retrieval          │
+│  - Visualizations           │  - OpenAPI documentation      │
+└─────────────┬───────────────┴──────────────┬────────────────┘
+              │                               │
+              └───────────┬───────────────────┘
+                          ▼
+┌─────────────────────────────────────────────────────────────┐
+│                  ORCHESTRATION LAYER                        │
+├─────────────────────────────────────────────────────────────┤
+│              LangGraph Supervisor (supervisor.py)           │
+│  - Intent classification                                    │
+│  - Agent routing (data_fetcher, insights, visualizer)       │
+│  - State management                                         │
+│  - Memory integration                                       │
+└─────────────┬───────────────────────────────────────────────┘
+              │
+              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                    AGENT LAYER                              │
+├─────────────────────────────────────────────────────────────┤
+│  Intent Router  │  Data Fetcher   │  Insight Agent         │
+│  - Classifies   │  - SQL gen      │  - Forecasting         │
+│    user intent  │  - Entity ext.  │  - Anomaly detection   │
+│                 │  - Query exec.  │  - Correlations        │
+├─────────────────┼─────────────────┼────────────────────────┤
+│  Visualizer     │  Knowledge      │  Small Talk            │
+│  - 9 chart types│  - RAG system   │  - Casual chat         │
+│  - Auto-detect  │  - FinOps docs  │  - Greetings           │
+└─────────────┬───┴─────────────────┴────────────────────────┘
+              │
+              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   SECURITY & VALIDATION                     │
+├─────────────────────────────────────────────────────────────┤
+│  - Input sanitization (validators.py)                       │
+│  - SQL injection prevention                                 │
+│  - Path traversal blocking                                  │
+│  - Rate limiting                                            │
+│  - Error boundaries                                         │
+└─────────────┬───────────────────────────────────────────────┘
+              │
+              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                  MEMORY & PERSISTENCE                       │
+├─────────────────────────────────────────────────────────────┤
+│  SQLite Database (finops_memory.db)                         │
+│  ┌────────────────┬──────────────────────────────┐         │
+│  │ Sessions       │ Conversation History         │         │
+│  │ - session_id   │ - id                         │         │
+│  │ - created_at   │ - session_id                 │         │
+│  │ - csv_path     │ - role (user/assistant)      │         │
+│  │ - metadata     │ - content                    │         │
+│  │                │ - timestamp                  │         │
+│  │                │ - metadata                   │         │
+│  └────────────────┴──────────────────────────────┘         │
+└─────────────┬───────────────────────────────────────────────┘
+              │
+              ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   EXTERNAL SERVICES                         │
+├─────────────────────────────────────────────────────────────┤
+│  - Groq LLM API (llama-3.3-70b-versatile)                  │
+│  - LangSmith (optional monitoring)                          │
+└─────────────────────────────────────────────────────────────┘
