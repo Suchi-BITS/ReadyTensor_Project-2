@@ -152,9 +152,9 @@ graph TB
     Insight --> Visualizer
     Supervisor --> Visualizer
     
-    DataFetcher --> PG
+    DataFetcher --> SQLite
     Supervisor --> SQLite
-    Visualizer --> S3
+    Visualizer --> SQLite
     
     Supervisor --> UI
     Supervisor --> API
