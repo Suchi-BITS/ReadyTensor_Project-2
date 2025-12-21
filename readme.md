@@ -337,4 +337,30 @@ Artifacts appear inside: `results/`
 python -m tests.test_agent
 ```
 
+# 14. Conclusion
+This work presents a functional and robust stateless multi-agent FinOps conversational system that integrates LLMs, LangGraph, text-based RAG, SQL generation, data insights, and visualization. The combination of agent specialization and knowledge grounding produces accurate and reliable FinOps responses suitable for operational usage.
 
+Future Work
+The next phase will introduce a stateful FinOps assistant capable of:
+
+Maintaining long-term memory
+Tracking cost over multiple user sessions
+Performing iterative analysis
+Asking clarifying questions
+Supporting FinOps decision-making through multi-query reasoning
+This will move the system from a single-turn analytical tool to a full conversational FinOps co-pilot.
+
+# 15. License
+MIT License - Free for research and prototyping
+Copyright (c) 2025 Suchismita Sahu
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software.
+
+# 16. Acknowledgments
+ReadyTensor for the foundational architecture framework
+LangChain and LangGraph for multi-agent orchestration capabilities
+Groq for high-performance LLM inference
+Streamlit for rapid UI development
