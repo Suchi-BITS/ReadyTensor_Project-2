@@ -870,7 +870,7 @@ Navigate to your repository settings and add the following secrets:
 | `AWS_SECRET_ACCESS_KEY` | AWS Secret Access Key | Your AWS secret key |
 | `AWS_REGION` | AWS Region | `us-east-1` |
 | `AWS_ECR_LOGIN_URI` | AWS ECR Login URI | `566373416292.dkr.ecr.ap-south-1.amazonaws.com` |
-| `ECR_REPOSITORY_NAME` | ECR Repository Name | `finops-chat-app` |
+| `ECR_REPOSITORY_NAME` | ECR Repository Name | `finops-agent-app` |
 
 **How to Add GitHub Secrets:**
 1. Go to your repository on GitHub
@@ -937,3 +937,25 @@ finops-agent-module3/
 │   │   ├── test_validators.py
 │   │   ├── test_state.py
 │   │   └── test_agents.py
+
+# Conclusion
+This FinOps AI Agent already delivers a powerful multi-agent reasoning pipeline, memory persistence, advanced analytics, and seamless Text2SQL automation, but there is a clear roadmap for taking it to the next level.
+
+The upcoming milestones focus on building a full memory stack that includes a richer context layer, a detailed episodic memory for past conversations and user-specific behaviors, and a robust semantic memory powered by embeddings and similarity search to store reusable knowledge.
+Integrating a hybrid memory architecture (context + episodic + semantic) will enable the system to maintain long-term awareness, improve personalization, and produce more consistent multi-turn insights.
+Additional enhancements include introducing graph-based memory (GraphRAG), refining retrieval quality, strengthening guardrails and observability, and expanding the REST API for enterprise-scale deployment. With these upgrades, the platform evolves into a fully autonomous, self-improving FinOps assistant capable of long-term learning and continuous optimisation across cloud financial operations.
+
+# License
+MIT License - Free for research and prototyping
+Copyright (c) 2025 Suchismita Sahu
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software.
+# References
+- LangGraph Documentation: Multi-Agent Orchestration Patterns
+- "Text-to-SQL in the Wild: A Naturally-Occurring Dataset Based on Stack Exchange Data" (Finegan-Dollak et al., 2018)
+- "RAT-SQL: Relation-Aware Schema Encoding and Linking for Text-to-SQL Parsers" (Wang et al., 2020)
+- "BIRD-SQL: A Large-Scale Cross-Domain Text-to-SQL Benchmark" (Li et al., 2023)
+- PostgreSQL Multi-Tenant Architecture Best Practices
